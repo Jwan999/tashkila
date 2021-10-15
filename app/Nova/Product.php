@@ -49,7 +49,7 @@ class Product extends Resource
             ID::make(__('ID'), 'id')->sortable(),
             Text::make(__("Name"), 'name')->rules("required", "max:255")->sortable(),
             Textarea::make(__("Description"), 'description'),
-            Image::make(__("Image"), "preview_img")->creationRules("required", "image"),
+            Image::make(__("Image"), "preview_img")->creationRules("required", "image")->disk('public'),
             Number::make(__("Price"), 'price'),
             BelongsTo::make(__("Category"), "category", Category::Class)->showCreateRelationButton(),
         ];
