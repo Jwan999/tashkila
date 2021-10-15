@@ -1,4 +1,4 @@
-import Home from "/pages/Home.vue";
+import Home from "/pages/Home";
 import Products from "/pages/Products";
 import Checkout from "/pages/Checkout";
 import Register from "/pages/Register";
