@@ -1,7 +1,7 @@
-import Home from "/pages/Home";
-import Products from "/pages/Products";
-import Checkout from "/pages/Checkout";
-import Register from "/pages/Register";
+import Home from "./pages/Home";
+import Products from "./pages/Products";
+import Checkout from "./pages/Checkout";
+import Register from "./pages/Register";
 
 import Login from "./pages/Login";
 
