@@ -7,6 +7,7 @@ use Laravel\Nova\Fields\BelongsTo;
 use Laravel\Nova\Fields\Currency;
 use Laravel\Nova\Fields\ID;
 use Laravel\Nova\Fields\Image;
+use Laravel\Nova\Fields\Number;
 use Laravel\Nova\Fields\Text;
 use Laravel\Nova\Fields\Textarea;
 use Laravel\Nova\Http\Requests\NovaRequest;
@@ -49,7 +50,7 @@ class Product extends Resource
             Text::make(__("Name"), 'name')->rules("required", "max:255")->sortable(),
             Textarea::make(__("Description"), 'description'),
             Image::make(__("Image"), "preview_img")->creationRules("required", "image"),
-            Currency::make(__("Price"), 'price')->currency("USD")->rules("required", "numeric")->sortable(),
+            Number::make(__("Price"), 'price'),
             BelongsTo::make(__("Category"), "category", Category::Class)->showCreateRelationButton(),
         ];
     }
