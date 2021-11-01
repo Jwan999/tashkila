@@ -1,6 +1,6 @@
 <template>
-
   <div>
+
     <navbar></navbar>
 
     <div class="w-full flex flex-col lg:px-24 px-4 mt-10">
@@ -8,40 +8,39 @@
       <!--    <router-link :to="{path:'/checkout'}">Checkout</router-link>-->
       <div class="flex flex-wrap items-center justify-between">
         <div class="lg:w-6/12 w-full">
-          <h1 class="text-6xl text-blue-700">
+          <h1 class="lg:text-5xl text-4xl text-blue-700">
             اصدقائي
           </h1>
-          <p class="mt-10 text-2xl">
+          <p class="mt-10 lg:text-xl text-base">
             اطلالة الى عالم الطفولة، سنعيش معا مغامرات شيقة
             نعزف من خلالها لحنا في كل ما نتمناه لكم من ثقافة واخلاق
             رفيعة ومتعة وابداع
           </p>
-          <button class="py-4 px-6 bg-red-500 text-white rounded-2xl shadow-lg mt-6">
+          <button class="lg:py-3 lg:px-6 py-3 px-5 bg-red-500 text-white rounded-2xl shadow-lg mt-6">
             الذهاب الى المتجر
           </button>
         </div>
 
-        <div class="lg:w-6/12 w-full flex lg:justify-end justify-center mt-4 lg:mt-0">
+        <div class="lg:w-6/12 w-full flex lg:justify-end justify-center mt-6 lg:mt-0">
           <img class="w-10/12" src="images/charechtersWelcoming.png" alt="">
         </div>
 
       </div>
       <div>
 
-        <!--search-->
-        <h1 class="text-5xl mb-10 text-center text-red-500 font-bold mt-28">المتجر</h1>
+        <h1 class="lg:text-4xl text-3xl lg:mb-10 mb-6 text-center text-red-500 font-bold mt-28">المتجر</h1>
 
 
-        <div class="flex rounded-2xl justify-center">
+        <div class="flex flex-wrap rounded-2xl justify-center">
           <h1 :class="activeCategories == null ? 'bg-red-500 text-white' :  'text-red-500 bg-red-100'"
               @click="getProducts(null)"
-              class="text-xl items-center px-6 py-4 rounded-2xl font-bold ml-2 cursor-pointer">
+              class="lg:text-xl items-center px-5 py-3 rounded-2xl font-bold ml-2 cursor-pointer lg:mt-0 mt-2">
             All
           </h1>
           <div v-for="category in categories">
             <h1 :class="activeCategories == category.id ? 'bg-red-500 text-white' :  'text-red-500 bg-red-100'"
                 @click="getProducts(category.id)"
-                class="text-xl  items-center px-6 py-4 rounded-2xl font-bold ml-2 cursor-pointer">
+                class="lg:text-xl items-center px-5 py-3 rounded-2xl font-bold ml-2 cursor-pointer lg:mt-0 mt-2">
               {{ category.name }}
             </h1>
           </div>

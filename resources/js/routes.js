@@ -1,5 +1,5 @@
 import Home from "./pages/Home";
-import Products from "./pages/Products";
+// import Products from "./pages/Products";
 import Checkout from "./pages/Checkout";
 import Register from "./pages/Register";
 
@@ -10,10 +10,10 @@ export default [
         path: "/",
         component: Home
     },
-    {
-        path: "/products",
-        component: Products
-    },
+    // {
+    //     path: "/products",
+    //     component: Products
+    // },
     {
         path: "/checkout",
         component: Checkout
