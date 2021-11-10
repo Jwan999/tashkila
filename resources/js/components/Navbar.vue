@@ -17,7 +17,6 @@
           </svg>
         </div>
       </div>
-
         <div :class="clicked ? '' :'lg:flex hidden'" class="flex flex-wrap items-center lg:mt-0 mt-6">
           <a class="lg:text-xl lg:w-auto w-full text-lg transform hover:scale-110 transition ease-out duration-200" href="">منتجات</a>
           <a class="lg:text-xl lg:w-auto w-full text-lg lg:mr-8 transform hover:scale-110 transition ease-out duration-200" href="">مسابقات</a>
