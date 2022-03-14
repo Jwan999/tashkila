@@ -8,8 +8,8 @@
             <!--    <router-link :to="{path:'/checkout'}">Checkout</router-link>-->
             <div class="flex flex-wrap items-center justify-between">
                 <div class="lg:w-6/12 w-full">
-                    <h1 class="lg:text-5xl text-4xl text-blue-700">
-                        اصدقائي
+                    <h1 class="lg:text-5xl text-4xl font-bold text-blue-700">
+                        مجلة اصدقائي
                     </h1>
                     <p class="mt-10 lg:text-xl text-base">
                         اطلالة الى عالم الطفولة، سنعيش معا مغامرات شيقة
@@ -54,8 +54,7 @@
                 <!--products-->
 
 
-
-<!--                grid lg:grid-cols-4 md:grid-cols-3 gap-6 grid-cols-1 lg:justify-items-start justify-items-center mt-10-->
+                <!--                grid lg:grid-cols-4 md:grid-cols-3 gap-6 grid-cols-1 lg:justify-items-start justify-items-center mt-10-->
                 <div class="grid lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2 grid-cols-1 gap-10 mt-10">
                     <!--// loop through the products array, create a <product> component for each and pass the object as 'product' prop-->
                     <product v-for="product in products" :hide-price="true" :key="`product-${product.id}`"

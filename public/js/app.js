@@ -2444,7 +2444,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
  // import Category from "../components/Category";
 
 
@@ -4414,11 +4413,7 @@ var render = function() {
                     }
                   }
                 },
-                [
-                  _vm._v(
-                    "\n                        كل المنتجات\n                    "
-                  )
-                ]
+                [_vm._v("\n                    كل المنتجات\n                ")]
               ),
               _vm._v(" "),
               _vm._l(_vm.categories, function(category) {
@@ -4440,9 +4435,9 @@ var render = function() {
                     },
                     [
                       _vm._v(
-                        "\n                            " +
+                        "\n                        " +
                           _vm._s(category.name) +
-                          "\n                        "
+                          "\n                    "
                       )
                     ]
                   )
@@ -4482,13 +4477,15 @@ var staticRenderFns = [
       { staticClass: "flex flex-wrap items-center justify-between" },
       [
         _c("div", { staticClass: "lg:w-6/12 w-full" }, [
-          _c("h1", { staticClass: "lg:text-5xl text-4xl text-blue-700" }, [
-            _vm._v("\n                        اصدقائي\n                    ")
-          ]),
+          _c(
+            "h1",
+            { staticClass: "lg:text-5xl text-4xl font-bold text-blue-700" },
+            [_vm._v("\n                    مجلة اصدقائي\n                ")]
+          ),
           _vm._v(" "),
           _c("p", { staticClass: "mt-10 lg:text-xl text-base" }, [
             _vm._v(
-              "\n                        اطلالة الى عالم الطفولة، سنعيش معا مغامرات شيقة\n                        نعزف من خلالها لحنا في كل ما نتمناه لكم من ثقافة واخلاق\n                        رفيعة ومتعة وابداع\n                    "
+              "\n                    اطلالة الى عالم الطفولة، سنعيش معا مغامرات شيقة\n                    نعزف من خلالها لحنا في كل ما نتمناه لكم من ثقافة واخلاق\n                    رفيعة ومتعة وابداع\n                "
             )
           ]),
           _vm._v(" "),
@@ -4503,7 +4500,7 @@ var staticRenderFns = [
               [
                 _c("a", { attrs: { href: "/#store" } }, [
                   _vm._v(
-                    "\n                                الذهاب الى المتجر\n                            "
+                    "\n                            الذهاب الى المتجر\n                        "
                   )
                 ])
               ]
