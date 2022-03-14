@@ -33,18 +33,16 @@
                 <!--when cart empty-->
                 <div v-if="items.length == 0">
                     <div class="flex justify-center mt-32">
-                        <img class="w-2/12 -ml-10" src="/images/emptyCart.svg" alt="">
+                        <img class="lg:w-2/12 w-4/12 lg:-ml-10 -ml-0" src="/images/emptyCart.svg" alt="">
                     </div>
-                    <h1 class="text-3xl mt-10 text-center">لا توجد منتجات في السلة</h1>
+                    <h1 class="lg:text-3xl text-xl mt-10 text-center">لا توجد منتجات في السلة</h1>
                     <div class="flex justify-center mb-10 mt-6">
                         <button type="button"
                                 class="lg:py-3 lg:px-6 py-3 px-5 bg-red-500 text-white rounded-2xl shadow-lg">
                             <a href="/#store">
                                 الذهاب الى المتجر
-
                             </a>
                         </button>
-
                     </div>
 
                 </div>

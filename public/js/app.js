@@ -2268,8 +2268,6 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
-//
-//
 
 
 
@@ -2364,6 +2362,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_Navbar__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../components/Navbar */ "./resources/js/components/Navbar.vue");
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_2__);
+//
 //
 //
 //
@@ -3961,9 +3960,11 @@ var render = function() {
             ? _c("div", [
                 _vm._m(0),
                 _vm._v(" "),
-                _c("h1", { staticClass: "text-3xl mt-10 text-center" }, [
-                  _vm._v("لا توجد منتجات في السلة")
-                ]),
+                _c(
+                  "h1",
+                  { staticClass: "lg:text-3xl text-xl mt-10 text-center" },
+                  [_vm._v("لا توجد منتجات في السلة")]
+                ),
                 _vm._v(" "),
                 _vm._m(1)
               ])
@@ -4429,7 +4430,7 @@ var staticRenderFns = [
     var _c = _vm._self._c || _h
     return _c("div", { staticClass: "flex justify-center mt-32" }, [
       _c("img", {
-        staticClass: "w-2/12 -ml-10",
+        staticClass: "lg:w-2/12 w-4/12 lg:-ml-10 -ml-0",
         attrs: { src: "/images/emptyCart.svg", alt: "" }
       })
     ])
@@ -4449,7 +4450,7 @@ var staticRenderFns = [
         [
           _c("a", { attrs: { href: "/#store" } }, [
             _vm._v(
-              "\n                            الذهاب الى المتجر\n\n                        "
+              "\n                            الذهاب الى المتجر\n                        "
             )
           ])
         ]
@@ -4601,7 +4602,7 @@ var staticRenderFns = [
               [
                 _c("a", { attrs: { href: "/#store" } }, [
                   _vm._v(
-                    "\n                            الذهاب الى المتجر\n\n                        "
+                    "\n                            الذهاب الى المتجر\n                        "
                   )
                 ])
               ]

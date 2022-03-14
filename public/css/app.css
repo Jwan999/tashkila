@@ -747,6 +747,9 @@ video {
 .mt-16 {
 	margin-top: 4rem;
 }
+.-ml-0 {
+	margin-left: 0px;
+}
 .block {
 	display: block;
 }
@@ -1347,6 +1350,10 @@ video {
 		margin-bottom: 2.5rem;
 	}
 
+	.lg\:-ml-10 {
+		margin-left: -2.5rem;
+	}
+
 	.lg\:flex {
 		display: flex;
 	}
@@ -1381,6 +1388,10 @@ video {
 
 	.lg\:w-6\/12 {
 		width: 50%;
+	}
+
+	.lg\:w-2\/12 {
+		width: 16.666667%;
 	}
 
 	.lg\:grid-cols-4 {
