@@ -4341,7 +4341,7 @@ var staticRenderFns = [
         "button",
         {
           staticClass:
-            "lg:py-3 lg:px-6 py-3 px-5 bg-red-500 text-white rounded-2xl shadow-lg",
+            "lg:py-3 text-xl lg:px-6 py-3 px-5 bg-red-500 text-white rounded-2xl shadow-lg",
           attrs: { type: "button" }
         },
         [
@@ -4497,7 +4497,7 @@ var staticRenderFns = [
               "button",
               {
                 staticClass:
-                  "lg:py-3 lg:px-6 py-3 px-5 bg-red-500 text-white rounded-2xl shadow-lg",
+                  "lg:py-3 text-xl lg:px-6 py-3 px-5 bg-red-500 text-white rounded-2xl shadow-lg",
                 attrs: { type: "button" }
               },
               [

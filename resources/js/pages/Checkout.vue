@@ -39,7 +39,7 @@
                     <h1 class="lg:text-3xl text-xl mt-10 text-center">لا توجد منتجات في السلة</h1>
                     <div class="flex justify-center mb-10 mt-6">
                         <button type="button"
-                                class="lg:py-3 lg:px-6 py-3 px-5 bg-red-500 text-white rounded-2xl shadow-lg">
+                                class="lg:py-3 text-xl lg:px-6 py-3 px-5 bg-red-500 text-white rounded-2xl shadow-lg">
                             <a href="/#store">
                                 الذهاب الى المتجر
                             </a>
