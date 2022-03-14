@@ -37,7 +37,6 @@
 
                 <h1 class="lg:text-4xl text-3xl lg:mb-10 mb-6 text-center text-red-500 font-bold mt-28">المتجر</h1>
 
-
                 <div class="flex flex-wrap rounded-2xl justify-center">
                     <h1 :class="activeCategories == null ? 'bg-red-500 text-white' :  'text-red-500 bg-red-100'"
                         @click="getProducts(null)"
@@ -53,7 +52,11 @@
                     </div>
                 </div>
                 <!--products-->
-                <div class="grid lg:grid-cols-3 grid-cols-1 gap-14 justify-items-center mt-10">
+
+
+
+<!--                grid lg:grid-cols-4 md:grid-cols-3 gap-6 grid-cols-1 lg:justify-items-start justify-items-center mt-10-->
+                <div class="grid lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2 grid-cols-1 gap-10 mt-10">
                     <!--// loop through the products array, create a <product> component for each and pass the object as 'product' prop-->
                     <product v-for="product in products" :hide-price="true" :key="`product-${product.id}`"
                              :product="product"></product>

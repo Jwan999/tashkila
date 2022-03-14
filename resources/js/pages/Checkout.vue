@@ -26,7 +26,8 @@
                         الرجوع
                     </button>
                 </div>
-                <div class="grid lg:grid-cols-4 grid-cols-1 gap-8">
+<!--                grid lg:grid-cols-4 md:grid-cols-3 gap-6 grid-cols-1 lg:justify-items-start justify-items-center mt-10-->
+                <div class="grid lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2 grid-cols-1 gap-10">
                     <product :show-buttons="true" v-for="item in items" :product="item.product"
                              :key="`product-1-${item.product.id}`"></product>
                 </div>

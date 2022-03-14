@@ -47,7 +47,7 @@
 
 </div>
 <div dir="ltr" class="mt-20">
-    <div class="bg-gray-700 rounded-t-3xl px-6 text-white py-6">
+    <div class="bg-gray-700 rounded-t-3xl px-6 text-white lg:py-6 pt-6 pb-14">
         <div class="grid grid-cols-1 gap-3 english-font">
             <a href="https://www.instagram.com/asdikaee_magazine/" class="text-gray-100 text-sm flex items-center">
                 <svg xmlns="http://www.w3.org/2000/svg"

@@ -1950,6 +1950,11 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
+//
+//
+//
+//
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   name: "Navbar",
@@ -1986,6 +1991,9 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
+//
+//
+//
 //
 //
 //
@@ -2268,6 +2276,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
 
 
 
@@ -2362,6 +2371,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_Navbar__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../components/Navbar */ "./resources/js/components/Navbar.vue");
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_2__);
+//
+//
+//
 //
 //
 //
@@ -3448,7 +3460,7 @@ var render = function() {
             _c(
               "div",
               {
-                staticClass: "lg:hidden flex",
+                staticClass: "lg:hidden flex cursor-pointer",
                 on: {
                   click: function($event) {
                     return _vm.openMenu()
@@ -3496,7 +3508,8 @@ var render = function() {
         _c(
           "div",
           {
-            staticClass: "flex flex-wrap items-center lg:mt-0 mt-6",
+            staticClass:
+              "flex flex-wrap items-center lg:mt-0 mt-6 lg:space-y-0 space-y-5",
             class: _vm.clicked ? "" : "lg:flex hidden"
           },
           [
@@ -3504,8 +3517,8 @@ var render = function() {
               "a",
               {
                 staticClass:
-                  "lg:text-xl lg:w-auto w-full text-lg transform hover:scale-110 transition ease-out duration-200",
-                attrs: { href: "" }
+                  "text-xl lg:w-auto lg:ml-8 w-full transform hover:scale-110 transition ease-out duration-200",
+                attrs: { href: "/#store" }
               },
               [_vm._v("منتجات")]
             ),
@@ -3514,7 +3527,7 @@ var render = function() {
               "a",
               {
                 staticClass:
-                  "lg:text-xl lg:w-auto w-full text-lg lg:mr-8 transform hover:scale-110 transition ease-out duration-200",
+                  "text-xl lg:w-auto lg:ml-8 w-full transform hover:scale-110 transition ease-out duration-200",
                 attrs: { href: "" }
               },
               [_vm._v("مسابقات")]
@@ -3524,7 +3537,7 @@ var render = function() {
               "a",
               {
                 staticClass:
-                  "lg:text-xl lg:w-auto w-full text-lg lg:mr-8 transform hover:scale-110 transition ease-out duration-200",
+                  "text-xl lg:w-auto lg:ml-8 w-full transform hover:scale-110 transition ease-out duration-200",
                 attrs: { href: "" }
               },
               [_vm._v("قناة اصدقائي")]
@@ -3535,7 +3548,7 @@ var render = function() {
         _c(
           "div",
           {
-            staticClass: "flex items-center lg:mt-0 mt-6",
+            staticClass: "flex items-center lg:mt-0 mt-10",
             class: _vm.clicked ? "" : "lg:flex hidden"
           },
           [
@@ -3553,9 +3566,9 @@ var render = function() {
                       },
                       [
                         _vm._v(
-                          "\n                     " +
+                          "\n                   " +
                             _vm._s(_vm.items.length) +
-                            "\n          "
+                            "\n        "
                         )
                       ]
                     ),
@@ -3604,130 +3617,7 @@ var render = function() {
                 ])
               ],
               1
-            ),
-            _vm._v(" "),
-            _c("button", { staticClass: "mr-5" }, [
-              _c(
-                "svg",
-                {
-                  staticClass: "fill-current text-white lg:w-8 lg:h-8 h-7 w-7",
-                  attrs: {
-                    viewBox: "0 0 16 22",
-                    version: "1.1",
-                    xmlns: "http://www.w3.org/2000/svg",
-                    "xmlns:xlink": "http://www.w3.org/1999/xlink"
-                  }
-                },
-                [
-                  _c(
-                    "g",
-                    {
-                      attrs: {
-                        id: "Page-1",
-                        stroke: "none",
-                        "stroke-width": "1",
-                        "fill-rule": "evenodd"
-                      }
-                    },
-                    [
-                      _c(
-                        "g",
-                        {
-                          attrs: { id: "profile-2user", "fill-rule": "nonzero" }
-                        },
-                        [
-                          _c("path", {
-                            attrs: {
-                              d:
-                                "M8.16055,10.62 C8.13055,10.62 8.11055,10.62 8.08055,10.62 C8.03055,10.61 7.96055,10.61 7.90055,10.62 C5.00055,10.53 2.81055,8.25 2.81055,5.44 C2.81055,2.58 5.14055,0.25 8.00055,0.25 C10.8605,0.25 13.1905,2.58 13.1905,5.44 C13.1805,8.25 10.9805,10.53 8.19055,10.62 C8.18055,10.62 8.17055,10.62 8.16055,10.62 Z M8.00055,1.75 C5.97055,1.75 4.31055,3.41 4.31055,5.44 C4.31055,7.44 5.87055,9.05 7.86055,9.12 C7.92055,9.11 8.05055,9.11 8.18055,9.12 C10.1405,9.03 11.6805,7.42 11.6905,5.44 C11.6905,3.41 10.0305,1.75 8.00055,1.75 Z",
-                              id: "Shape"
-                            }
-                          }),
-                          _vm._v(" "),
-                          _c("path", {
-                            attrs: {
-                              d:
-                                "M8.16961,21.55 C6.20961,21.55 4.23961,21.05 2.74961,20.05 C1.35961,19.13 0.59961,17.87 0.59961,16.5 C0.59961,15.13 1.35961,13.86 2.74961,12.93 C5.74961,10.94 10.6096,10.94 13.5896,12.93 C14.9696,13.85 15.7396,15.11 15.7396,16.48 C15.7396,17.85 14.9796,19.12 13.5896,20.05 C12.0896,21.05 10.1296,21.55 8.16961,21.55 Z M3.57961,14.19 C2.61961,14.83 2.09961,15.65 2.09961,16.51 C2.09961,17.36 2.62961,18.18 3.57961,18.81 C6.06961,20.48 10.2696,20.48 12.7596,18.81 C13.7196,18.17 14.2396,17.35 14.2396,16.49 C14.2396,15.64 13.7096,14.82 12.7596,14.19 C10.2696,12.53 6.06961,12.53 3.57961,14.19 Z",
-                              id: "Shape"
-                            }
-                          })
-                        ]
-                      )
-                    ]
-                  )
-                ]
-              )
-            ]),
-            _vm._v(" "),
-            _c("button", { staticClass: "mr-5" }, [
-              _c(
-                "svg",
-                {
-                  staticClass: "fill-current text-white lg:w-8 lg:h-8 h-7 w-7",
-                  attrs: {
-                    viewBox: "0 0 48 48",
-                    version: "1.1",
-                    xmlns: "http://www.w3.org/2000/svg",
-                    "xmlns:xlink": "http://www.w3.org/1999/xlink"
-                  }
-                },
-                [
-                  _c(
-                    "g",
-                    {
-                      attrs: {
-                        id: "Page-1",
-                        stroke: "none",
-                        "stroke-width": "1",
-                        "fill-rule": "evenodd"
-                      }
-                    },
-                    [
-                      _c(
-                        "g",
-                        {
-                          attrs: {
-                            id: "Artboard",
-                            transform: "translate(-118.000000, -128.000000)",
-                            "fill-rule": "nonzero"
-                          }
-                        },
-                        [
-                          _c(
-                            "g",
-                            {
-                              attrs: {
-                                id: "Group-6",
-                                transform: "translate(118.218391, 128.965517)"
-                              }
-                            },
-                            [
-                              _c("g", { attrs: { id: "language-square" } }, [
-                                _c("path", {
-                                  attrs: {
-                                    d:
-                                      "M30.091954,46.75 L17.1954023,46.75 C5.52402299,46.75 0.537356322,41.7633333 0.537356322,30.091954 L0.537356322,17.1954023 C0.537356322,5.52402299 5.52402299,0.537356322 17.1954023,0.537356322 L30.091954,0.537356322 C41.7633333,0.537356322 46.75,5.52402299 46.75,17.1954023 L46.75,30.091954 C46.75,41.7633333 41.7633333,46.75 30.091954,46.75 Z M17.1954023,3.76149425 C7.28655172,3.76149425 3.76149425,7.28655172 3.76149425,17.1954023 L3.76149425,30.091954 C3.76149425,40.0008046 7.28655172,43.5258621 17.1954023,43.5258621 L30.091954,43.5258621 C40.0008046,43.5258621 43.5258621,40.0008046 43.5258621,30.091954 L43.5258621,17.1954023 C43.5258621,7.28655172 40.0008046,3.76149425 30.091954,3.76149425 L17.1954023,3.76149425 Z",
-                                    id: "Shape"
-                                  }
-                                })
-                              ]),
-                              _vm._v(" "),
-                              _c("path", {
-                                attrs: {
-                                  d:
-                                    "M21.0041839,31.2413793 L21.0041839,29.2553103 L13.1114943,29.2553103 L13.1114943,23.7613793 L19.4565977,23.7613793 L19.4565977,21.7753103 L13.1114943,21.7753103 L13.1114943,16.9004138 L20.6688736,16.9004138 L20.6688736,14.9143448 L10.7127356,14.9143448 L10.7127356,31.2413793 L21.0041839,31.2413793 Z M26.8592184,31.2413793 L26.8592184,18.8864828 C30.6078161,24.6985287 33.3590805,28.8168276 35.1130115,31.2413793 L35.1130115,31.2413793 L37.2538391,31.2413793 L37.2538391,14.9143448 L34.8550805,14.9143448 L34.8550805,27.5529655 C32.7744368,24.1138851 30.0145747,19.9010115 26.5754943,14.9143448 L26.5754943,14.9143448 L24.4862529,14.9143448 L24.4862529,31.2413793 L26.8592184,31.2413793 Z",
-                                  id: "EN"
-                                }
-                              })
-                            ]
-                          )
-                        ]
-                      )
-                    ]
-                  )
-                ]
-              )
-            ])
+            )
           ]
         )
       ]
@@ -3763,7 +3653,7 @@ var render = function() {
     [
       _c("img", {
         staticClass:
-          "rounded-t-2xl border-t-2 border-gray-700 h-72 lg:w-96 w-full object-cover",
+          "rounded-t-2xl border-t-2 border-gray-700 h-96 w-full object-cover",
         attrs: { src: "storage/" + _vm.product.preview_img, alt: "" }
       }),
       _vm._v(" "),
@@ -3872,7 +3762,11 @@ var render = function() {
                             "bg-red-500 focus:bg-red-600-500 py-3 px-4 text-white rounded-2xl shadow-lg my-1 hover:bg-red-600 cursor-pointer col-span-5",
                           on: { click: _vm.addToCart }
                         },
-                        [_vm._v("\n            اضافة الى السلة\n          ")]
+                        [
+                          _vm._v(
+                            "\n                        اضافة الى السلة\n                    "
+                          )
+                        ]
                       )
                     ])
               ]
@@ -3919,7 +3813,7 @@ var render = function() {
                 staticClass:
                   "rounded-2xl shadow-xl py-6 bg-gray-700 text-white text-lg lg:w-4/12 w-8/12 mt-16 fixed z-10 items-center text-center"
               },
-              [_vm._v("\n            تم ارسال طلبك بنجاح\n        ")]
+              [_vm._v("\n                تم ارسال طلبك بنجاح\n            ")]
             )
           ])
         : _vm._e(),
@@ -3929,7 +3823,7 @@ var render = function() {
           _c("div", { staticClass: "flex items-center justify-between mb-4" }, [
             _c("h1", { staticClass: "lg:text-3xl text-xl" }, [
               _vm._v(
-                "\n                    المنتجات في السلة\n                "
+                "\n                        المنتجات في السلة\n                    "
               )
             ]),
             _vm._v(" "),
@@ -3940,13 +3834,16 @@ var render = function() {
                   "lg:py-3 py-3 px-4 lg:px-6 bg-gray-700 focus:bg-gray-800 text-white rounded-2xl shadow-lg",
                 on: { click: _vm.goBack }
               },
-              [_vm._v("\n                    الرجوع\n                ")]
+              [_vm._v("\n                        الرجوع\n                    ")]
             )
           ]),
           _vm._v(" "),
           _c(
             "div",
-            { staticClass: "grid lg:grid-cols-4 grid-cols-1 gap-8" },
+            {
+              staticClass:
+                "grid lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2 grid-cols-1 gap-10"
+            },
             _vm._l(_vm.items, function(item) {
               return _c("product", {
                 key: "product-1-" + item.product.id,
@@ -4308,7 +4205,7 @@ var render = function() {
                                 },
                                 [
                                   _vm._v(
-                                    "\n                                الدفع عند الاستلام\n                            "
+                                    "\n                                    الدفع عند الاستلام\n                                "
                                   )
                                 ]
                               )
@@ -4357,7 +4254,7 @@ var render = function() {
                                 },
                                 [
                                   _vm._v(
-                                    "\n                                الدفع عن طريق زين كاش\n                            "
+                                    "\n                                    الدفع عن طريق زين كاش\n                                "
                                   )
                                 ]
                               )
@@ -4381,9 +4278,9 @@ var render = function() {
                       _vm._v(" "),
                       _c("p", { staticClass: "text-xl mt-6" }, [
                         _vm._v(
-                          "\n                        عدد المنتجات " +
+                          "\n                            عدد المنتجات " +
                             _vm._s(_vm.items.length) +
-                            "\n                    "
+                            "\n                        "
                         )
                       ]),
                       _vm._v(" "),
@@ -4393,9 +4290,9 @@ var render = function() {
                       _vm._v(" "),
                       _c("p", { staticClass: "text-xl" }, [
                         _vm._v(
-                          "\n                        السعر الكامل " +
+                          "\n                            السعر الكامل " +
                             _vm._s(_vm.total) +
-                            "\n                    "
+                            "\n                        "
                         )
                       ]),
                       _vm._v(" "),
@@ -4408,7 +4305,7 @@ var render = function() {
                         },
                         [
                           _vm._v(
-                            "\n                        اكمال الطلب\n                    "
+                            "\n                            اكمال الطلب\n                        "
                           )
                         ]
                       )
@@ -4450,7 +4347,7 @@ var staticRenderFns = [
         [
           _c("a", { attrs: { href: "/#store" } }, [
             _vm._v(
-              "\n                            الذهاب الى المتجر\n                        "
+              "\n                                الذهاب الى المتجر\n                            "
             )
           ])
         ]
@@ -4517,7 +4414,11 @@ var render = function() {
                     }
                   }
                 },
-                [_vm._v("\n                    كل المنتجات\n                ")]
+                [
+                  _vm._v(
+                    "\n                        كل المنتجات\n                    "
+                  )
+                ]
               ),
               _vm._v(" "),
               _vm._l(_vm.categories, function(category) {
@@ -4539,9 +4440,9 @@ var render = function() {
                     },
                     [
                       _vm._v(
-                        "\n                        " +
+                        "\n                            " +
                           _vm._s(category.name) +
-                          "\n                    "
+                          "\n                        "
                       )
                     ]
                   )
@@ -4555,7 +4456,7 @@ var render = function() {
             "div",
             {
               staticClass:
-                "grid lg:grid-cols-3 grid-cols-1 gap-14 justify-items-center mt-10"
+                "grid lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2 grid-cols-1 gap-10 mt-10"
             },
             _vm._l(_vm.products, function(product) {
               return _c("product", {
@@ -4582,12 +4483,12 @@ var staticRenderFns = [
       [
         _c("div", { staticClass: "lg:w-6/12 w-full" }, [
           _c("h1", { staticClass: "lg:text-5xl text-4xl text-blue-700" }, [
-            _vm._v("\n                    اصدقائي\n                ")
+            _vm._v("\n                        اصدقائي\n                    ")
           ]),
           _vm._v(" "),
           _c("p", { staticClass: "mt-10 lg:text-xl text-base" }, [
             _vm._v(
-              "\n                    اطلالة الى عالم الطفولة، سنعيش معا مغامرات شيقة\n                    نعزف من خلالها لحنا في كل ما نتمناه لكم من ثقافة واخلاق\n                    رفيعة ومتعة وابداع\n                "
+              "\n                        اطلالة الى عالم الطفولة، سنعيش معا مغامرات شيقة\n                        نعزف من خلالها لحنا في كل ما نتمناه لكم من ثقافة واخلاق\n                        رفيعة ومتعة وابداع\n                    "
             )
           ]),
           _vm._v(" "),
@@ -4602,7 +4503,7 @@ var staticRenderFns = [
               [
                 _c("a", { attrs: { href: "/#store" } }, [
                   _vm._v(
-                    "\n                            الذهاب الى المتجر\n                        "
+                    "\n                                الذهاب الى المتجر\n                            "
                   )
                 ])
               ]
