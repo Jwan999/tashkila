@@ -4,7 +4,10 @@ namespace App\Nova;
 
 use Illuminate\Http\Request;
 use Laravel\Nova\Fields\BelongsTo;
+//use Laravel\Nova\Fields\Currency;
+//use Pifpif\NovaTextCurrency\Currency;
 use Laravel\Nova\Fields\Currency;
+use Vyuldashev\NovaMoneyField\Money;
 use Laravel\Nova\Fields\ID;
 use Laravel\Nova\Fields\Image;
 use Laravel\Nova\Fields\Number;
@@ -41,7 +44,7 @@ class Product extends Resource
      *
      * @var string
      */
-    public static $title = 'id';
+    public static $title = 'name';
 
     /**
      * The columns that should be searched.
@@ -49,7 +52,7 @@ class Product extends Resource
      * @var array
      */
     public static $search = [
-        'id',
+        'name',
     ];
 
     /**
@@ -61,11 +64,12 @@ class Product extends Resource
     public function fields(Request $request)
     {
         return [
-            ID::make(__('ID'), 'id')->sortable(),
+//            ID::make(__('ID'), 'id')->sortable(),
             Text::make(__("Name"), 'name')->rules("required", "max:255")->sortable(),
             Textarea::make(__("Description"), 'description'),
             Image::make(__("Image"), "preview_img")->creationRules("required", "image")->disk('public'),
             Number::make(__("Price"), 'price'),
+//            Currency::make('Price')->currency('IQD'),
             BelongsTo::make(__("Category"), "category", Category::Class)->showCreateRelationButton(),
         ];
     }

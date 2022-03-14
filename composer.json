@@ -15,7 +15,9 @@
         "laravel/nova": "*",
         "laravel/sanctum": "^2.11",
         "laravel/tinker": "^2.5",
-        "theme/asdikaee": "*"
+        "lathanhvien/nova-text-currency": "^1.0",
+        "theme/asdikaee": "*",
+        "vyuldashev/nova-money-field": "^1.4"
     },
     "repositories": [
         {

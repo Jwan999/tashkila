@@ -2,6 +2,7 @@
 
 namespace App\Nova;
 
+use App\Nova\Actions\DispatchOrder;
 use Illuminate\Http\Request;
 use Laravel\Nova\Fields\HasMany;
 use Laravel\Nova\Fields\ID;
@@ -10,6 +11,10 @@ use Laravel\Nova\Http\Requests\NovaRequest;
 
 class Order extends Resource
 {
+    public static function indexQuery(NovaRequest $request, $query)
+    {
+        return $query->whereNull('dispatched_at')->get();
+    }
     public static function icon()
     {
         return '
@@ -37,7 +42,7 @@ class Order extends Resource
      *
      * @var string
      */
-    public static $title = 'id';
+    public static $title = 'name';
 
     /**
      * The columns that should be searched.
@@ -45,30 +50,36 @@ class Order extends Resource
      * @var array
      */
     public static $search = [
-        'id',
+        'name',
     ];
 
     /**
      * Get the fields displayed by the resource.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param \Illuminate\Http\Request $request
      * @return array
      */
     public function fields(Request $request)
     {
         return [
-            ID::make(__('ID'), 'id')->sortable(),
-            Text::make(__("Name"),"name"),
-            Text::make(__("Address"),"address"),
-            Text::make(__("Total"),"total"),
-            HasMany::make(__("Items"),"items",OrderItem::class),
+//            ID::make(__('ID'), 'id')->sortable(),
+            Text::make(__("Full Name"), "full_name"),
+            Text::make(__("First Phone Number"), "phone_one"),
+            Text::make(__("Second Phone Number"), "phone_two"),
+            Text::make(__("Email Address"), "email"),
+            Text::make(__("Location"), "address"),
+            Text::make(__("Closest Landmark"), "closest_mark"),
+            Text::make(__("Payment Type"), "payment_type"),
+//            Text::make(__("Dispatched At"), "dispatched_at"),
+            Text::make(__("Total"), "total"),
+            HasMany::make(__("Items"), "items", OrderItem::class),
         ];
     }
 
     /**
      * Get the cards available for the request.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param \Illuminate\Http\Request $request
      * @return array
      */
     public function cards(Request $request)
@@ -79,7 +90,7 @@ class Order extends Resource
     /**
      * Get the filters available for the resource.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param \Illuminate\Http\Request $request
      * @return array
      */
     public function filters(Request $request)
@@ -90,7 +101,7 @@ class Order extends Resource
     /**
      * Get the lenses available for the resource.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param \Illuminate\Http\Request $request
      * @return array
      */
     public function lenses(Request $request)
@@ -101,11 +112,14 @@ class Order extends Resource
     /**
      * Get the actions available for the resource.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param \Illuminate\Http\Request $request
      * @return array
      */
     public function actions(Request $request)
     {
-        return [];
+        return [
+            (new DispatchOrder)->showOnTableRow(),
+
+        ];
     }
 }

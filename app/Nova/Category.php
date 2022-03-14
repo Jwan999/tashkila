@@ -36,7 +36,7 @@ class Category extends Resource
      *
      * @var string
      */
-    public static $title = 'id';
+    public static $title = 'name';
 
     /**
      * The columns that should be searched.
@@ -44,7 +44,7 @@ class Category extends Resource
      * @var array
      */
     public static $search = [
-        'id',
+        'name',
     ];
 
     /**
@@ -56,7 +56,7 @@ class Category extends Resource
     public function fields(Request $request)
     {
         return [
-            ID::make(__('ID'), 'id')->sortable(),
+//            ID::make(__('ID'), 'id')->sortable(),
             Text::make(__("Name"), 'name')->rules("required", "max:255")->sortable(),
 
         ];

@@ -2159,6 +2159,113 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -2169,18 +2276,69 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     Product: _components_Product__WEBPACK_IMPORTED_MODULE_1__.default,
     Navbar: _components_Navbar__WEBPACK_IMPORTED_MODULE_2__.default
   },
+  data: function data() {
+    return {
+      fullName: '',
+      phoneNumberOne: '',
+      phoneNumberTwo: '',
+      address: '',
+      closestMark: '',
+      emailAddress: '',
+      paymentType: '',
+      orderStatus: null,
+      validationErrors: []
+    };
+  },
   computed: _objectSpread({}, (0,vuex__WEBPACK_IMPORTED_MODULE_3__.mapGetters)(["items", "total"])),
   methods: {
     checkout: function checkout() {
+      var _this = this;
+
+      // if (this.paymentType === 'Cash') {
       axios__WEBPACK_IMPORTED_MODULE_0___default().post('/api/orders', {
+        full_name: this.fullName,
+        phone_one: this.phoneNumberOne,
+        phone_two: this.phoneNumberTwo,
+        address: this.address,
+        closest_mark: this.closestMark,
+        email: this.emailAddress,
+        payment_type: this.paymentType,
         items: this.items,
         total: this.total
       }).then(function (response) {
-        console.log('your items have been purchased');
-      });
+        _this.orderStatus = true; // console.log('your items have been purchased')
+      })["catch"](function (error) {
+        console.log('bitch is down mother fuckers');
+        _this.validationErrors = error.response.data.errors; // console.log(error.response.data.errors)
+      }); // } else if (this.paymentType === 'Zain Cash') {
+      //
+      // }
     },
+    // axios.put('/dashboard/profile', value)
+    //     .then((response) => {
+    //         let title = response.data.status;
+    //         let body = response.data.msg;
+    //         this.displayNotificationSuccess(title, body);
+    //     })
+    //     .catch((error) => {
+    //         let title = error.response.data.status;
+    //         let body = error.response.data.msg;
+    //         this.displayNotificationError(title,body);
+    //     })
     goBack: function goBack() {
       this.$router.back();
+    }
+  },
+  watch: {
+    orderStatus: function orderStatus() {
+      var _this2 = this;
+
+      if (this.orderStatus) {
+        setTimeout(function (order) {
+          _this2.orderStatus = false;
+          window.location.href = '/';
+        }, 4000);
+      }
     }
   }
 });
@@ -2202,6 +2360,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_Navbar__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../components/Navbar */ "./resources/js/components/Navbar.vue");
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_2__);
+//
+//
+//
 //
 //
 //
@@ -3744,11 +3905,26 @@ var render = function() {
     [
       _c("navbar"),
       _vm._v(" "),
+      _vm.orderStatus
+        ? _c("div", { staticClass: "flex justify-center" }, [
+            _c(
+              "div",
+              {
+                staticClass:
+                  "rounded-2xl shadow-xl py-6 bg-gray-700 text-white text-lg lg:w-4/12 w-8/12 mt-16 fixed z-10 items-center text-center"
+              },
+              [_vm._v("\n            تم ارسال طلبك بنجاح\n        ")]
+            )
+          ])
+        : _vm._e(),
+      _vm._v(" "),
       _c("div", { staticClass: "flex flex-wrap lg:px-24 px-4 mt-10" }, [
         _c("div", { staticClass: "w-full flex flex-col" }, [
           _c("div", { staticClass: "flex items-center justify-between mb-4" }, [
             _c("h1", { staticClass: "lg:text-3xl text-xl" }, [
-              _vm._v("\n          المنتجات في السلة\n        ")
+              _vm._v(
+                "\n                    المنتجات في السلة\n                "
+              )
             ]),
             _vm._v(" "),
             _c(
@@ -3758,7 +3934,7 @@ var render = function() {
                   "lg:py-3 py-3 px-4 lg:px-6 bg-gray-700 focus:bg-gray-800 text-white rounded-2xl shadow-lg",
                 on: { click: _vm.goBack }
               },
-              [_vm._v("\n          الرجوع\n        ")]
+              [_vm._v("\n                    الرجوع\n                ")]
             )
           ]),
           _vm._v(" "),
@@ -3772,58 +3948,468 @@ var render = function() {
               })
             }),
             1
-          )
+          ),
+          _vm._v(" "),
+          _vm.items.length == 0
+            ? _c("div", [
+                _vm._m(0),
+                _vm._v(" "),
+                _c("h1", { staticClass: "text-3xl mt-10 text-center" }, [
+                  _vm._v("لا توجد منتجات في السلة")
+                ]),
+                _vm._v(" "),
+                _vm._m(1)
+              ])
+            : _vm._e()
         ]),
         _vm._v(" "),
-        _c(
-          "div",
-          {
-            staticClass:
-              "flex flex-wrap lg:space-y-0 space-y-10 w-full justify-between lg:mt-20 mt-10"
-          },
-          [
-            _vm._m(0),
-            _vm._v(" "),
-            _c("div", { staticClass: "lg:w-4/12 w-full" }, [
-              _c(
-                "div",
-                {
-                  staticClass:
-                    "bg-white shadow-lg rounded-2xl p-6 flex flex-col"
-                },
-                [
-                  _c("p", { staticClass: "text-xl" }, [
-                    _vm._v(
-                      "\n            عدد المنتجات " +
-                        _vm._s(_vm.items.length) +
-                        "\n          "
-                    )
-                  ]),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "border-t border-gray-500 my-3" }),
-                  _vm._v(" "),
-                  _c("p", { staticClass: "text-xl" }, [
-                    _vm._v(
-                      "\n            السعر الكامل " +
-                        _vm._s(_vm.total) +
-                        "\n          "
-                    )
-                  ]),
-                  _vm._v(" "),
+        _vm.items.length > 0
+          ? _c(
+              "div",
+              {
+                staticClass:
+                  "flex flex-wrap lg:space-y-0 space-y-10 w-full justify-between lg:mt-20 mt-10"
+              },
+              [
+                _c("div", { staticClass: "lg:w-7/12 w-full" }, [
                   _c(
-                    "button",
+                    "div",
                     {
                       staticClass:
-                        "bg-red-500 focus:bg-red-600-500 py-3 px-4 text-white rounded-2xl shadow-lg mt-6 hover:bg-red-600 cursor-pointer",
-                      on: { click: _vm.checkout }
+                        "bg-white shadow-lg rounded-2xl p-6 flex flex-col"
                     },
-                    [_vm._v("\n            اكمال الطلب\n          ")]
+                    [
+                      _c("h1", { staticClass: "mb-6 text-2xl" }, [
+                        _vm._v("الرجاء ادخال المعلومات الاتية لاتمام الطلب")
+                      ]),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "mb-3" }, [
+                        _c(
+                          "h1",
+                          {
+                            staticClass: "text-gray-800 text-sm mb-2 font-bold"
+                          },
+                          [_vm._v("الاسم الكامل")]
+                        ),
+                        _vm._v(" "),
+                        _c("input", {
+                          directives: [
+                            {
+                              name: "model",
+                              rawName: "v-model",
+                              value: _vm.fullName,
+                              expression: "fullName"
+                            }
+                          ],
+                          staticClass:
+                            "rounded-2xl w-full px-3 py-4 outline-none border-2 border-gray-300 focus:border-gray-700",
+                          attrs: { placeholder: "الاسم الكامل", type: "text" },
+                          domProps: { value: _vm.fullName },
+                          on: {
+                            input: function($event) {
+                              if ($event.target.composing) {
+                                return
+                              }
+                              _vm.fullName = $event.target.value
+                            }
+                          }
+                        })
+                      ]),
+                      _vm._v(" "),
+                      _vm._l(_vm.validationErrors.full_name, function(error) {
+                        return _c("div", { staticClass: "w-full mb-2" }, [
+                          _c("h1", { staticClass: "text-red-500 text-sm" }, [
+                            _vm._v(_vm._s(error))
+                          ])
+                        ])
+                      }),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "mb-3" }, [
+                        _c(
+                          "h1",
+                          {
+                            staticClass: "text-gray-800 text-sm mb-2 font-bold"
+                          },
+                          [_vm._v("العنوان")]
+                        ),
+                        _vm._v(" "),
+                        _c("input", {
+                          directives: [
+                            {
+                              name: "model",
+                              rawName: "v-model",
+                              value: _vm.address,
+                              expression: "address"
+                            }
+                          ],
+                          staticClass:
+                            "rounded-2xl w-full px-3 py-4 outline-none border-2 border-gray-300 focus:border-gray-700",
+                          attrs: { placeholder: "العنوان", type: "text" },
+                          domProps: { value: _vm.address },
+                          on: {
+                            input: function($event) {
+                              if ($event.target.composing) {
+                                return
+                              }
+                              _vm.address = $event.target.value
+                            }
+                          }
+                        })
+                      ]),
+                      _vm._v(" "),
+                      _vm._l(_vm.validationErrors.address, function(error) {
+                        return _c("div", { staticClass: "w-full mb-2" }, [
+                          _c("h1", { staticClass: "text-red-500 text-sm" }, [
+                            _vm._v(_vm._s(error))
+                          ])
+                        ])
+                      }),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "mb-3" }, [
+                        _c(
+                          "h1",
+                          {
+                            staticClass: "text-gray-800 text-sm mb-2 font-bold"
+                          },
+                          [_vm._v("اقرب نقطة دالة")]
+                        ),
+                        _vm._v(" "),
+                        _c("input", {
+                          directives: [
+                            {
+                              name: "model",
+                              rawName: "v-model",
+                              value: _vm.closestMark,
+                              expression: "closestMark"
+                            }
+                          ],
+                          staticClass:
+                            "rounded-2xl w-full px-3 py-4 outline-none border-2 border-gray-300 focus:border-gray-700",
+                          attrs: {
+                            placeholder: "اقرب نقطة دالة",
+                            type: "text"
+                          },
+                          domProps: { value: _vm.closestMark },
+                          on: {
+                            input: function($event) {
+                              if ($event.target.composing) {
+                                return
+                              }
+                              _vm.closestMark = $event.target.value
+                            }
+                          }
+                        })
+                      ]),
+                      _vm._v(" "),
+                      _vm._l(_vm.validationErrors.closest_mark, function(
+                        error
+                      ) {
+                        return _c("div", { staticClass: "w-full mb-2" }, [
+                          _c("h1", { staticClass: "text-red-500 text-sm" }, [
+                            _vm._v(_vm._s(error))
+                          ])
+                        ])
+                      }),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "mb-3" }, [
+                        _c(
+                          "h1",
+                          {
+                            staticClass: "text-gray-800 text-sm mb-2 font-bold"
+                          },
+                          [_vm._v("رقم الهاتف")]
+                        ),
+                        _vm._v(" "),
+                        _c("input", {
+                          directives: [
+                            {
+                              name: "model",
+                              rawName: "v-model",
+                              value: _vm.phoneNumberOne,
+                              expression: "phoneNumberOne"
+                            }
+                          ],
+                          staticClass:
+                            "rounded-2xl w-full px-3 py-4 outline-none border-2 border-gray-300 focus:border-gray-700",
+                          attrs: { placeholder: "رقم الهاتف", type: "text" },
+                          domProps: { value: _vm.phoneNumberOne },
+                          on: {
+                            input: function($event) {
+                              if ($event.target.composing) {
+                                return
+                              }
+                              _vm.phoneNumberOne = $event.target.value
+                            }
+                          }
+                        })
+                      ]),
+                      _vm._v(" "),
+                      _vm._l(_vm.validationErrors.phone_one, function(error) {
+                        return _c("div", { staticClass: "w-full mb-2" }, [
+                          _c("h1", { staticClass: "text-red-500 text-sm" }, [
+                            _vm._v(_vm._s(error))
+                          ])
+                        ])
+                      }),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "mb-3" }, [
+                        _c(
+                          "h1",
+                          {
+                            staticClass: "text-gray-800 text-sm mb-2 font-bold"
+                          },
+                          [_vm._v("رقم هاتف بديل")]
+                        ),
+                        _vm._v(" "),
+                        _c("input", {
+                          directives: [
+                            {
+                              name: "model",
+                              rawName: "v-model",
+                              value: _vm.phoneNumberTwo,
+                              expression: "phoneNumberTwo"
+                            }
+                          ],
+                          staticClass:
+                            "rounded-2xl w-full px-3 py-4 outline-none border-2 border-gray-300 focus:border-gray-700",
+                          attrs: { placeholder: "رقم هاتف بديل", type: "text" },
+                          domProps: { value: _vm.phoneNumberTwo },
+                          on: {
+                            input: function($event) {
+                              if ($event.target.composing) {
+                                return
+                              }
+                              _vm.phoneNumberTwo = $event.target.value
+                            }
+                          }
+                        })
+                      ]),
+                      _vm._v(" "),
+                      _vm._l(_vm.validationErrors.phone_two, function(error) {
+                        return _c("div", { staticClass: "w-full mb-2" }, [
+                          _c("h1", { staticClass: "text-red-500 text-sm" }, [
+                            _vm._v(_vm._s(error))
+                          ])
+                        ])
+                      }),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "mb-3" }, [
+                        _c(
+                          "h1",
+                          {
+                            staticClass: "text-gray-800 text-sm mb-2 font-bold"
+                          },
+                          [_vm._v("عنوان البريد الالكتروني")]
+                        ),
+                        _vm._v(" "),
+                        _c("input", {
+                          directives: [
+                            {
+                              name: "model",
+                              rawName: "v-model",
+                              value: _vm.emailAddress,
+                              expression: "emailAddress"
+                            }
+                          ],
+                          staticClass:
+                            "rounded-2xl w-full px-3 py-4 outline-none border-2 border-gray-300 focus:border-gray-700",
+                          attrs: {
+                            placeholder: "عنوان البريد الالكتروني",
+                            type: "text"
+                          },
+                          domProps: { value: _vm.emailAddress },
+                          on: {
+                            input: function($event) {
+                              if ($event.target.composing) {
+                                return
+                              }
+                              _vm.emailAddress = $event.target.value
+                            }
+                          }
+                        })
+                      ]),
+                      _vm._v(" "),
+                      _vm._l(_vm.validationErrors.email, function(error) {
+                        return _c("div", { staticClass: "w-full mb-2" }, [
+                          _c("h1", { staticClass: "text-red-500 text-sm" }, [
+                            _vm._v(_vm._s(error))
+                          ])
+                        ])
+                      })
+                    ],
+                    2
                   )
-                ]
-              )
-            ])
-          ]
-        )
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "lg:w-4/12 w-full" }, [
+                  _c(
+                    "div",
+                    {
+                      staticClass:
+                        "bg-white shadow-lg rounded-2xl p-6 flex flex-col"
+                    },
+                    [
+                      _c("h1", { staticClass: "text-gray-700 text-2xl mb-2" }, [
+                        _vm._v("اختر طريقة الدفع")
+                      ]),
+                      _vm._v(" "),
+                      _c(
+                        "div",
+                        { staticClass: "flex flex-wrap items-center " },
+                        [
+                          _c(
+                            "div",
+                            { staticClass: "flex items-center mb-4 w-full" },
+                            [
+                              _c("input", {
+                                directives: [
+                                  {
+                                    name: "model",
+                                    rawName: "v-model",
+                                    value: _vm.paymentType,
+                                    expression: "paymentType"
+                                  }
+                                ],
+                                staticClass:
+                                  "w-4 h-4 border-gray-300 focus:ring-2 focus:ring-blue-500 focus:bg-gray-500 bg-white border-gray-600 ml-2",
+                                attrs: {
+                                  id: "option-1",
+                                  type: "radio",
+                                  name: "payment",
+                                  value: "Cash",
+                                  "aria-labelledby": "option-1",
+                                  "aria-describedby": "option-1",
+                                  checked: ""
+                                },
+                                domProps: {
+                                  checked: _vm._q(_vm.paymentType, "Cash")
+                                },
+                                on: {
+                                  change: function($event) {
+                                    _vm.paymentType = "Cash"
+                                  }
+                                }
+                              }),
+                              _vm._v(" "),
+                              _c(
+                                "label",
+                                {
+                                  staticClass:
+                                    "block ml-2 font-medium text-gray-900",
+                                  attrs: { for: "option-1" }
+                                },
+                                [
+                                  _vm._v(
+                                    "\n                                الدفع عند الاستلام\n                            "
+                                  )
+                                ]
+                              )
+                            ]
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "div",
+                            { staticClass: "flex items-center mb-4 w-full " },
+                            [
+                              _c("input", {
+                                directives: [
+                                  {
+                                    name: "model",
+                                    rawName: "v-model",
+                                    value: _vm.paymentType,
+                                    expression: "paymentType"
+                                  }
+                                ],
+                                staticClass:
+                                  "w-4 h-4 border-gray-300 focus:ring-2 focus:ring-blue-500 focus:bg-gray-500 bg-white border-gray-600 ml-2",
+                                attrs: {
+                                  id: "option-2",
+                                  type: "radio",
+                                  name: "payment",
+                                  value: "Zain Cash",
+                                  "aria-labelledby": "option-2",
+                                  "aria-describedby": "option-2"
+                                },
+                                domProps: {
+                                  checked: _vm._q(_vm.paymentType, "Zain Cash")
+                                },
+                                on: {
+                                  change: function($event) {
+                                    _vm.paymentType = "Zain Cash"
+                                  }
+                                }
+                              }),
+                              _vm._v(" "),
+                              _c(
+                                "label",
+                                {
+                                  staticClass:
+                                    "block ml-2 font-medium text-gray-900",
+                                  attrs: { for: "option-2" }
+                                },
+                                [
+                                  _vm._v(
+                                    "\n                                الدفع عن طريق زين كاش\n                            "
+                                  )
+                                ]
+                              )
+                            ]
+                          ),
+                          _vm._v(" "),
+                          _vm._l(_vm.validationErrors.payment_type, function(
+                            error
+                          ) {
+                            return _c("div", { staticClass: "w-full mb-2" }, [
+                              _c(
+                                "h1",
+                                { staticClass: "text-red-500 text-sm" },
+                                [_vm._v("اختر احدى طرق الدفع")]
+                              )
+                            ])
+                          })
+                        ],
+                        2
+                      ),
+                      _vm._v(" "),
+                      _c("p", { staticClass: "text-xl mt-6" }, [
+                        _vm._v(
+                          "\n                        عدد المنتجات " +
+                            _vm._s(_vm.items.length) +
+                            "\n                    "
+                        )
+                      ]),
+                      _vm._v(" "),
+                      _c("div", {
+                        staticClass: "border-t border-gray-500 my-3"
+                      }),
+                      _vm._v(" "),
+                      _c("p", { staticClass: "text-xl" }, [
+                        _vm._v(
+                          "\n                        السعر الكامل " +
+                            _vm._s(_vm.total) +
+                            "\n                    "
+                        )
+                      ]),
+                      _vm._v(" "),
+                      _c(
+                        "button",
+                        {
+                          staticClass:
+                            "bg-red-500 focus:bg-red-600-500 py-3 px-4 text-white rounded-2xl shadow-lg mt-6 hover:bg-red-600 cursor-pointer",
+                          on: { click: _vm.checkout }
+                        },
+                        [
+                          _vm._v(
+                            "\n                        اكمال الطلب\n                    "
+                          )
+                        ]
+                      )
+                    ]
+                  )
+                ])
+              ]
+            )
+          : _vm._e()
       ])
     ],
     1
@@ -3834,10 +4420,31 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "lg:w-7/12 w-full" }, [
-      _c("div", {
-        staticClass: "bg-white shadow-lg rounded-2xl p-6 flex flex-col"
+    return _c("div", { staticClass: "flex justify-center mt-32" }, [
+      _c("img", {
+        staticClass: "w-2/12 -ml-10",
+        attrs: { src: "/images/emptyCart.svg", alt: "" }
       })
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "flex justify-center mb-10" }, [
+      _c(
+        "a",
+        {
+          staticClass:
+            "lg:py-3 lg:px-6 py-3 px-5 bg-red-500 text-white rounded-2xl shadow-lg mt-6",
+          attrs: { href: "/#store" }
+        },
+        [
+          _vm._v(
+            "\n                        الذهاب الى المتجر\n                    "
+          )
+        ]
+      )
     ])
   }
 ]
@@ -3871,7 +4478,7 @@ var render = function() {
       _c("div", { staticClass: "w-full flex flex-col lg:px-24 px-4 mt-10" }, [
         _vm._m(0),
         _vm._v(" "),
-        _c("div", [
+        _c("div", { attrs: { id: "store" } }, [
           _c(
             "h1",
             {
@@ -3900,7 +4507,7 @@ var render = function() {
                     }
                   }
                 },
-                [_vm._v("\n          All\n        ")]
+                [_vm._v("\n                    كل المنتجات\n                ")]
               ),
               _vm._v(" "),
               _vm._l(_vm.categories, function(category) {
@@ -3922,9 +4529,9 @@ var render = function() {
                     },
                     [
                       _vm._v(
-                        "\n            " +
+                        "\n                        " +
                           _vm._s(category.name) +
-                          "\n          "
+                          "\n                    "
                       )
                     ]
                   )
@@ -3965,23 +4572,30 @@ var staticRenderFns = [
       [
         _c("div", { staticClass: "lg:w-6/12 w-full" }, [
           _c("h1", { staticClass: "lg:text-5xl text-4xl text-blue-700" }, [
-            _vm._v("\n          اصدقائي\n        ")
+            _vm._v("\n                    اصدقائي\n                ")
           ]),
           _vm._v(" "),
           _c("p", { staticClass: "mt-10 lg:text-xl text-base" }, [
             _vm._v(
-              "\n          اطلالة الى عالم الطفولة، سنعيش معا مغامرات شيقة\n          نعزف من خلالها لحنا في كل ما نتمناه لكم من ثقافة واخلاق\n          رفيعة ومتعة وابداع\n        "
+              "\n                    اطلالة الى عالم الطفولة، سنعيش معا مغامرات شيقة\n                    نعزف من خلالها لحنا في كل ما نتمناه لكم من ثقافة واخلاق\n                    رفيعة ومتعة وابداع\n                "
             )
           ]),
           _vm._v(" "),
-          _c(
-            "button",
-            {
-              staticClass:
-                "lg:py-3 lg:px-6 py-3 px-5 bg-red-500 text-white rounded-2xl shadow-lg mt-6"
-            },
-            [_vm._v("\n          الذهاب الى المتجر\n        ")]
-          )
+          _c("div", { staticClass: "mt-10" }, [
+            _c(
+              "a",
+              {
+                staticClass:
+                  "lg:py-3 lg:px-6 py-3 px-5 bg-red-500 text-white rounded-2xl shadow-lg",
+                attrs: { href: "/#store", type: "button" }
+              },
+              [
+                _vm._v(
+                  "\n                        الذهاب الى المتجر\n                    "
+                )
+              ]
+            )
+          ])
         ]),
         _vm._v(" "),
         _c(

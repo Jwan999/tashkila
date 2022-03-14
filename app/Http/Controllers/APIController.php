@@ -51,15 +51,30 @@ class APIController extends Controller
         return Response::json([
             "products" => $products
         ]);
+
     }
 
     public function createOrder(Request $request)
     {
+        $rules = $request->validate([
+            'full_name' => 'required',
+            'address' => 'required',
+            'email' => 'required|email',
+            'phone_one' => 'required|numeric',
+            'phone_two' => 'required|numeric',
+            'closest_mark' => 'required',
+            'payment_type' => 'required',
+        ]);
+
         $order = new Order();
-        $order->name = $request->name;
+        $order->full_name = $request->full_name;
         $order->address = $request->address;
-        $order->phone = $request->phone;
-        $order->customer_id = auth()->id();
+        $order->email = $request->email;
+        $order->phone_one = $request->phone_one;
+        $order->phone_two = $request->phone_two;
+        $order->closest_mark = $request->closest_mark;
+        $order->payment_type = $request->payment_type;
+//        $order->customer_id = auth()->id();
         $order->total = $request->total;
         $order->save();
         foreach ($request->items as $item) {

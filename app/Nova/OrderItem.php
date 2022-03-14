@@ -10,6 +10,8 @@ use Laravel\Nova\Http\Requests\NovaRequest;
 
 class OrderItem extends Resource
 {
+    public static $displayInNavigation = false;
+
     /**
      * The model the resource corresponds to.
      *
@@ -22,7 +24,7 @@ class OrderItem extends Resource
      *
      * @var string
      */
-    public static $title = 'id';
+    public static $title = 'product';
 
     /**
      * The columns that should be searched.
@@ -30,28 +32,28 @@ class OrderItem extends Resource
      * @var array
      */
     public static $search = [
-        'id',
+        'product',
     ];
 
     /**
      * Get the fields displayed by the resource.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param \Illuminate\Http\Request $request
      * @return array
      */
     public function fields(Request $request)
     {
         return [
-            ID::make(__('ID'), 'id')->sortable(),
-            BelongsTo::make(__("Product"),"product",Product::class),
-            Text::make(__("Quantity"),"quantity")
+//            ID::make(__('ID'), 'id')->sortable(),
+            BelongsTo::make(__("Product"), "product", Product::class),
+            Text::make(__("Quantity"), "quantity")
         ];
     }
 
     /**
      * Get the cards available for the request.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param \Illuminate\Http\Request $request
      * @return array
      */
     public function cards(Request $request)
@@ -62,7 +64,7 @@ class OrderItem extends Resource
     /**
      * Get the filters available for the resource.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param \Illuminate\Http\Request $request
      * @return array
      */
     public function filters(Request $request)
@@ -73,7 +75,7 @@ class OrderItem extends Resource
     /**
      * Get the lenses available for the resource.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param \Illuminate\Http\Request $request
      * @return array
      */
     public function lenses(Request $request)
@@ -84,7 +86,7 @@ class OrderItem extends Resource
     /**
      * Get the actions available for the resource.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param \Illuminate\Http\Request $request
      * @return array
      */
     public function actions(Request $request)
