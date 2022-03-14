@@ -2266,6 +2266,10 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
+//
+//
+//
 
 
 
@@ -2360,6 +2364,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_Navbar__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../components/Navbar */ "./resources/js/components/Navbar.vue");
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_2__);
+//
+//
+//
 //
 //
 //
@@ -4431,18 +4438,20 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "flex justify-center mb-10" }, [
+    return _c("div", { staticClass: "flex justify-center mb-10 mt-6" }, [
       _c(
-        "a",
+        "button",
         {
           staticClass:
-            "lg:py-3 lg:px-6 py-3 px-5 bg-red-500 text-white rounded-2xl shadow-lg mt-6",
-          attrs: { href: "/#store" }
+            "lg:py-3 lg:px-6 py-3 px-5 bg-red-500 text-white rounded-2xl shadow-lg",
+          attrs: { type: "button" }
         },
         [
-          _vm._v(
-            "\n                        الذهاب الى المتجر\n                    "
-          )
+          _c("a", { attrs: { href: "/#store" } }, [
+            _vm._v(
+              "\n                            الذهاب الى المتجر\n\n                        "
+            )
+          ])
         ]
       )
     ])
@@ -4583,16 +4592,18 @@ var staticRenderFns = [
           _vm._v(" "),
           _c("div", { staticClass: "mt-10" }, [
             _c(
-              "a",
+              "button",
               {
                 staticClass:
                   "lg:py-3 lg:px-6 py-3 px-5 bg-red-500 text-white rounded-2xl shadow-lg",
-                attrs: { href: "/#store", type: "button" }
+                attrs: { type: "button" }
               },
               [
-                _vm._v(
-                  "\n                        الذهاب الى المتجر\n                    "
-                )
+                _c("a", { attrs: { href: "/#store" } }, [
+                  _vm._v(
+                    "\n                            الذهاب الى المتجر\n\n                        "
+                  )
+                ])
               ]
             )
           ])
