@@ -55,6 +55,11 @@ export default {
             }
             saveToLocalStorage(state.items);
         },
+        CLEAR_CART(state) {
+            state.items = []
+            localStorage.clear()
+
+        }
     },
     actions: {
         addToCart(context, payload) {
@@ -62,6 +67,9 @@ export default {
         },
         removeFromCart(context, payload) {
             context.commit("REMOVE_FROM_CART", payload);
+        },
+        clearCart(context) {
+            context.commit("CLEAR_CART");
         }
     },
 

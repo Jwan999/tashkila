@@ -67,7 +67,7 @@ class Order extends Resource
     public function fields(Request $request)
     {
         return [
-//            ID::make(__('ID'), 'id')->sortable(),
+            ID::make(__('ID'), 'id')->sortable(),
             Text::make(__("Full Name"), "full_name"),
             Text::make(__("First Phone Number"), "phone_one"),
             Text::make(__("Second Phone Number"), "phone_two"),

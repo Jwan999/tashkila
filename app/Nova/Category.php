@@ -24,7 +24,7 @@ class Category extends Resource
 ';
     }
 
-    public static $priority = 4;
+    public static $priority = 5;
 
 
     /**

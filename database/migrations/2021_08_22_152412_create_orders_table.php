@@ -23,6 +23,7 @@ class CreateOrdersTable extends Migration
             $table->string("closest_mark")->nullable();
             $table->string("payment_type")->nullable();
             $table->timestamp("dispatched_at")->nullable();
+            $table->timestamp("completed")->nullable();
 //            $table->foreignId("customer_id");
             $table->double("total");
             $table->timestamps();

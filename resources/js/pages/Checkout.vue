@@ -86,7 +86,7 @@
 
                         <div class="mb-3">
                             <h1 class="text-gray-800 text-sm mb-2 font-bold">رقم الهاتف</h1>
-                            <input v-model="phoneNumberOne" placeholder="رقم الهاتف" type="text"
+                            <input v-model="phoneNumberOne" placeholder="رقم الهاتف" type="number"
                                    class="rounded-2xl w-full px-3 py-4 outline-none border-2 border-gray-300 focus:border-gray-700">
                         </div>
                         <div v-for="error in validationErrors.phone_one" class="w-full mb-2">
@@ -94,7 +94,7 @@
                         </div>
                         <div class="mb-3">
                             <h1 class="text-gray-800 text-sm mb-2 font-bold">رقم هاتف بديل</h1>
-                            <input v-model="phoneNumberTwo" placeholder="رقم هاتف بديل" type="text"
+                            <input v-model="phoneNumberTwo" placeholder="رقم هاتف بديل" type="number"
                                    class="rounded-2xl w-full px-3 py-4 outline-none border-2 border-gray-300 focus:border-gray-700">
                         </div>
                         <div v-for="error in validationErrors.phone_two" class="w-full mb-2">
@@ -102,7 +102,7 @@
                         </div>
                         <div class="mb-3">
                             <h1 class="text-gray-800 text-sm mb-2 font-bold">عنوان البريد الالكتروني</h1>
-                            <input v-model="emailAddress" placeholder="عنوان البريد الالكتروني" type="text"
+                            <input v-model="emailAddress" placeholder="عنوان البريد الالكتروني" type="email"
                                    class="rounded-2xl w-full px-3 py-4 outline-none border-2 border-gray-300 focus:border-gray-700">
                         </div>
                         <div v-for="error in validationErrors.email" class="w-full mb-2">
@@ -186,12 +186,12 @@ export default {
     },
     data() {
         return {
-            fullName: '',
-            phoneNumberOne: '',
-            phoneNumberTwo: '',
-            address: '',
-            closestMark: '',
-            emailAddress: '',
+            fullName: 'tada',
+            phoneNumberOne: '07816151297',
+            phoneNumberTwo: '07816151297',
+            address: 'address',
+            closestMark: 'tete',
+            emailAddress: 'me@jwan.dev',
             paymentType: '',
             orderStatus: null,
             validationErrors: [],
@@ -201,6 +201,7 @@ export default {
     computed: {
         ...mapGetters(["items", "total"]),
     },
+
     methods: {
         sendUserData() {
             axios.post('/api/orders', {
@@ -213,22 +214,20 @@ export default {
                 payment_type: this.paymentType,
                 items: this.items,
                 total: this.total
-            }).then(response => {
-                this.orderStatus = true
-                // console.log('your items have been purchased')
             })
+                .then(response => {
+                    this.orderStatus = true
+                    this.$store.dispatch("clearCart");
+                })
                 .catch((error) => {
                     console.log('bitch is down mother fuckers')
                     this.validationErrors = error.response.data.errors
-                    // console.log(error.response.data.errors)
                 })
         },
         checkout() {
-            // if (this.paymentType === 'Cash') {
             if (this.paymentType === 'Cash') {
                 this.sendUserData();
             } else if (this.paymentType === 'Zain Cash') {
-// complete paying with zain and then  this.sendUserData();
             }
 
         },

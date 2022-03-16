@@ -2298,12 +2298,12 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
   },
   data: function data() {
     return {
-      fullName: '',
-      phoneNumberOne: '',
-      phoneNumberTwo: '',
-      address: '',
-      closestMark: '',
-      emailAddress: '',
+      fullName: 'tada',
+      phoneNumberOne: '07816151297',
+      phoneNumberTwo: '07816151297',
+      address: 'address',
+      closestMark: 'tete',
+      emailAddress: 'me@jwan.dev',
       paymentType: '',
       orderStatus: null,
       validationErrors: []
@@ -2325,18 +2325,18 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         items: this.items,
         total: this.total
       }).then(function (response) {
-        _this.orderStatus = true; // console.log('your items have been purchased')
+        _this.orderStatus = true;
+
+        _this.$store.dispatch("clearCart");
       })["catch"](function (error) {
         console.log('bitch is down mother fuckers');
-        _this.validationErrors = error.response.data.errors; // console.log(error.response.data.errors)
+        _this.validationErrors = error.response.data.errors;
       });
     },
     checkout: function checkout() {
-      // if (this.paymentType === 'Cash') {
       if (this.paymentType === 'Cash') {
         this.sendUserData();
-      } else if (this.paymentType === 'Zain Cash') {// complete paying with zain and then  this.sendUserData();
-      }
+      } else if (this.paymentType === 'Zain Cash') {}
     },
     goBack: function goBack() {
       this.$router.back();
@@ -2727,6 +2727,10 @@ var savedItems = JSON.parse(localStorage.getItem("cart")) || [];
       }
 
       saveToLocalStorage(state.items);
+    },
+    CLEAR_CART: function CLEAR_CART(state) {
+      state.items = [];
+      localStorage.clear();
     }
   },
   actions: {
@@ -2735,6 +2739,9 @@ var savedItems = JSON.parse(localStorage.getItem("cart")) || [];
     },
     removeFromCart: function removeFromCart(context, payload) {
       context.commit("REMOVE_FROM_CART", payload);
+    },
+    clearCart: function clearCart(context) {
+      context.commit("CLEAR_CART");
     }
   }
 });
@@ -4037,7 +4044,7 @@ var render = function() {
                           ],
                           staticClass:
                             "rounded-2xl w-full px-3 py-4 outline-none border-2 border-gray-300 focus:border-gray-700",
-                          attrs: { placeholder: "رقم الهاتف", type: "text" },
+                          attrs: { placeholder: "رقم الهاتف", type: "number" },
                           domProps: { value: _vm.phoneNumberOne },
                           on: {
                             input: function($event) {
@@ -4078,7 +4085,10 @@ var render = function() {
                           ],
                           staticClass:
                             "rounded-2xl w-full px-3 py-4 outline-none border-2 border-gray-300 focus:border-gray-700",
-                          attrs: { placeholder: "رقم هاتف بديل", type: "text" },
+                          attrs: {
+                            placeholder: "رقم هاتف بديل",
+                            type: "number"
+                          },
                           domProps: { value: _vm.phoneNumberTwo },
                           on: {
                             input: function($event) {
@@ -4121,7 +4131,7 @@ var render = function() {
                             "rounded-2xl w-full px-3 py-4 outline-none border-2 border-gray-300 focus:border-gray-700",
                           attrs: {
                             placeholder: "عنوان البريد الالكتروني",
-                            type: "text"
+                            type: "email"
                           },
                           domProps: { value: _vm.emailAddress },
                           on: {

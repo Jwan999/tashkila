@@ -39,7 +39,7 @@ class Product extends Resource
      */
     public static $model = \App\Models\Product::class;
 
-    public static $priority = 3;
+    public static $priority = 4;
 
 
     /**

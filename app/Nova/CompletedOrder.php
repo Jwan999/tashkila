@@ -2,41 +2,36 @@
 
 namespace App\Nova;
 
-use App\Nova\Actions\CompleteOrder;
 use Illuminate\Http\Request;
 use Laravel\Nova\Fields\HasMany;
 use Laravel\Nova\Fields\ID;
 use Laravel\Nova\Fields\Text;
 use Laravel\Nova\Http\Requests\NovaRequest;
 
-class DispatchedOrder extends Resource
+class CompletedOrder extends Resource
 {
-
-
     /**
      * The model the resource corresponds to.
      *
      * @var string
      */
+
+    public static $priority = 3;
+
+
     public static function indexQuery(NovaRequest $request, $query)
     {
-        return $query->whereNull('completed')->whereNotNull('dispatched_at')->get();
-
-//        return $query->whereNotNull('dispatched_at')->get();
+        return $query->whereNotNull('completed')->whereNotNull('dispatched_at')->get();
     }
 
-//    todo add fields and approprote stuff
     public static $model = \App\Models\Order::class;
-
-    public static $priority = 2;
-
 
     /**
      * The single value that should be used to represent the resource when being displayed.
      *
      * @var string
      */
-    public static $title = 'name';
+    public static $title = 'id';
 
     /**
      * The columns that should be searched.
@@ -44,7 +39,7 @@ class DispatchedOrder extends Resource
      * @var array
      */
     public static $search = [
-        'name',
+        'id',
     ];
 
     /**
@@ -64,7 +59,7 @@ class DispatchedOrder extends Resource
             Text::make(__("Location"), "address"),
             Text::make(__("Closest Landmark"), "closest_mark"),
             Text::make(__("Payment Type"), "payment_type"),
-            Text::make(__("Dispatched At"), "dispatched_at"),
+            Text::make(__("Completed at"), "completed"),
             Text::make(__("Total"), "total"),
             HasMany::make(__("Items"), "items", OrderItem::class),
         ];
@@ -111,9 +106,6 @@ class DispatchedOrder extends Resource
      */
     public function actions(Request $request)
     {
-        return [
-            (new CompleteOrder())->showOnTableRow(),
-
-        ];
+        return [];
     }
 }
