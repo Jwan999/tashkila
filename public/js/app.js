@@ -2336,7 +2336,9 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     checkout: function checkout() {
       if (this.paymentType === 'Cash') {
         this.sendUserData();
-      } else if (this.paymentType === 'Zain Cash') {}
+      } else if (this.paymentType === 'Zain Cash') {} else {
+        this.sendUserData();
+      }
     },
     goBack: function goBack() {
       this.$router.back();
