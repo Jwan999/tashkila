@@ -186,12 +186,12 @@ export default {
     },
     data() {
         return {
-            fullName: 'tada',
-            phoneNumberOne: '07816151297',
-            phoneNumberTwo: '07816151297',
-            address: 'address',
-            closestMark: 'tete',
-            emailAddress: 'me@jwan.dev',
+            fullName: '',
+            phoneNumberOne: '',
+            phoneNumberTwo: '',
+            address: '',
+            closestMark: '',
+            emailAddress: '',
             paymentType: '',
             orderStatus: null,
             validationErrors: [],
