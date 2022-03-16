@@ -4,7 +4,8 @@ namespace App\Providers;
 
 use App\Models\Order;
 use Coroowicaksono\ChartJsIntegration\LineChart;
-use InteractionDesignFoundation\HtmlCard\HtmlCard;
+//use InteractionDesignFoundation\HtmlCard\HtmlCard;
+use IDF\HtmlCard\HtmlCard;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Gate;
 use Laravel\Nova\Cards\Help;
