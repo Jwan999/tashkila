@@ -2277,6 +2277,15 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -2302,10 +2311,9 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
   },
   computed: _objectSpread({}, (0,vuex__WEBPACK_IMPORTED_MODULE_3__.mapGetters)(["items", "total"])),
   methods: {
-    checkout: function checkout() {
+    sendUserData: function sendUserData() {
       var _this = this;
 
-      // if (this.paymentType === 'Cash') {
       axios__WEBPACK_IMPORTED_MODULE_0___default().post('/api/orders', {
         full_name: this.fullName,
         phone_one: this.phoneNumberOne,
@@ -2321,21 +2329,15 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       })["catch"](function (error) {
         console.log('bitch is down mother fuckers');
         _this.validationErrors = error.response.data.errors; // console.log(error.response.data.errors)
-      }); // } else if (this.paymentType === 'Zain Cash') {
-      //
-      // }
+      });
     },
-    // axios.put('/dashboard/profile', value)
-    //     .then((response) => {
-    //         let title = response.data.status;
-    //         let body = response.data.msg;
-    //         this.displayNotificationSuccess(title, body);
-    //     })
-    //     .catch((error) => {
-    //         let title = error.response.data.status;
-    //         let body = error.response.data.msg;
-    //         this.displayNotificationError(title,body);
-    //     })
+    checkout: function checkout() {
+      // if (this.paymentType === 'Cash') {
+      if (this.paymentType === 'Cash') {
+        this.sendUserData();
+      } else if (this.paymentType === 'Zain Cash') {// complete paying with zain and then  this.sendUserData();
+      }
+    },
     goBack: function goBack() {
       this.$router.back();
     }
@@ -3812,7 +3814,7 @@ var render = function() {
                 staticClass:
                   "rounded-2xl shadow-xl py-6 bg-gray-700 text-white text-lg lg:w-4/12 w-8/12 mt-16 fixed z-10 items-center text-center"
               },
-              [_vm._v("\n                تم ارسال طلبك بنجاح\n            ")]
+              [_vm._v("\n            تم ارسال طلبك بنجاح\n        ")]
             )
           ])
         : _vm._e(),
@@ -3822,7 +3824,7 @@ var render = function() {
           _c("div", { staticClass: "flex items-center justify-between mb-4" }, [
             _c("h1", { staticClass: "lg:text-3xl text-xl" }, [
               _vm._v(
-                "\n                        المنتجات في السلة\n                    "
+                "\n                    المنتجات في السلة\n                "
               )
             ]),
             _vm._v(" "),
@@ -3833,7 +3835,7 @@ var render = function() {
                   "lg:py-3 py-3 px-4 lg:px-6 bg-gray-700 focus:bg-gray-800 text-white rounded-2xl shadow-lg",
                 on: { click: _vm.goBack }
               },
-              [_vm._v("\n                        الرجوع\n                    ")]
+              [_vm._v("\n                    الرجوع\n                ")]
             )
           ]),
           _vm._v(" "),
@@ -4165,46 +4167,20 @@ var render = function() {
                             "div",
                             { staticClass: "flex items-center mb-4 w-full" },
                             [
-                              _c("input", {
-                                directives: [
-                                  {
-                                    name: "model",
-                                    rawName: "v-model",
-                                    value: _vm.paymentType,
-                                    expression: "paymentType"
-                                  }
-                                ],
-                                staticClass:
-                                  "w-4 h-4 border-gray-300 focus:ring-2 focus:ring-blue-500 focus:bg-gray-500 bg-white border-gray-600 ml-2",
-                                attrs: {
-                                  id: "option-1",
-                                  type: "radio",
-                                  name: "payment",
-                                  value: "Cash",
-                                  "aria-labelledby": "option-1",
-                                  "aria-describedby": "option-1",
-                                  checked: ""
-                                },
-                                domProps: {
-                                  checked: _vm._q(_vm.paymentType, "Cash")
-                                },
-                                on: {
-                                  change: function($event) {
-                                    _vm.paymentType = "Cash"
-                                  }
-                                }
-                              }),
-                              _vm._v(" "),
                               _c(
-                                "label",
+                                "button",
                                 {
                                   staticClass:
-                                    "block ml-2 font-medium text-gray-900",
-                                  attrs: { for: "option-1" }
+                                    "px-6 bg-red-500 text-white text-sm rounded-full py-2",
+                                  on: {
+                                    click: function($event) {
+                                      _vm.paymentType = "Cash"
+                                    }
+                                  }
                                 },
                                 [
                                   _vm._v(
-                                    "\n                                    الدفع عند الاستلام\n                                "
+                                    "\n                                الدفع عند الاستلام\n                            "
                                   )
                                 ]
                               )
@@ -4215,46 +4191,25 @@ var render = function() {
                             "div",
                             { staticClass: "flex items-center mb-4 w-full " },
                             [
-                              _c("input", {
-                                directives: [
-                                  {
-                                    name: "model",
-                                    rawName: "v-model",
-                                    value: _vm.paymentType,
-                                    expression: "paymentType"
-                                  }
-                                ],
-                                staticClass:
-                                  "w-4 h-4 border-gray-300 focus:ring-2 focus:ring-blue-500 focus:bg-gray-500 bg-white border-gray-600 ml-2",
-                                attrs: {
-                                  id: "option-2",
-                                  type: "radio",
-                                  name: "payment",
-                                  value: "Zain Cash",
-                                  "aria-labelledby": "option-2",
-                                  "aria-describedby": "option-2"
-                                },
-                                domProps: {
-                                  checked: _vm._q(_vm.paymentType, "Zain Cash")
-                                },
-                                on: {
-                                  change: function($event) {
-                                    _vm.paymentType = "Zain Cash"
-                                  }
-                                }
-                              }),
-                              _vm._v(" "),
                               _c(
-                                "label",
+                                "a",
                                 {
-                                  staticClass:
-                                    "block ml-2 font-medium text-gray-900",
-                                  attrs: { for: "option-2" }
+                                  staticClass: "zaincash-btn",
+                                  attrs: { href: "https://test.zaincash.iq/" },
+                                  on: {
+                                    click: function($event) {
+                                      _vm.paymentType = "Zain Cash"
+                                    }
+                                  }
                                 },
                                 [
-                                  _vm._v(
-                                    "\n                                    الدفع عن طريق زين كاش\n                                "
-                                  )
+                                  _c("img", {
+                                    staticStyle: { "vertical-align": "middle" },
+                                    attrs: {
+                                      src:
+                                        "https://test.zaincash.iq/images/zaincash-ar.png"
+                                    }
+                                  })
                                 ]
                               )
                             ]
@@ -4277,9 +4232,9 @@ var render = function() {
                       _vm._v(" "),
                       _c("p", { staticClass: "text-xl mt-6" }, [
                         _vm._v(
-                          "\n                            عدد المنتجات " +
+                          "\n                        عدد المنتجات " +
                             _vm._s(_vm.items.length) +
-                            "\n                        "
+                            "\n                    "
                         )
                       ]),
                       _vm._v(" "),
@@ -4289,9 +4244,9 @@ var render = function() {
                       _vm._v(" "),
                       _c("p", { staticClass: "text-xl" }, [
                         _vm._v(
-                          "\n                            السعر الكامل " +
+                          "\n                        السعر الكامل " +
                             _vm._s(_vm.total) +
-                            "\n                        "
+                            "\n                    "
                         )
                       ]),
                       _vm._v(" "),
@@ -4304,7 +4259,7 @@ var render = function() {
                         },
                         [
                           _vm._v(
-                            "\n                            اكمال الطلب\n                        "
+                            "\n                        اكمال الطلب\n                    "
                           )
                         ]
                       )
@@ -4346,7 +4301,7 @@ var staticRenderFns = [
         [
           _c("a", { attrs: { href: "/#store" } }, [
             _vm._v(
-              "\n                                الذهاب الى المتجر\n                            "
+              "\n                            الذهاب الى المتجر\n                        "
             )
           ])
         ]

@@ -9,8 +9,11 @@ use Laravel\Nova\Fields\ID;
 use Laravel\Nova\Fields\Text;
 use Laravel\Nova\Http\Requests\NovaRequest;
 
+
 class Order extends Resource
 {
+
+
     public static function indexQuery(NovaRequest $request, $query)
     {
         return $query->whereNull('dispatched_at')->get();
@@ -29,6 +32,8 @@ class Order extends Resource
 </svg>
 ';
     }
+    public static $priority = 1;
+
 
     /**
      * The model the resource corresponds to.

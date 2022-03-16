@@ -10,6 +10,8 @@ use Laravel\Nova\Http\Requests\NovaRequest;
 
 class DispatchedOrder extends Resource
 {
+
+
     /**
      * The model the resource corresponds to.
      *
@@ -22,6 +24,9 @@ class DispatchedOrder extends Resource
 
 //    todo add fields and approprote stuff
     public static $model = \App\Models\Order::class;
+
+    public static $priority = 2;
+
 
     /**
      * The single value that should be used to represent the resource when being displayed.

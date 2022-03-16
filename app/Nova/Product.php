@@ -39,6 +39,9 @@ class Product extends Resource
      */
     public static $model = \App\Models\Product::class;
 
+    public static $priority = 3;
+
+
     /**
      * The single value that should be used to represent the resource when being displayed.
      *

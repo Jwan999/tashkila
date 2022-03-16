@@ -31,6 +31,29 @@
         .english-font {
             font-family: 'Work Sans', sans-serif;
         }
+        .zaincash-btn {
+            background: #191817; /* Old browsers */
+            border-radius:30px;
+            border: none;
+            outline: none;
+            padding-right: 15px;
+            padding-left: 15px;
+            padding-top: 7px;
+            padding-bottom: 7px;
+        }
+
+        .zaincash-btn:hover{
+            background: #333231;
+            transition: all 0.2s;
+            color: #fff;
+            border-radius:30px;
+            border: none;
+            outline: none;
+        }
+
+        .zaincash-btn > img {
+            width: 160px;
+        }
 
     </style>
 </head>

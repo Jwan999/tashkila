@@ -26,7 +26,7 @@
                         الرجوع
                     </button>
                 </div>
-<!--                grid lg:grid-cols-4 md:grid-cols-3 gap-6 grid-cols-1 lg:justify-items-start justify-items-center mt-10-->
+                <!--                grid lg:grid-cols-4 md:grid-cols-3 gap-6 grid-cols-1 lg:justify-items-start justify-items-center mt-10-->
                 <div class="grid lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2 grid-cols-1 gap-10">
                     <product :show-buttons="true" v-for="item in items" :product="item.product"
                              :key="`product-1-${item.product.id}`"></product>
@@ -118,22 +118,31 @@
                         <h1 class="text-gray-700 text-2xl mb-2">اختر طريقة الدفع</h1>
                         <div class="flex flex-wrap items-center ">
                             <div class="flex items-center mb-4 w-full">
-                                <input v-model="paymentType" id="option-1" type="radio" name="payment" value="Cash"
-                                       class="w-4 h-4 border-gray-300 focus:ring-2 focus:ring-blue-500 focus:bg-gray-500 bg-white border-gray-600 ml-2"
-                                       aria-labelledby="option-1" aria-describedby="option-1" checked>
-                                <label for="option-1"
-                                       class="block ml-2 font-medium text-gray-900">
+                                <button @click="paymentType = 'Cash'"
+                                        class="px-6 bg-red-500 text-white text-sm rounded-full py-2">
                                     الدفع عند الاستلام
-                                </label>
+                                </button>
+                                <!--                                <input v-model="paymentType" id="option-1" type="radio" name="payment" value="Cash"-->
+                                <!--                                       class="w-4 h-4 border-gray-300 focus:ring-2 focus:ring-blue-500 focus:bg-gray-500 bg-white border-gray-600 ml-2"-->
+                                <!--                                       aria-labelledby="option-1" aria-describedby="option-1" checked>-->
+                                <!--                                <label for="option-1"-->
+                                <!--                                       class="block ml-2 font-medium text-gray-900">-->
+                                <!--                                    الدفع عند الاستلام-->
+                                <!--                                </label>-->
                             </div>
                             <div class="flex items-center mb-4 w-full ">
-                                <input v-model="paymentType" id="option-2" type="radio" name="payment" value="Zain Cash"
-                                       class="w-4 h-4 border-gray-300 focus:ring-2 focus:ring-blue-500 focus:bg-gray-500 bg-white border-gray-600 ml-2"
-                                       aria-labelledby="option-2" aria-describedby="option-2">
-                                <label for="option-2"
-                                       class="block ml-2 font-medium text-gray-900">
-                                    الدفع عن طريق زين كاش
-                                </label>
+                                <!--                                <input v-model="paymentType" id="option-2" type="radio" name="payment" value="Zain Cash"-->
+                                <!--                                       class="w-4 h-4 border-gray-300 focus:ring-2 focus:ring-blue-500 focus:bg-gray-500 bg-white border-gray-600 ml-2"-->
+                                <!--                                       aria-labelledby="option-2" aria-describedby="option-2">-->
+                                <!--                                <label for="option-2"-->
+                                <!--                                       class="block ml-2 font-medium text-gray-900">-->
+                                <!--                                    الدفع عن طريق زين كاش-->
+                                <!--                                </label>-->
+                                <a href="https://test.zaincash.iq/" @click="paymentType = 'Zain Cash'"
+                                   class="zaincash-btn">
+                                    <img style="vertical-align:middle"
+                                         src="https://test.zaincash.iq/images/zaincash-ar.png">
+                                </a>
                             </div>
 
                             <div v-for="error in validationErrors.payment_type" class="w-full mb-2">
@@ -193,9 +202,7 @@ export default {
         ...mapGetters(["items", "total"]),
     },
     methods: {
-        checkout() {
-            // if (this.paymentType === 'Cash') {
-
+        sendUserData() {
             axios.post('/api/orders', {
                 full_name: this.fullName,
                 phone_one: this.phoneNumberOne,
@@ -215,25 +222,16 @@ export default {
                     this.validationErrors = error.response.data.errors
                     // console.log(error.response.data.errors)
                 })
-
-            // } else if (this.paymentType === 'Zain Cash') {
-            //
-            // }
+        },
+        checkout() {
+            // if (this.paymentType === 'Cash') {
+            if (this.paymentType === 'Cash') {
+                this.sendUserData();
+            } else if (this.paymentType === 'Zain Cash') {
+// complete paying with zain and then  this.sendUserData();
+            }
 
         },
-
-        // axios.put('/dashboard/profile', value)
-        //     .then((response) => {
-        //         let title = response.data.status;
-        //         let body = response.data.msg;
-        //         this.displayNotificationSuccess(title, body);
-        //     })
-        //     .catch((error) => {
-        //         let title = error.response.data.status;
-        //         let body = error.response.data.msg;
-        //         this.displayNotificationError(title,body);
-        //     })
-
 
         goBack() {
             this.$router.back();
@@ -246,7 +244,6 @@ export default {
                     this.orderStatus = false;
                     window.location.href = '/'
                 }, 4000);
-
             }
         }
     },

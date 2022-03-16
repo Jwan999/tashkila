@@ -9,7 +9,10 @@
     "license": "MIT",
     "require": {
         "php": "^7.3|^8.0",
+        "anaseqal/nova-sidebar-icons": "^0.0.3",
+        "digital-creative/clickable-table-row": "^0.2.0",
         "fruitcake/laravel-cors": "^2.0",
+        "gregoriohc/laravel-nova-theme-responsive": "^0.8.1",
         "guzzlehttp/guzzle": "^7.0.1",
         "laravel/framework": "^8.54",
         "laravel/nova": "*",
