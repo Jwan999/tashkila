@@ -2342,7 +2342,6 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
         _this.$store.dispatch("clearCart");
       })["catch"](function (error) {
-        console.log('bitch is down mother fuckers');
         _this.validationErrors = error.response.data.errors;
       });
     },
