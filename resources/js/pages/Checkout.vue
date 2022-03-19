@@ -220,7 +220,6 @@ export default {
                     this.$store.dispatch("clearCart");
                 })
                 .catch((error) => {
-                    console.log('bitch is down mother fuckers')
                     this.validationErrors = error.response.data.errors
                 })
         },
@@ -230,9 +229,7 @@ export default {
             } else if (this.paymentType === 'Zain Cash') {
             } else {
                 this.sendUserData();
-
             }
-
         },
 
         goBack() {

@@ -3,52 +3,53 @@
 use App\Models\Order;
 
 
-$orders = Order::whereNull('completed')->whereNotNull('dispatched_at')->get()->count();
+$orders = Order::whereNull('dispatched_at')->get()->count();
 
 
 ?>
 <script src="https://cdn.tailwindcss.com"></script>
 
-<style>
-    .text-4xl {
-        font-size: 2.25rem;
-        line-height: 2.5rem;
-    }
+{{--<style>--}}
+{{--    .text-4xl {--}}
+{{--        font-size: 2.25rem;--}}
+{{--        line-height: 2.5rem;--}}
+{{--    }--}}
 
-    .mt-2 {
-        margin-top: 0.5rem;
-    }
+{{--    .mt-2 {--}}
+{{--        margin-top: 0.5rem;--}}
+{{--    }--}}
 
-    .w-20 {
-        width: 6rem;
-    }
+{{--    .w-20 {--}}
+{{--        width: 6rem;--}}
+{{--    }--}}
 
-    .py-6 {
-        padding-top: 1.5rem;
-        padding-bottom: 1.5rem;
-    }
+{{--    .py-6 {--}}
+{{--        padding-top: 1.5rem;--}}
+{{--        padding-bottom: 1.5rem;--}}
+{{--    }--}}
 
-    .px-4 {
-        padding-left: 1rem;
-        padding-right: 1rem;
-    }
+{{--    .px-4 {--}}
+{{--        padding-left: 1rem;--}}
+{{--        padding-right: 1rem;--}}
+{{--    }--}}
 
-    .justify-around {
-        justify-content: space-around;
-    }
+{{--    .justify-around {--}}
+{{--        justify-content: space-around;--}}
+{{--    }--}}
 
-    .flex {
-        display: flex;
-    }
+{{--    .flex {--}}
+{{--        display: flex;--}}
+{{--    }--}}
 
-    .h {
-        height: 8rem;
-    }
-</style>
+{{--    .h {--}}
+{{--        height: 8rem;--}}
+{{--    }--}}
+{{--</style>--}}
+<link rel="stylesheet" href="css/app.css">
 
 
 <div class="flex justify-around items-center px-4 py-6 h">
-    <div>
+    <div class="w-6/12">
         <svg class="w-20" fill="none" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
             <g clip-rule="evenodd" fill="var(--sidebar-icon)" fill-rule="evenodd">
                 <path
@@ -62,7 +63,7 @@ $orders = Order::whereNull('completed')->whereNotNull('dispatched_at')->get()->c
             </g>
         </svg>
     </div>
-    <div>
+    <div class="w-6/12">
         <h1 class="text-4xl mt-2">
             {{ $orders }}
         </h1>

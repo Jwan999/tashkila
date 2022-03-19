@@ -31,9 +31,10 @@
         .english-font {
             font-family: 'Work Sans', sans-serif;
         }
+
         .zaincash-btn {
             background: #191817; /* Old browsers */
-            border-radius:30px;
+            border-radius: 30px;
             border: none;
             outline: none;
             padding-right: 15px;
@@ -42,11 +43,11 @@
             padding-bottom: 7px;
         }
 
-        .zaincash-btn:hover{
+        .zaincash-btn:hover {
             background: #333231;
             transition: all 0.2s;
             color: #fff;
-            border-radius:30px;
+            border-radius: 30px;
             border: none;
             outline: none;
         }
@@ -55,10 +56,11 @@
             width: 160px;
         }
 
+
     </style>
 </head>
 <body dir="rtl" class="bg-gray-100">
-<div id="app" class="w-full">
+<div id="app" class="w-full min-h-screen">
     {{--    @include('components.navbar')--}}
     {{--    {{Auth::user()->phone}}--}}
     {{--    {{Auth::guard('customer')->user()->name}}--}}

@@ -44,6 +44,10 @@ export default {
             }
             saveToLocalStorage(state.items);
         },
+        // todo save email in local storage
+        // SAVE_EMAIL(state,) {
+        //     saveToLocalStorage(state.items);
+        // },
         REMOVE_FROM_CART(state, {product, quantity}) {
             let cartItem = state.items.find(item => item.product.id === product.id);
             if (cartItem.quantity === 1) {

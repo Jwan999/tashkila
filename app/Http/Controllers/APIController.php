@@ -45,11 +45,14 @@ class APIController extends Controller
         ]);
     }
 
-    public function getCustomerOrders()
+    public function getCustomerOrders(Request $request)
     {
-        $products = Order::all();
+
+        $orders = Order::whereEmail($request->email)->with("items.product")->get();
+//        $orders = Order::where('email', $request->email)->with('items.product')->get();
         return Response::json([
-            "products" => $products
+            "orders" => $orders,
+
         ]);
 
     }

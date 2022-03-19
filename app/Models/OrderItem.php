@@ -8,9 +8,9 @@ use Illuminate\Database\Eloquent\Model;
 class OrderItem extends Model
 {
 
+//    protected $with = ["product"];
     public function product(){
         return $this->belongsTo(Product::Class);
     }
 
-    use HasFactory;
 }

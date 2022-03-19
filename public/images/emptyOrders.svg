@@ -1,0 +1,14 @@
+
+<svg width="512px" height="520px" viewBox="0 0 512 520" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Group-6" transform="translate(0.000000, -0.000000)">
+            <polygon id="Path" fill="#C93A3A" fill-rule="nonzero" points="256 157.554 235.999 289.345 256 520 454.791 454.104 454.791 223.45"></polygon>
+            <polygon id="Path" fill="#EF4444" fill-rule="nonzero" points="57.209 223.45 57.209 454.104 256 520 256 157.554"></polygon>
+            <polygon id="Path" fill="#E66666" fill-rule="nonzero" points="198.791 380.217 256 289.345 57.209 223.45 0 314.322"></polygon>
+            <polygon id="Path" fill="#D14B4B" fill-rule="nonzero" points="313.209 380.217 256 289.345 454.791 223.45 512 314.322"></polygon>
+            <rect id="Rectangle" fill="#374151" transform="translate(374.500000, 87.500000) rotate(31.000000) translate(-374.500000, -87.500000) " x="358" y="35" width="33" height="105" rx="13"></rect>
+            <rect id="Rectangle" fill="#374151" transform="translate(139.500000, 87.500000) scale(1, -1) rotate(31.000000) translate(-139.500000, -87.500000) " x="123" y="35" width="33" height="105" rx="13"></rect>
+            <rect id="Rectangle" fill="#374151" transform="translate(255.500000, 52.500000) scale(1, -1) translate(-255.500000, -52.500000) " x="239" y="0" width="33" height="105" rx="13"></rect>
+        </g>
+    </g>
+</svg>
