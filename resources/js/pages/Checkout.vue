@@ -110,7 +110,6 @@
                         </div>
                     </div>
                 </div>
-                <!--                value="{{old('title', $dog->title)}}"-->
 
                 <!--payment and checkout-->
                 <div class="lg:w-4/12 w-full">
@@ -118,31 +117,31 @@
                         <h1 class="text-gray-700 text-2xl mb-2">اختر طريقة الدفع</h1>
                         <div class="flex flex-wrap items-center ">
                             <div class="flex items-center mb-4 w-full">
-                                <button @click="paymentType = 'Cash'"
-                                        class="px-6 bg-red-500 text-white text-sm rounded-full py-2">
-                                    الدفع عند الاستلام
-                                </button>
-                                <!--                                <input v-model="paymentType" id="option-1" type="radio" name="payment" value="Cash"-->
-                                <!--                                       class="w-4 h-4 border-gray-300 focus:ring-2 focus:ring-blue-500 focus:bg-gray-500 bg-white border-gray-600 ml-2"-->
-                                <!--                                       aria-labelledby="option-1" aria-describedby="option-1" checked>-->
-                                <!--                                <label for="option-1"-->
-                                <!--                                       class="block ml-2 font-medium text-gray-900">-->
+                                <!--                                <button @click="paymentType = 'Cash'"-->
+                                <!--                                        class="px-6 bg-red-500 text-white text-sm rounded-full py-2">-->
                                 <!--                                    الدفع عند الاستلام-->
-                                <!--                                </label>-->
+                                <!--                                </button>-->
+                                <input v-model="paymentType" id="option-1" type="radio" name="payment" value="Cash"
+                                       class="w-4 h-4 border-gray-300 focus:ring-2 focus:ring-blue-500 focus:bg-gray-500 bg-white border-gray-600 ml-2"
+                                       aria-labelledby="option-1" aria-describedby="option-1" checked>
+                                <label for="option-1"
+                                       class="block ml-2 font-medium text-gray-900">
+                                    الدفع عند الاستلام
+                                </label>
                             </div>
                             <div class="flex items-center mb-4 w-full ">
-                                <!--                                <input v-model="paymentType" id="option-2" type="radio" name="payment" value="Zain Cash"-->
-                                <!--                                       class="w-4 h-4 border-gray-300 focus:ring-2 focus:ring-blue-500 focus:bg-gray-500 bg-white border-gray-600 ml-2"-->
-                                <!--                                       aria-labelledby="option-2" aria-describedby="option-2">-->
-                                <!--                                <label for="option-2"-->
-                                <!--                                       class="block ml-2 font-medium text-gray-900">-->
-                                <!--                                    الدفع عن طريق زين كاش-->
-                                <!--                                </label>-->
-                                <a href="https://test.zaincash.iq/" @click="paymentType = 'Zain Cash'"
-                                   class="zaincash-btn">
-                                    <img style="vertical-align:middle"
-                                         src="https://test.zaincash.iq/images/zaincash-ar.png">
-                                </a>
+                                <input v-model="paymentType" id="option-2" type="radio" name="payment" value="Zain Cash"
+                                       class="w-4 h-4 border-gray-300 focus:ring-2 focus:ring-blue-500 focus:bg-gray-500 bg-white border-gray-600 ml-2"
+                                       aria-labelledby="option-2" aria-describedby="option-2">
+                                <label for="option-2"
+                                       class="block ml-2 font-medium text-gray-900">
+                                    الدفع عن طريق زين كاش
+                                </label>
+                                <!--                                <a href="https://test.zaincash.iq/" @click="paymentType = 'Zain Cash'"-->
+                                <!--                                   class="zaincash-btn">-->
+                                <!--                                    <img style="vertical-align:middle"-->
+                                <!--                                         src="https://test.zaincash.iq/images/zaincash-ar.png">-->
+                                <!--                                </a>-->
                             </div>
 
                             <div v-for="error in validationErrors.payment_type" class="w-full mb-2">

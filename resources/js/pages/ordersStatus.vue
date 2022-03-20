@@ -1,6 +1,5 @@
 <template>
     <div>
-        <!--        todo postion footer bottom 0-->
         <navbar></navbar>
 
         <!--email form-->
@@ -105,7 +104,18 @@
                 </div>
                 <!--products-->
 
+                <div v-if="showCompleted && notCompleted.length === 0">
+                    <div class="flex justify-center mt-32">
+                        <img class="lg:w-2/12 w-4/12" src="/images/emptyOrders.svg" alt="">
+                    </div>
+                    <h1 class="lg:text-3xl text-xl mt-10 text-center">لا توجد طلبات قيد التنفيذ</h1>
+
+                </div>
+
+
                 <div class="flex flex-wrap gap-10">
+
+
                     <!--past orders data-->
                     <div class="w-full" v-if="!showCompleted" v-for="order in completed">
                         <h1 class="font-bold text-2xl my-10 text-center ">محتويات الطلب رقم {{ order.id }}</h1>
@@ -127,6 +137,7 @@
                         </div>
 
                     </div>
+
 
                     <!--new orders data-->
                     <div class="w-full" v-if="showCompleted" v-for="order in notCompleted">
@@ -150,8 +161,6 @@
 
                     </div>
 
-
-                    <!--      <category v-for="category in categories" :key="`catxegory-${category.id}`" :category="category"></category>-->
 
                 </div>
             </div>
@@ -177,7 +186,6 @@ export default {
     name: "Home",
     data() {
         return {
-
             orders: [],
             showCompleted: true,
             submittedEmail: '',

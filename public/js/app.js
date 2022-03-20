@@ -2298,7 +2298,6 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
-//
 
 
 
@@ -2632,6 +2631,15 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_Navbar__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../components/Navbar */ "./resources/js/components/Navbar.vue");
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_2__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -3861,7 +3869,7 @@ var render = function() {
                   "text-xl lg:w-auto lg:ml-8 w-full transform hover:scale-110 transition ease-out duration-200",
                 attrs: { href: "/#store" }
               },
-              [_vm._v("منتجات")]
+              [_vm._v("المتجر")]
             ),
             _vm._v(" "),
             _c(
@@ -3869,9 +3877,9 @@ var render = function() {
               {
                 staticClass:
                   "text-xl lg:w-auto lg:ml-8 w-full transform hover:scale-110 transition ease-out duration-200",
-                attrs: { href: "" }
+                attrs: { href: "https://www.asdikaee.com/" }
               },
-              [_vm._v("مسابقات")]
+              [_vm._v("موقع مجلة اصدقائي")]
             ),
             _vm._v(" "),
             _c(
@@ -4618,16 +4626,42 @@ var render = function() {
                             "div",
                             { staticClass: "flex items-center mb-4 w-full" },
                             [
+                              _c("input", {
+                                directives: [
+                                  {
+                                    name: "model",
+                                    rawName: "v-model",
+                                    value: _vm.paymentType,
+                                    expression: "paymentType"
+                                  }
+                                ],
+                                staticClass:
+                                  "w-4 h-4 border-gray-300 focus:ring-2 focus:ring-blue-500 focus:bg-gray-500 bg-white border-gray-600 ml-2",
+                                attrs: {
+                                  id: "option-1",
+                                  type: "radio",
+                                  name: "payment",
+                                  value: "Cash",
+                                  "aria-labelledby": "option-1",
+                                  "aria-describedby": "option-1",
+                                  checked: ""
+                                },
+                                domProps: {
+                                  checked: _vm._q(_vm.paymentType, "Cash")
+                                },
+                                on: {
+                                  change: function($event) {
+                                    _vm.paymentType = "Cash"
+                                  }
+                                }
+                              }),
+                              _vm._v(" "),
                               _c(
-                                "button",
+                                "label",
                                 {
                                   staticClass:
-                                    "px-6 bg-red-500 text-white text-sm rounded-full py-2",
-                                  on: {
-                                    click: function($event) {
-                                      _vm.paymentType = "Cash"
-                                    }
-                                  }
+                                    "block ml-2 font-medium text-gray-900",
+                                  attrs: { for: "option-1" }
                                 },
                                 [
                                   _vm._v(
@@ -4642,25 +4676,46 @@ var render = function() {
                             "div",
                             { staticClass: "flex items-center mb-4 w-full " },
                             [
-                              _c(
-                                "a",
-                                {
-                                  staticClass: "zaincash-btn",
-                                  attrs: { href: "https://test.zaincash.iq/" },
-                                  on: {
-                                    click: function($event) {
-                                      _vm.paymentType = "Zain Cash"
-                                    }
+                              _c("input", {
+                                directives: [
+                                  {
+                                    name: "model",
+                                    rawName: "v-model",
+                                    value: _vm.paymentType,
+                                    expression: "paymentType"
                                   }
+                                ],
+                                staticClass:
+                                  "w-4 h-4 border-gray-300 focus:ring-2 focus:ring-blue-500 focus:bg-gray-500 bg-white border-gray-600 ml-2",
+                                attrs: {
+                                  id: "option-2",
+                                  type: "radio",
+                                  name: "payment",
+                                  value: "Zain Cash",
+                                  "aria-labelledby": "option-2",
+                                  "aria-describedby": "option-2"
+                                },
+                                domProps: {
+                                  checked: _vm._q(_vm.paymentType, "Zain Cash")
+                                },
+                                on: {
+                                  change: function($event) {
+                                    _vm.paymentType = "Zain Cash"
+                                  }
+                                }
+                              }),
+                              _vm._v(" "),
+                              _c(
+                                "label",
+                                {
+                                  staticClass:
+                                    "block ml-2 font-medium text-gray-900",
+                                  attrs: { for: "option-2" }
                                 },
                                 [
-                                  _c("img", {
-                                    staticStyle: { "vertical-align": "middle" },
-                                    attrs: {
-                                      src:
-                                        "https://test.zaincash.iq/images/zaincash-ar.png"
-                                    }
-                                  })
+                                  _vm._v(
+                                    "\n                                الدفع عن طريق زين كاش\n                            "
+                                  )
                                 ]
                               )
                             ]
@@ -5413,6 +5468,20 @@ var render = function() {
                   ]
                 ),
                 _vm._v(" "),
+                _vm.showCompleted && _vm.notCompleted.length === 0
+                  ? _c("div", [
+                      _vm._m(3),
+                      _vm._v(" "),
+                      _c(
+                        "h1",
+                        {
+                          staticClass: "lg:text-3xl text-xl mt-10 text-center"
+                        },
+                        [_vm._v("لا توجد طلبات قيد التنفيذ")]
+                      )
+                    ])
+                  : _vm._e(),
+                _vm._v(" "),
                 _c(
                   "div",
                   { staticClass: "flex flex-wrap gap-10" },
@@ -5629,6 +5698,17 @@ var staticRenderFns = [
         },
         [_vm._v("الطلبات")]
       )
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "flex justify-center mt-32" }, [
+      _c("img", {
+        staticClass: "lg:w-2/12 w-4/12",
+        attrs: { src: "/images/emptyOrders.svg", alt: "" }
+      })
     ])
   }
 ]

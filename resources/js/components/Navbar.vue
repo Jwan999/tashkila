@@ -21,10 +21,10 @@
                  class="flex flex-wrap items-center lg:mt-0 mt-6 lg:space-y-0 space-y-5">
 
                 <a class="text-xl lg:w-auto lg:ml-8 w-full transform hover:scale-110 transition ease-out duration-200"
-                   href="/#store">منتجات</a>
+                   href="/#store">المتجر</a>
 
                 <a class="text-xl lg:w-auto lg:ml-8 w-full transform hover:scale-110 transition ease-out duration-200"
-                   href="">مسابقات</a>
+                   href="https://www.asdikaee.com/">موقع مجلة اصدقائي</a>
 
                 <a class="text-xl lg:w-auto lg:ml-8 w-full transform hover:scale-110 transition ease-out duration-200"
                    href="">قناة اصدقائي</a>
