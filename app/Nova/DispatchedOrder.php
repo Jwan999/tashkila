@@ -12,6 +12,10 @@ use Laravel\Nova\Http\Requests\NovaRequest;
 class DispatchedOrder extends Resource
 {
 
+    public static function authorizedToCreate(Request $request)
+    {
+        return false;
+    }
 
     /**
      * The model the resource corresponds to.
@@ -20,7 +24,7 @@ class DispatchedOrder extends Resource
      */
     public static function indexQuery(NovaRequest $request, $query)
     {
-        return $query->whereNull('completed')->whereNotNull('dispatched_at')->get();
+        return $query->whereNull('completed_at')->whereNotNull('dispatched_at')->get();
 
 //        return $query->whereNotNull('dispatched_at')->get();
     }

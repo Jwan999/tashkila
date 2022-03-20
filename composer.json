@@ -17,6 +17,7 @@
         "guzzlehttp/guzzle": "^7.0.1",
         "idf/nova-html-card": "^1.2",
         "laravel/framework": "^8.54",
+        "owenmelbz/nova-radio-field": "^1.0",
         "laravel/nova": "*",
         "laravel/sanctum": "^2.11",
         "laravel/tinker": "^2.5",

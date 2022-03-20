@@ -217,10 +217,10 @@ export default {
     },
     computed: {
         notCompleted() {
-            return this.orders.filter(order => order.completed == null);
+            return this.orders.filter(order => order.completed_at == null);
         },
         completed() {
-            return this.orders.filter(order => order.completed != null);
+            return this.orders.filter(order => order.completed_at != null);
         }
 
     },

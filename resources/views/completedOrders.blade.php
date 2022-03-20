@@ -3,7 +3,7 @@
 use App\Models\Order;
 
 
-$orders = Order::whereNotNull('completed')->get()->count();
+$orders = Order::whereNotNull('completed_at')->get()->count();
 
 
 ?>

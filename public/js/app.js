@@ -2847,12 +2847,12 @@ __webpack_require__.r(__webpack_exports__);
   computed: {
     notCompleted: function notCompleted() {
       return this.orders.filter(function (order) {
-        return order.completed == null;
+        return order.completed_at == null;
       });
     },
     completed: function completed() {
       return this.orders.filter(function (order) {
-        return order.completed != null;
+        return order.completed_at != null;
       });
     }
   },

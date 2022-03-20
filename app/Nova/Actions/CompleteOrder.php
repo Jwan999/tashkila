@@ -24,7 +24,7 @@ class CompleteOrder extends Action
     {
         foreach ($models as $model) {
             $model->update([
-                'completed' => Now()
+                'completed_at' => Now()
             ]);
         }
     }

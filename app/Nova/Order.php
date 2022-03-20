@@ -8,16 +8,22 @@ use Laravel\Nova\Fields\HasMany;
 use Laravel\Nova\Fields\ID;
 use Laravel\Nova\Fields\Text;
 use Laravel\Nova\Http\Requests\NovaRequest;
+use OwenMelbz\RadioField\RadioButton;
 
 
 class Order extends Resource
 {
+    public static function authorizedToCreate(Request $request)
+    {
+        return false;
+    }
 
 
     public static function indexQuery(NovaRequest $request, $query)
     {
         return $query->whereNull('dispatched_at')->get();
     }
+
     public static function icon()
     {
         return '
@@ -32,6 +38,7 @@ class Order extends Resource
 </svg>
 ';
     }
+
     public static $priority = 1;
 
 
@@ -74,8 +81,19 @@ class Order extends Resource
             Text::make(__("Email Address"), "email"),
             Text::make(__("Location"), "address"),
             Text::make(__("Closest Landmark"), "closest_mark"),
-            Text::make(__("Payment Type"), "payment_type"),
+//            Text::make(__("Payment Type"), "payment_type"),
 //            Text::make(__("Dispatched At"), "dispatched_at"),
+            RadioButton::make(__('Payment Type'), 'payment_type')
+                ->options([
+                    'Cash' => 'Cash',
+                    'Zain Cash' => 'Zain Cash'
+                ])
+                ->stack() // optional (required to show hints)
+                ->marginBetween() // optional
+                ->skipTransformation() // optional
+                ->toggle([  // optional
+                    1 => ['max_skips', 'skip_sponsored'] // will hide max_skips and skip_sponsored when the value is 1
+                ])->hideFromDetail()->required(),
             Text::make(__("Total"), "total"),
             HasMany::make(__("Items"), "items", OrderItem::class),
         ];

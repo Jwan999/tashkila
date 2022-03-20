@@ -65,7 +65,7 @@ class NovaServiceProvider extends NovaApplicationServiceProvider
     {
         $ordersData = [];
         $combined = [];
-        $orders = Order::whereNotNull('completed')->get()
+        $orders = Order::whereNotNull('completed_at')->get()
             ->groupBy(function ($order) {
                 return Carbon::parse($order->date)->format('Y/m');
             })->map->count();

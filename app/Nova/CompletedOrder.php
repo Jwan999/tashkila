@@ -7,9 +7,16 @@ use Laravel\Nova\Fields\HasMany;
 use Laravel\Nova\Fields\ID;
 use Laravel\Nova\Fields\Text;
 use Laravel\Nova\Http\Requests\NovaRequest;
+use OwenMelbz\RadioField\RadioButton;
 
 class CompletedOrder extends Resource
 {
+
+    public static function authorizedToCreate(Request $request)
+    {
+        return false;
+    }
+
     /**
      * The model the resource corresponds to.
      *
@@ -21,7 +28,7 @@ class CompletedOrder extends Resource
 
     public static function indexQuery(NovaRequest $request, $query)
     {
-        return $query->whereNotNull('completed')->whereNotNull('dispatched_at')->get();
+        return $query->whereNotNull('completed_at')->whereNotNull('dispatched_at')->get();
     }
 
     public static $model = \App\Models\Order::class;
@@ -59,7 +66,7 @@ class CompletedOrder extends Resource
             Text::make(__("Location"), "address"),
             Text::make(__("Closest Landmark"), "closest_mark"),
             Text::make(__("Payment Type"), "payment_type"),
-            Text::make(__("Completed at"), "completed"),
+            Text::make(__("Completed at"), "completed_at"),
             Text::make(__("Total"), "total"),
             HasMany::make(__("Items"), "items", OrderItem::class),
         ];
