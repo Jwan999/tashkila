@@ -13,7 +13,6 @@ use Carbon\Carbon;
 
 use Laravel\Nova\Nova;
 use Laravel\Nova\NovaApplicationServiceProvider;
-use Anaseqal\NovaSidebarIcons\NovaSidebarIcons;
 
 class NovaServiceProvider extends NovaApplicationServiceProvider
 {
@@ -100,7 +99,7 @@ class NovaServiceProvider extends NovaApplicationServiceProvider
                 ->series(array([
                         'barPercentage' => 1,
                         'label' => 'Orders',
-                        'borderColor' => '#EF4444',
+                        'borderColor' => '#EA4B1B',
                         'data' => $ordersData,
                     ])
                 )
@@ -145,7 +144,7 @@ class NovaServiceProvider extends NovaApplicationServiceProvider
     public function tools()
     {
         return [
-            new NovaSidebarIcons,
+//            new NovaSidebarIcons,
         ];
     }
 

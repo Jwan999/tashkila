@@ -13,7 +13,7 @@ return [
     |
     */
 
-    'name' => env('APP_NAME', 'Asdikaee'),
+    'name' => env('APP_NAME', 'Tashkila'),
 
     /*
     |--------------------------------------------------------------------------
@@ -161,6 +161,7 @@ return [
         Illuminate\Translation\TranslationServiceProvider::class,
         Illuminate\Validation\ValidationServiceProvider::class,
         Illuminate\View\ViewServiceProvider::class,
+        \style\tashkila\ThemeServiceProvider::class,
 
         /*
          * Package Service Providers...

@@ -9,19 +9,21 @@
     "license": "MIT",
     "require": {
         "php": "^7.3|^8.0",
-        "anaseqal/nova-sidebar-icons": "^0.0.3",
         "coroowicaksono/chart-js-integration": "^0.3.5",
+        "davidpiesse/nova-toggle": "^0.0.8",
         "digital-creative/clickable-table-row": "^0.2.0",
+        "fourstacks/nova-checkboxes": "^0.1.7",
         "fruitcake/laravel-cors": "^2.0",
         "gregoriohc/laravel-nova-theme-responsive": "^0.8.1",
         "guzzlehttp/guzzle": "^7.0.1",
         "idf/nova-html-card": "^1.2",
         "laravel/framework": "^8.54",
-        "owenmelbz/nova-radio-field": "^1.0",
         "laravel/nova": "*",
         "laravel/sanctum": "^2.11",
         "laravel/tinker": "^2.5",
         "lathanhvien/nova-text-currency": "^1.0",
+        "owenmelbz/nova-radio-field": "^1.0",
+        "style/tashkila": "*",
         "theme/asdikaee": "*",
         "vyuldashev/nova-money-field": "^1.4"
     },
@@ -33,6 +35,14 @@
         {
             "type": "path",
             "url": "./nova-components/Asdikaee"
+        },
+        {
+            "type": "path",
+            "url": "./nova-components/Tashkila"
+        },
+        {
+            "type": "path",
+            "url": "./nova-components/Tashkila"
         }
     ],
     "require-dev": {

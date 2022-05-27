@@ -10,9 +10,9 @@
     <span class="text-white sidebar-label">{{ __('Dashboard') }}</span>
 </router-link>
 @if (\Laravel\Nova\Nova::availableDashboards(request()))
-    <ul class="list-reset mb-8">
+    <div class="list-reset mb-8">
         @foreach (\Laravel\Nova\Nova::availableDashboards(request()) as $dashboard)
-            <li class="leading-wide mb-4 ml-8 text-sm">
+            <a class="leading-wide mb-4 ml-8 text-sm">
                 <router-link :to='{
                     name: "dashboard.custom",
                     params: {
@@ -24,7 +24,7 @@
                 class="text-white no-underline dim">
                     {{ $dashboard::label() }}
                 </router-link>
-            </li>
+            </a>
         @endforeach
-    </ul>
+    </div>
 @endif

@@ -19,7 +19,8 @@ class CreateProductsTable extends Migration
             $table->text('description');
             $table->double('price');
             $table->string('preview_img');
-            $table->foreignIdFor(\App\Models\Category::Class);
+            $table->string('top_picks')->nullable();
+            $table->foreignIdFor(\App\Models\Shop::Class);
             $table->timestamps();
         });
     }

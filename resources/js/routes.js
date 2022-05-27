@@ -3,8 +3,10 @@ import Home from "./pages/Home";
 import Checkout from "./pages/Checkout";
 import Register from "./pages/Register";
 import OrdersStatus from "./pages/ordersStatus";
+import ProductView from "./pages/ProductView";
 
 import Login from "./pages/Login";
+// import ProductView from "./pages/ProductView";
 
 export default [
     {
@@ -18,6 +20,11 @@ export default [
     {
         path: "/checkout",
         component: Checkout
+    },
+    {
+        // add id to get product page
+        path: "/product/:id",
+        component: ProductView,
     },
     {
         path: "/login",

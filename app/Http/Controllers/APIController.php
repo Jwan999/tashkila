@@ -6,11 +6,20 @@ use App\Models\Category;
 use App\Models\Order;
 use App\Models\OrderItem;
 use App\Models\Product;
+use App\Models\Shop;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Response;
 
 class APIController extends Controller
 {
+
+    public function getProduct(Request $request)
+    {
+        return Response::json([
+            "product" => Product::with('shop')->find($request->id)
+        ]);
+    }
 
     public function getCartProducts(Request $request)
     {
@@ -21,10 +30,10 @@ class APIController extends Controller
 
     public function getProducts(Request $request)
     {
-//        dd($request->category != null);
-        if ($request->category != null) {
-//            dd('hehhlo');
-            $products = Product::where('category_id', $request->category)->get();
+//        dd($request->shop != null);
+        if ($request->shop != null) {
+
+            $products = Product::where('shop_id', $request->shop)->get();
 
         } else {
             $products = Product::all();
@@ -36,12 +45,23 @@ class APIController extends Controller
 
     }
 
-    public function getCategories()
+    public function getTopPicks()
+    {
+
+        $picks = Product::where('top_picks', 'true')->get();
+
+        return Response::json([
+            "picks" => $picks
+        ]);
+
+    }
+
+    public function getShops()
     {
 //        dd('test');
-        $categories = Category::all();
+        $shops = Shop::all();
         return Response::json([
-            "categories" => $categories
+            "shops" => $shops
         ]);
     }
 

@@ -12,9 +12,9 @@
             <h4 class="ml-8 mb-4 text-xs text-white-50% uppercase tracking-wide">{{ $group }}</h4>
         @endif
 
-        <ul class="list-reset mb-8">
+        <div class="list-reset mb-8">
             @foreach($resources as $resource)
-                <li class="leading-tight mb-4 ml-8 text-sm">
+                <a class="leading-tight mb-4 ml-8 text-sm">
                     <router-link :to="{
                         name: 'index',
                         params: {
@@ -23,8 +23,8 @@
                     }" class="text-white text-justify no-underline dim" dusk="{{ $resource::uriKey() }}-resource-link">
                         {{ $resource::label() }}
                     </router-link>
-                </li>
+                </a>
             @endforeach
-        </ul>
+        </div>
     @endforeach
 @endif

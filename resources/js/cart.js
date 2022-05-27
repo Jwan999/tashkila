@@ -27,7 +27,7 @@ export default {
         },
         total(state, getters) {
             return getters.items.reduce((previousValue, item) => {
-                return previousValue + (item.quantity * item.product.price);
+                return previousValue + (item.quantity * item.product.final_price);
             }, 0);
         },
     },

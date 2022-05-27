@@ -1,26 +1,27 @@
 <template>
-    <div class="shadow-lg bg-white rounded-2xl flex flex-col">
-        <img class="rounded-t-2xl border-t-2 border-gray-700 h-96 w-full object-cover"
-             :src="'storage/'+product.preview_img"
-             alt="">
+
+
+    <div class="shadow-lg bg-white rounded border-t-2 border-dark-100 flex flex-col">
+        <a :href="'product/'+product.id">
+            <img class="rounded-t h-96 w-full object-cover"
+                 :src="'/storage/'+product.preview_img"
+                 alt="">
+        </a>
         <!--    <h3 class="font-bold text-lg"></h3>-->
         <div class="px-3 py-4">
             <h3 class="font-bold text-lg ">{{ product.name }}</h3>
-            <h3 class="font-mono text-md ">{{ product.price }}</h3>
+            <h3 class="font-mono text-md ">{{ product.final_price }}</h3>
+            <h3 class="font-mono text-md ">original price {{ product.price }}</h3>
             <div class="border border-b-[0.5px] border-gray-300 w-full my-2"></div>
             <template v-if="showButtons">
                 <div v-if="cartItem" class="grid grid-cols-4">
                     <button
                         @click="removeFromCart"
-                        class="bg-gray-700 text-white py-2 px-4 font-semibold text-xl rounded-2xl my-1 hover:bg-gray-800 cursor-pointer col-span-1">
+                        class="bg-dark-100 text-white py-2 px-4 font-semibold text-xl rounded my-1 hover:bg-dark-200 cursor-pointer col-span-1">
             <span class="flex justify-center">
-
-              <svg class="fill-current text-white w-8 h-8" viewBox="0 0 24 24"
-                   xmlns="http://www.w3.org/2000/svg">
-<path
-    d="M18 12.75H6C5.59 12.75 5.25 12.41 5.25 12C5.25 11.59 5.59 11.25 6 11.25H18C18.41 11.25 18.75 11.59 18.75 12C18.75 12.41 18.41 12.75 18 12.75Z"/>
-</svg>
-
+                <svg class="fill-current text-white w-8 h-8" viewBox="0 0 24 24"
+                     xmlns="http://www.w3.org/2000/svg"><path
+                    d="M18 12.75H6C5.59 12.75 5.25 12.41 5.25 12C5.25 11.59 5.59 11.25 6 11.25H18C18.41 11.25 18.75 11.59 18.75 12C18.75 12.41 18.41 12.75 18 12.75Z"/></svg>
 
             </span>
                     </button>
@@ -30,7 +31,7 @@
                         }}</span>
                     <button
                         @click="addToCart"
-                        class="bg-red-500 text-white py-2 px-4 font-semibold text-xl rounded-2xl my-1 hover:bg-red-600 cursor-pointer col-span-1">
+                        class="bg-orange-100 text-white py-2 px-4 font-semibold text-xl rounded my-1 hover:bg-orange-200 cursor-pointer col-span-1">
             <span class="flex justify-center">
               <svg class="fill-current text-white w-8 h-8" viewBox="0 0 24 24"
                    xmlns="http://www.w3.org/2000/svg"><path
@@ -41,10 +42,10 @@
             </span>
                     </button>
                 </div>
-                <div v-else class="grid grid-cols-5 ">
+                <div v-else class="grid grid-cols-5">
                     <button
                         @click="addToCart"
-                        class="bg-red-500 focus:bg-red-600-500 py-3 px-4 text-white rounded-2xl shadow-lg my-1 hover:bg-red-600 cursor-pointer col-span-5">
+                        class="bg-orange-100 focus:bg-dark py-3 px-4 text-white rounded shadow-lg my-1 hover:bg-orange-200 cursor-pointer col-span-5">
                         اضافة الى السلة
                     </button>
                 </div>

@@ -15,11 +15,11 @@ class ThemeServiceProvider extends ServiceProvider
     public function boot()
     {
         Nova::booted(function () {
-            Nova::theme(asset('/theme/asdikaee/theme.css'));
+            Nova::theme(asset('/css/theme.css?v=2'));
         });
 
         $this->publishes([
-            __DIR__.'/../resources/css' => public_path('theme/asdikaee'),
+            __DIR__.'/../resources/css' => public_path('css/theme.css?v=2'),
         ], 'public');
     }
 

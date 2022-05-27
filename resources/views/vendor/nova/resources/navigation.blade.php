@@ -1,16 +1,16 @@
 @if (count(Nova::availableResources(request())))
-<ul class="sidemenu">
+<div class="sidemenu">
     @foreach($navigation as $group => $resources)
       @if (count($groups) > 1)
-      <li class="sidebar-dropdown mb-2">
+      <a class="sidebar-dropdown mb-2">
         <input type="checkbox" />
         <a href="#" data-toggle="dropdown">
 
             <span class="sidebar-label ml-8">{{ $group }}</span>
         </a>
-        <ul class="dropdown-menu">
+        <div class="dropdown-menu">
           @foreach($resources as $resource)
-          <li>
+          <a>
             <router-link :to="{
                 name: 'index',
                 params: {
@@ -29,14 +29,14 @@
                 @endif
                 <span class="sidebar-label">{{ $resource::label() }}</span>
             </router-link>
-          </li>
+          </a>
           @endforeach
-        </ul>
-      </li>
+        </div>
+      </a>
 
       @else
         @foreach($resources as $resource)
-        <li class="sidebar-dropdown">
+        <div class="sidebar-dropdown">
             <router-link :to="{
                 name: 'index',
                 params: {
@@ -55,9 +55,9 @@
                 @endif
                 <span class="sidebar-label">{{ $resource::label() }}</span>
             </router-link>
-        </li>
+        </div>
         @endforeach
       @endif
     @endforeach
-</ul>
+</div>
 @endif

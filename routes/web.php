@@ -33,10 +33,15 @@ use Illuminate\Support\Facades\Route;
 Route::post('/login', [CustomerLoginController::class, 'login']);
 Route::post('/register', [RegisterCustomerController::class, 'register']);
 Route::post('/api/orders', [APIController::class, 'createOrder']);
+
+Route::get('/api/shops', [APIController::class, 'getShops']);
+Route::get('/api/toppicks', [APIController::class, 'getTopPicks']);
+
+Route::get('/api/product', [APIController::class, 'getProduct']);
+
 Route::get("/api/orders", [APIController::class, 'getCustomerOrders']);
 Route::get("/api/cart/products", [APIController::class, 'getCartProducts']);
 Route::get('/{any}', [Controller::class, 'showApplication'])->where("any", "(?!nova)(.*)");
-
 //->middleware("auth:customer")
 //    ->middleware("auth:customer")
 //    ->middleware("auth:customer")
