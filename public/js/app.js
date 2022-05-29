@@ -3133,9 +3133,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);
- // JSON.parse(localStorage.getItem("cart")) ||
 
-var savedItems = [];
+var savedItems = JSON.parse(localStorage.getItem("cart")) || [];
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   state: {
     items: savedItems,
