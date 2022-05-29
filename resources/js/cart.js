@@ -1,6 +1,6 @@
 import axios from 'axios';
-
-let savedItems = JSON.parse(localStorage.getItem("cart")) || [];
+// JSON.parse(localStorage.getItem("cart")) ||
+let savedItems =  [];
 export default {
     state: {
         items: savedItems,
