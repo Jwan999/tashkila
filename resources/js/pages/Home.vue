@@ -71,8 +71,7 @@
                                     </div>
                                 </a>
                             </div>
-                            <!--                        other not customized-->
-
+                            <!--other not customized-->
                         </div>
                     </div>
                     <!---->
@@ -124,10 +123,10 @@
         <div class="flex flex-wrap justify-end items-center">
 
             <div class="flex justify-between items-center px-6 mt-8 w-full lg:w-10/12">
-                <div :class="currentPage < totalPages ? '' : 'cursor-not-allowed'"
+                <div :class="totalPages == 1 ? '' : 'cursor-not-allowed'"
                      @click="paginate('next')" class="flex items-center">
                     <div>
-                        <svg :class="currentPage < totalPages ? 'fill-orange-100' : ''"
+                        <svg :class="totalPages != 1 ? 'fill-orange-100' : ''"
                              class="w-7 h-7 fill-gray-600" version="1.1" id="Capa_1"
                              xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px"
                              y="0px"
@@ -174,20 +173,21 @@
 </svg>
                     </div>
 
-                    <button :class="currentPage < totalPages ? 'text-orange-100' : 'cursor-not-allowed'"
+                    <button :class="totalPages != 1 ? 'text-orange-100' : 'cursor-not-allowed'"
                             class="text-gray-600 mr-2 lg:text-lg text-sm">Next
                     </button>
 
                 </div>
+
                 <div>
                     <h1 class="text-gray-800">Page {{ currentPage }} of {{ totalPages }} pages</h1>
-
                 </div>
-                <div :class="currentPage > totalPages ? '' : 'cursor-not-allowed'"
-                     @click="paginate('next')" class="flex items-center">
 
-                    <button :class="currentPage > totalPages ? 'text-orange-100' : 'cursor-not-allowed'"
-                            class=" text-gray-600 ml-2 lg:text-lg text-sm">Previous
+                <div :class="currentPage == 1 ? '' : 'cursor-not-allowed'"
+                     @click="paginate('previous')" class="flex items-center">
+
+                    <button :class="currentPage == 1 ? 'text-orange-100' : 'cursor-not-allowed'"
+                            class="text-gray-600 ml-2 lg:text-lg text-sm">Previous
                     </button>
                     <div>
                         <svg :class="currentPage > totalPages ? 'fill-orange-100' : ''" class="w-7 h-7 fill-gray-600"

@@ -89,7 +89,7 @@ class Product extends Resource
 
             Textarea::make(__("Description"), 'description'),
             Image::make(__("Image"), "preview_img")->creationRules("required", "image")->disk('public'),
-            Currency::make(__("Price"), 'price'),
+            Number::make(__("Price"), 'price'),
 //            Currency::make('Price')->currency('IQD'),
 
 //            Checkboxes::make( 'top_picks'),

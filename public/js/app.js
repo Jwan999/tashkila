@@ -5564,8 +5564,7 @@ var render = function() {
               "div",
               {
                 staticClass: "flex items-center",
-                class:
-                  _vm.currentPage < _vm.totalPages ? "" : "cursor-not-allowed",
+                class: _vm.totalPages == 1 ? "" : "cursor-not-allowed",
                 on: {
                   click: function($event) {
                     return _vm.paginate("next")
@@ -5578,10 +5577,7 @@ var render = function() {
                     "svg",
                     {
                       staticClass: "w-7 h-7 fill-gray-600",
-                      class:
-                        _vm.currentPage < _vm.totalPages
-                          ? "fill-orange-100"
-                          : "",
+                      class: _vm.totalPages != 1 ? "fill-orange-100" : "",
                       staticStyle: {
                         "enable-background": "new 0 0 512.009 512.009"
                       },
@@ -5646,7 +5642,7 @@ var render = function() {
                   {
                     staticClass: "text-gray-600 mr-2 lg:text-lg text-sm",
                     class:
-                      _vm.currentPage < _vm.totalPages
+                      _vm.totalPages != 1
                         ? "text-orange-100"
                         : "cursor-not-allowed"
                   },
@@ -5671,11 +5667,10 @@ var render = function() {
               "div",
               {
                 staticClass: "flex items-center",
-                class:
-                  _vm.currentPage > _vm.totalPages ? "" : "cursor-not-allowed",
+                class: _vm.currentPage == 1 ? "" : "cursor-not-allowed",
                 on: {
                   click: function($event) {
-                    return _vm.paginate("next")
+                    return _vm.paginate("previous")
                   }
                 }
               },
@@ -5683,9 +5678,9 @@ var render = function() {
                 _c(
                   "button",
                   {
-                    staticClass: " text-gray-600 ml-2 lg:text-lg text-sm",
+                    staticClass: "text-gray-600 ml-2 lg:text-lg text-sm",
                     class:
-                      _vm.currentPage > _vm.totalPages
+                      _vm.currentPage == 1
                         ? "text-orange-100"
                         : "cursor-not-allowed"
                   },
