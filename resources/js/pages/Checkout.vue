@@ -62,7 +62,7 @@
                                    class="rounded w-full px-3 py-3 outline-none border-2 border-gray-300 focus:border-gray-700">
                         </div>
                         <div v-for="error in validationErrors.full_name" class="w-full mb-2">
-                            <h1 class="text-gray-500 text-sm">{{ error }}</h1>
+                            <h1 class="text-red-500 text-sm">{{ error }}</h1>
                         </div>
 
                         <div class="mb-3">
@@ -72,7 +72,7 @@
                         </div>
 
                         <div v-for="error in validationErrors.address" class="w-full mb-2">
-                            <h1 class="text-gray-500 text-sm">{{ error }}</h1>
+                            <h1 class="text-red-500 text-sm">{{ error }}</h1>
                         </div>
 
                         <div class="mb-3">
@@ -81,7 +81,7 @@
                                    class="rounded w-full px-3 py-3 outline-none border-2 border-gray-300 focus:border-gray-700">
                         </div>
                         <div v-for="error in validationErrors.closest_mark" class="w-full mb-2">
-                            <h1 class="text-gray-500 text-sm">{{ error }}</h1>
+                            <h1 class="text-red-500 text-sm">{{ error }}</h1>
                         </div>
 
                         <div class="mb-3">
@@ -90,7 +90,7 @@
                                    class="rounded w-full px-3 py-3 outline-none border-2 border-gray-300 focus:border-gray-700">
                         </div>
                         <div v-for="error in validationErrors.phone_one" class="w-full mb-2">
-                            <h1 class="text-gray-500 text-sm">{{ error }}</h1>
+                            <h1 class="text-red-500 text-sm">{{ error }}</h1>
                         </div>
                         <div class="mb-3">
                             <h1 class="text-dark-100 text-sm mb-2 font-bold">رقم هاتف بديل</h1>
@@ -98,7 +98,7 @@
                                    class="rounded w-full px-3 py-3 outline-none border-2 border-gray-300 focus:border-gray-700">
                         </div>
                         <div v-for="error in validationErrors.phone_two" class="w-full mb-2">
-                            <h1 class="text-gray-500 text-sm">{{ error }}</h1>
+                            <h1 class="text-red-500 text-sm">{{ error }}</h1>
                         </div>
                         <div class="mb-3">
                             <h1 class="text-dark-100 text-sm mb-2 font-bold">عنوان البريد الالكتروني</h1>
@@ -106,7 +106,7 @@
                                    class="rounded w-full px-3 py-3 outline-none border-2 border-gray-300 focus:border-gray-700">
                         </div>
                         <div v-for="error in validationErrors.email" class="w-full mb-2">
-                            <h1 class="text-gray-500 text-sm">{{ error }}</h1>
+                            <h1 class="text-red-500 text-sm">{{ error }}</h1>
                         </div>
                     </div>
                 </div>
@@ -145,7 +145,7 @@
                             </div>
 
                             <div v-for="error in validationErrors.payment_type" class="w-full mb-2">
-                                <h1 class="text-gray-500 text-sm">اختر احدى طرق الدفع</h1>
+                                <h1 class="text-red-500 text-sm">اختر احدى طرق الدفع</h1>
                             </div>
 
 
@@ -155,7 +155,8 @@
                         </p>
                         <div class="border-t border-gray-500 my-3"></div>
                         <p class="text-xl">
-                            السعر الكامل {{ total }}
+                            السعر الكامل
+                            <span class="text-orange-100">IQD {{ total }}</span>
                         </p>
                         <button
                             @click="checkout"

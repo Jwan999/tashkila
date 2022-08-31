@@ -33,10 +33,10 @@ class APIController extends Controller
 //        dd($request->shop != null);
         if ($request->shop != null) {
 
-            $products = Product::where('shop_id', $request->shop)->get();
+            $products = Product::where('shop_id', $request->shop)->paginate(10);
 
         } else {
-            $products = Product::all();
+            $products = Product::paginate(10);
         }
         return Response::json([
             "products" => $products

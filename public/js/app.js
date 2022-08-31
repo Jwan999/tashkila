@@ -2394,6 +2394,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
 
 
 
@@ -2611,6 +2612,128 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
  // import shop from "../components/shop";
 
 
@@ -2626,7 +2749,9 @@ __webpack_require__.r(__webpack_exports__);
       products: [],
       shops: [],
       picks: [],
-      activeShops: null
+      activeShops: null,
+      currentPage: 1,
+      totalPages: 0
     };
   },
   computed: {
@@ -2639,27 +2764,38 @@ __webpack_require__.r(__webpack_exports__);
 
   },
   methods: {
+    paginate: function paginate(action) {
+      if (action == 'next' && this.currentPage < this.totalPages) {
+        this.currentPage++;
+        this.getProducts();
+      } else if (action == 'previous' && this.currentPage > 1) {
+        this.currentPage--;
+        this.getProducts();
+      }
+    },
     getProducts: function getProducts(shop) {
       var _this = this;
 
       axios__WEBPACK_IMPORTED_MODULE_2___default().get('/api/products', {
         params: {
-          shop: shop
+          shop: shop,
+          page: this.currentPage
         }
       }).then(function (response) {
-        _this.products = response.data.products;
+        _this.products = response.data.products.data;
+        _this.currentPage = response.data.products.current_page;
+        _this.totalPages = response.data.products.last_page;
 
         if (shop !== undefined) {
           _this.activeShops = shop;
-        } // console.log(this.products.final_price)
-
+        }
       });
     },
     getTopPicks: function getTopPicks() {
       var _this2 = this;
 
       axios__WEBPACK_IMPORTED_MODULE_2___default().get('/api/toppicks').then(function (response) {
-        _this2.picks = response.data.picks; // console.log(this.picks)
+        _this2.picks = response.data.picks;
       });
     }
   },
@@ -3123,6 +3259,25 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
  // import Category from "../components/Category";
 
 
@@ -3156,6 +3311,7 @@ __webpack_require__.r(__webpack_exports__);
 
       }).then(function (response) {
         _this.orders = response.data.orders;
+        console.log(_this.orders);
       });
     },
     goBack: function goBack() {
@@ -4747,7 +4903,7 @@ var render = function() {
                       _vm._v(" "),
                       _vm._l(_vm.validationErrors.full_name, function(error) {
                         return _c("div", { staticClass: "w-full mb-2" }, [
-                          _c("h1", { staticClass: "text-gray-500 text-sm" }, [
+                          _c("h1", { staticClass: "text-red-500 text-sm" }, [
                             _vm._v(_vm._s(error))
                           ])
                         ])
@@ -4788,7 +4944,7 @@ var render = function() {
                       _vm._v(" "),
                       _vm._l(_vm.validationErrors.address, function(error) {
                         return _c("div", { staticClass: "w-full mb-2" }, [
-                          _c("h1", { staticClass: "text-gray-500 text-sm" }, [
+                          _c("h1", { staticClass: "text-red-500 text-sm" }, [
                             _vm._v(_vm._s(error))
                           ])
                         ])
@@ -4834,7 +4990,7 @@ var render = function() {
                         error
                       ) {
                         return _c("div", { staticClass: "w-full mb-2" }, [
-                          _c("h1", { staticClass: "text-gray-500 text-sm" }, [
+                          _c("h1", { staticClass: "text-red-500 text-sm" }, [
                             _vm._v(_vm._s(error))
                           ])
                         ])
@@ -4875,7 +5031,7 @@ var render = function() {
                       _vm._v(" "),
                       _vm._l(_vm.validationErrors.phone_one, function(error) {
                         return _c("div", { staticClass: "w-full mb-2" }, [
-                          _c("h1", { staticClass: "text-gray-500 text-sm" }, [
+                          _c("h1", { staticClass: "text-red-500 text-sm" }, [
                             _vm._v(_vm._s(error))
                           ])
                         ])
@@ -4919,7 +5075,7 @@ var render = function() {
                       _vm._v(" "),
                       _vm._l(_vm.validationErrors.phone_two, function(error) {
                         return _c("div", { staticClass: "w-full mb-2" }, [
-                          _c("h1", { staticClass: "text-gray-500 text-sm" }, [
+                          _c("h1", { staticClass: "text-red-500 text-sm" }, [
                             _vm._v(_vm._s(error))
                           ])
                         ])
@@ -4963,7 +5119,7 @@ var render = function() {
                       _vm._v(" "),
                       _vm._l(_vm.validationErrors.email, function(error) {
                         return _c("div", { staticClass: "w-full mb-2" }, [
-                          _c("h1", { staticClass: "text-gray-500 text-sm" }, [
+                          _c("h1", { staticClass: "text-red-500 text-sm" }, [
                             _vm._v(_vm._s(error))
                           ])
                         ])
@@ -5094,7 +5250,7 @@ var render = function() {
                             return _c("div", { staticClass: "w-full mb-2" }, [
                               _c(
                                 "h1",
-                                { staticClass: "text-gray-500 text-sm" },
+                                { staticClass: "text-red-500 text-sm" },
                                 [_vm._v("اختر احدى طرق الدفع")]
                               )
                             ])
@@ -5117,10 +5273,11 @@ var render = function() {
                       _vm._v(" "),
                       _c("p", { staticClass: "text-xl" }, [
                         _vm._v(
-                          "\n                        السعر الكامل " +
-                            _vm._s(_vm.total) +
-                            "\n                    "
-                        )
+                          "\n                        السعر الكامل\n                        "
+                        ),
+                        _c("span", { staticClass: "text-orange-100" }, [
+                          _vm._v("IQD " + _vm._s(_vm.total))
+                        ])
                       ]),
                       _vm._v(" "),
                       _c(
@@ -5338,7 +5495,7 @@ var render = function() {
                       },
                       [
                         _vm._v(
-                          "\n                        كل المنتجات\n                    "
+                          "\n                            كل المنتجات\n                        "
                         )
                       ]
                     ),
@@ -5365,9 +5522,9 @@ var render = function() {
                             },
                             [
                               _vm._v(
-                                "\n                            " +
+                                "\n                                " +
                                   _vm._s(shop.name) +
-                                  "\n                        "
+                                  "\n                            "
                               )
                             ]
                           )
@@ -5398,6 +5555,219 @@ var render = function() {
             ])
           ]
         )
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "flex justify-end items-center" }, [
+        _c(
+          "div",
+          {
+            staticClass:
+              "flex justify-between items-center px-6 mt-6 w-full lg:w-10/12"
+          },
+          [
+            _c(
+              "div",
+              {
+                staticClass: "flex items-center",
+                class:
+                  _vm.currentPage < _vm.totalPages ? "" : "cursor-not-allowed",
+                on: {
+                  click: function($event) {
+                    return _vm.paginate("next")
+                  }
+                }
+              },
+              [
+                _c("div", [
+                  _c(
+                    "svg",
+                    {
+                      staticClass: "w-7 h-7 fill-gray-600",
+                      class:
+                        _vm.currentPage < _vm.totalPages
+                          ? "fill-orange-100"
+                          : "",
+                      staticStyle: {
+                        "enable-background": "new 0 0 512.009 512.009"
+                      },
+                      attrs: {
+                        version: "1.1",
+                        id: "Capa_1",
+                        xmlns: "http://www.w3.org/2000/svg",
+                        "xmlns:xlink": "http://www.w3.org/1999/xlink",
+                        x: "0px",
+                        y: "0px",
+                        viewBox: "0 0 512.009 512.009",
+                        "xml:space": "preserve"
+                      }
+                    },
+                    [
+                      _c("g", [
+                        _c("g", [
+                          _c("path", {
+                            attrs: {
+                              d:
+                                "M508.625,247.801L508.625,247.801L392.262,131.437c-4.18-4.881-11.526-5.45-16.407-1.269\n\t\t\tc-4.881,4.18-5.45,11.526-1.269,16.407c0.39,0.455,0.814,0.88,1.269,1.269l96.465,96.582H11.636C5.21,244.426,0,249.636,0,256.063\n\t\t\ts5.21,11.636,11.636,11.636H472.32l-96.465,96.465c-4.881,4.18-5.45,11.526-1.269,16.407s11.526,5.45,16.407,1.269\n\t\t\tc0.455-0.39,0.88-0.814,1.269-1.269l116.364-116.364C513.137,259.67,513.137,252.34,508.625,247.801z"
+                            }
+                          })
+                        ])
+                      ]),
+                      _vm._v(" "),
+                      _c("g"),
+                      _vm._v(" "),
+                      _c("g"),
+                      _vm._v(" "),
+                      _c("g"),
+                      _vm._v(" "),
+                      _c("g"),
+                      _vm._v(" "),
+                      _c("g"),
+                      _vm._v(" "),
+                      _c("g"),
+                      _vm._v(" "),
+                      _c("g"),
+                      _vm._v(" "),
+                      _c("g"),
+                      _vm._v(" "),
+                      _c("g"),
+                      _vm._v(" "),
+                      _c("g"),
+                      _vm._v(" "),
+                      _c("g"),
+                      _vm._v(" "),
+                      _c("g"),
+                      _vm._v(" "),
+                      _c("g"),
+                      _vm._v(" "),
+                      _c("g"),
+                      _vm._v(" "),
+                      _c("g")
+                    ]
+                  )
+                ]),
+                _vm._v(" "),
+                _c(
+                  "button",
+                  {
+                    staticClass: "text-gray-600 mr-2 lg:text-lg text-sm",
+                    class:
+                      _vm.currentPage < _vm.totalPages
+                        ? "text-orange-100"
+                        : "cursor-not-allowed"
+                  },
+                  [_vm._v("Next\n                    ")]
+                )
+              ]
+            ),
+            _vm._v(" "),
+            _c("div", [
+              _c("h1", { staticClass: "text-gray-800" }, [
+                _vm._v(
+                  "Page " +
+                    _vm._s(_vm.currentPage) +
+                    " of " +
+                    _vm._s(_vm.totalPages) +
+                    " pages"
+                )
+              ])
+            ]),
+            _vm._v(" "),
+            _c(
+              "div",
+              {
+                staticClass: "flex items-center",
+                class:
+                  _vm.currentPage > _vm.totalPages ? "" : "cursor-not-allowed",
+                on: {
+                  click: function($event) {
+                    return _vm.paginate("next")
+                  }
+                }
+              },
+              [
+                _c(
+                  "button",
+                  {
+                    staticClass: " text-gray-600 ml-2 lg:text-lg text-sm",
+                    class:
+                      _vm.currentPage > _vm.totalPages
+                        ? "text-orange-100"
+                        : "cursor-not-allowed"
+                  },
+                  [_vm._v("Previous\n                    ")]
+                ),
+                _vm._v(" "),
+                _c("div", [
+                  _c(
+                    "svg",
+                    {
+                      staticClass: "w-7 h-7 fill-gray-600",
+                      class:
+                        _vm.currentPage > _vm.totalPages
+                          ? "fill-orange-100"
+                          : "",
+                      staticStyle: {
+                        "enable-background": "new 0 0 512.009 512.009"
+                      },
+                      attrs: {
+                        version: "1.1",
+                        id: "Capa_1",
+                        xmlns: "http://www.w3.org/2000/svg",
+                        "xmlns:xlink": "http://www.w3.org/1999/xlink",
+                        x: "0px",
+                        y: "0px",
+                        viewBox: "0 0 512.009 512.009",
+                        "xml:space": "preserve"
+                      }
+                    },
+                    [
+                      _c("g", [
+                        _c("g", [
+                          _c("path", {
+                            attrs: {
+                              d:
+                                "M500.373,244.083H39.689l96.465-96.465c4.563-4.531,4.589-11.903,0.058-16.465c-4.531-4.563-11.903-4.589-16.465-0.058\n\t\t\tL3.384,247.458c-4.512,4.539-4.512,11.869,0,16.407l116.364,116.364c4.18,4.881,11.526,5.45,16.407,1.269\n\t\t\tc4.881-4.18,5.45-11.526,1.269-16.407c-0.39-0.455-0.814-0.88-1.269-1.269l-96.465-96.465h460.684\n\t\t\tc6.427,0,11.636-5.21,11.636-11.636S506.799,244.083,500.373,244.083z"
+                            }
+                          })
+                        ])
+                      ]),
+                      _vm._v(" "),
+                      _c("g"),
+                      _vm._v(" "),
+                      _c("g"),
+                      _vm._v(" "),
+                      _c("g"),
+                      _vm._v(" "),
+                      _c("g"),
+                      _vm._v(" "),
+                      _c("g"),
+                      _vm._v(" "),
+                      _c("g"),
+                      _vm._v(" "),
+                      _c("g"),
+                      _vm._v(" "),
+                      _c("g"),
+                      _vm._v(" "),
+                      _c("g"),
+                      _vm._v(" "),
+                      _c("g"),
+                      _vm._v(" "),
+                      _c("g"),
+                      _vm._v(" "),
+                      _c("g"),
+                      _vm._v(" "),
+                      _c("g"),
+                      _vm._v(" "),
+                      _c("g"),
+                      _vm._v(" "),
+                      _c("g")
+                    ]
+                  )
+                ])
+              ]
+            )
+          ]
+        )
       ])
     ],
     1
@@ -5420,12 +5790,16 @@ var staticRenderFns = [
             _c(
               "h1",
               { staticClass: "lg:text-5xl text-4xl font-bold text-orange-100" },
-              [_vm._v("\n                        تشكيلة\n                    ")]
+              [
+                _vm._v(
+                  "\n                            تشكيلة\n                        "
+                )
+              ]
             ),
             _vm._v(" "),
             _c("p", { staticClass: "mt-10 lg:text-xl text-base" }, [
               _vm._v(
-                "\n                        اطلالة الى عالم الطفولة، سنعيش معا مغامرات شيقة\n                        نعزف من خلالها لحنا في كل ما نتمناه لكم من ثقافة واخلاق\n                        رفيعة ومتعة وابداع.\n                    "
+                "\n                            اطلالة الى عالم الطفولة، سنعيش معا مغامرات شيقة\n                            نعزف من خلالها لحنا في كل ما نتمناه لكم من ثقافة واخلاق\n                            رفيعة ومتعة وابداع.\n                        "
               )
             ]),
             _vm._v(" "),
@@ -5715,6 +6089,7 @@ var render = function() {
             _vm._v(" "),
             _c("div", { staticClass: "lg:w-5/12 w-full self-end" }, [
               _c("img", {
+                staticClass: "rounded",
                 attrs: { src: "/storage/" + _vm.product.preview_img, alt: "" }
               })
             ])
@@ -6050,281 +6425,371 @@ var render = function() {
         : _vm._e(),
       _vm._v(" "),
       _vm.submittedEmail && !this.orders.length == 0
-        ? _c(
-            "div",
-            { staticClass: "w-full flex flex-col lg:px-24 px-4 mt-10" },
-            [
-              _c("div", { attrs: { id: "store" } }, [
-                _c(
-                  "div",
-                  {
-                    staticClass:
-                      "flex justify-between items-center w-full lg:mb-10 mb-6"
-                  },
-                  [
-                    _c("div", { staticClass: "lg:w-4/12 w-0" }),
-                    _vm._v(" "),
-                    _vm._m(2),
-                    _vm._v(" "),
-                    _c(
-                      "div",
-                      { staticClass: "flex justify-end lg:w-4/12 w-6/12" },
-                      [
-                        _c(
-                          "button",
-                          {
-                            staticClass:
-                              "bg-gray-800 focus:bg-gray-600 py-3 px-4 text-white rounded text-sm shadow-lg hover:bg-gray-600 cursor-pointer",
-                            on: {
-                              click: function($event) {
-                                _vm.submittedEmail = ""
-                              }
-                            }
-                          },
-                          [
-                            _vm._v(
-                              "\n                        ادخال بريد الكتروني مختلف\n                    "
-                            )
-                          ]
-                        )
-                      ]
-                    )
-                  ]
-                ),
-                _vm._v(" "),
-                _c(
-                  "div",
-                  { staticClass: "flex flex-wrap rounded justify-center" },
-                  [
-                    _c(
-                      "h1",
-                      {
-                        staticClass:
-                          "lg:text-xl items-center px-5 py-3 rounded font-bold ml-2 cursor-pointer lg:mt-0 mt-2",
-                        class: !_vm.showCompleted
-                          ? "bg-dark-100 text-white"
-                          : "text-dark-100",
-                        on: {
-                          click: function($event) {
-                            _vm.showCompleted = false
-                          }
-                        }
-                      },
-                      [
-                        _vm._v(
-                          "\n                    الطلبات السابقة\n                "
-                        )
-                      ]
-                    ),
-                    _vm._v(" "),
-                    _c(
-                      "h1",
-                      {
-                        staticClass:
-                          "lg:text-xl items-center px-5 py-3 rounded font-bold ml-2 cursor-pointer lg:mt-0 mt-2",
-                        class: _vm.showCompleted
-                          ? "bg-dark-100 text-white"
-                          : "text-dark-100",
-                        on: {
-                          click: function($event) {
-                            _vm.showCompleted = true
-                          }
-                        }
-                      },
-                      [
-                        _vm._v(
-                          "\n                    الطلبات الحالية\n                "
-                        )
-                      ]
-                    )
-                  ]
-                ),
-                _vm._v(" "),
-                _vm.showCompleted && _vm.notCompleted.length === 0
-                  ? _c("div", [
-                      _vm._m(3),
-                      _vm._v(" "),
+        ? _c("div", { staticClass: "w-full flex flex-col mt-10" }, [
+            _c("div", { attrs: { id: "store" } }, [
+              _c(
+                "div",
+                {
+                  staticClass:
+                    "flex justify-between items-center w-full lg:mb-10 mb-6 lg:px-24 px-4"
+                },
+                [
+                  _c("div", { staticClass: "lg:w-4/12 w-0" }),
+                  _vm._v(" "),
+                  _vm._m(2),
+                  _vm._v(" "),
+                  _c(
+                    "div",
+                    { staticClass: "flex justify-end lg:w-4/12 w-6/12" },
+                    [
                       _c(
-                        "h1",
+                        "button",
                         {
-                          staticClass: "lg:text-3xl text-xl mt-10 text-center"
+                          staticClass:
+                            "bg-gray-800 focus:bg-gray-600 py-3 px-4 text-white rounded text-sm shadow-lg hover:bg-gray-600 cursor-pointer",
+                          on: {
+                            click: function($event) {
+                              _vm.submittedEmail = ""
+                            }
+                          }
                         },
-                        [_vm._v("لا توجد طلبات قيد التنفيذ")]
+                        [
+                          _vm._v(
+                            "\n                        ادخال بريد الكتروني مختلف\n                    "
+                          )
+                        ]
                       )
-                    ])
-                  : _vm._e(),
-                _vm._v(" "),
-                _c(
-                  "div",
-                  { staticClass: "flex flex-wrap gap-10" },
-                  [
-                    _vm._l(_vm.completed, function(order) {
-                      return !_vm.showCompleted
-                        ? _c("div", { staticClass: "w-full" }, [
-                            _c(
-                              "h1",
-                              {
-                                staticClass:
-                                  "font-bold text-2xl my-10 text-center "
-                              },
-                              [_vm._v("محتويات الطلب رقم " + _vm._s(order.id))]
-                            ),
-                            _vm._v(" "),
-                            _c(
-                              "div",
-                              {
-                                staticClass:
-                                  "grid lg:grid-cols-4 md:grid-cols-3 grid-cols-1 gap-10"
-                              },
-                              _vm._l(order.items, function(item) {
-                                return _c("div", [
-                                  item.product
-                                    ? _c(
-                                        "div",
-                                        {
-                                          staticClass:
-                                            "shadow-lg bg-white rounded flex flex-col"
-                                        },
-                                        [
-                                          _c("img", {
-                                            staticClass:
-                                              "rounded-t border-t-2 border-orange-100 h-96 w-full object-cover",
-                                            attrs: {
-                                              src:
-                                                "storage/" +
-                                                item.product.preview_img,
-                                              alt: ""
-                                            }
-                                          }),
-                                          _vm._v(" "),
-                                          _c(
-                                            "div",
-                                            { staticClass: "px-3 py-4" },
-                                            [
-                                              _c(
-                                                "h3",
-                                                {
-                                                  staticClass:
-                                                    "font-bold text-lg "
-                                                },
-                                                [
-                                                  _vm._v(
-                                                    _vm._s(item.product.name)
-                                                  )
-                                                ]
-                                              ),
-                                              _vm._v(" "),
-                                              _c(
-                                                "h3",
-                                                {
-                                                  staticClass:
-                                                    "font-mono text-md "
-                                                },
-                                                [
-                                                  _vm._v(
-                                                    _vm._s(item.product.price)
-                                                  )
-                                                ]
-                                              )
-                                            ]
-                                          )
-                                        ]
-                                      )
-                                    : _vm._e()
-                                ])
-                              }),
-                              0
-                            )
-                          ])
-                        : _vm._e()
-                    }),
+                    ]
+                  )
+                ]
+              ),
+              _vm._v(" "),
+              _c(
+                "div",
+                {
+                  staticClass:
+                    "flex flex-wrap rounded justify-center lg:px-24 px-4"
+                },
+                [
+                  _c(
+                    "h1",
+                    {
+                      staticClass:
+                        "lg:text-xl items-center px-5 py-3 rounded font-bold ml-2 cursor-pointer lg:mt-0 mt-2",
+                      class: !_vm.showCompleted
+                        ? "bg-dark-100 text-white"
+                        : "text-dark-100",
+                      on: {
+                        click: function($event) {
+                          _vm.showCompleted = false
+                        }
+                      }
+                    },
+                    [
+                      _vm._v(
+                        "\n                    الطلبات السابقة\n                "
+                      )
+                    ]
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "h1",
+                    {
+                      staticClass:
+                        "lg:text-xl items-center px-5 py-3 rounded font-bold ml-2 cursor-pointer lg:mt-0 mt-2",
+                      class: _vm.showCompleted
+                        ? "bg-dark-100 text-white"
+                        : "text-dark-100",
+                      on: {
+                        click: function($event) {
+                          _vm.showCompleted = true
+                        }
+                      }
+                    },
+                    [
+                      _vm._v(
+                        "\n                    الطلبات الحالية\n                "
+                      )
+                    ]
+                  )
+                ]
+              ),
+              _vm._v(" "),
+              _vm.showCompleted && _vm.notCompleted.length === 0
+                ? _c("div", [
+                    _vm._m(3),
                     _vm._v(" "),
-                    _vm._l(_vm.notCompleted, function(order) {
-                      return _vm.showCompleted
-                        ? _c("div", { staticClass: "w-full" }, [
-                            _c(
-                              "h1",
-                              {
-                                staticClass:
-                                  "font-bold text-2xl my-10 text-center "
-                              },
-                              [_vm._v("محتويات الطلب رقم " + _vm._s(order.id))]
-                            ),
-                            _vm._v(" "),
-                            _c(
-                              "div",
-                              {
-                                staticClass:
-                                  "grid lg:grid-cols-4 md:grid-cols-3 grid-cols-1 gap-10"
-                              },
-                              _vm._l(order.items, function(item) {
-                                return _c("div", [
+                    _c(
+                      "h1",
+                      { staticClass: "lg:text-3xl text-xl mt-10 text-center" },
+                      [_vm._v("لا توجد طلبات قيد التنفيذ")]
+                    )
+                  ])
+                : _vm._e(),
+              _vm._v(" "),
+              _c(
+                "div",
+                { staticClass: "flex flex-wrap gap-10" },
+                [
+                  _vm._l(_vm.completed, function(order) {
+                    return !_vm.showCompleted
+                      ? _c("div", { staticClass: "w-full " }, [
+                          _c(
+                            "div",
+                            {
+                              staticClass: "my-10 py-3 bg-gray-200 text-center"
+                            },
+                            [
+                              _c(
+                                "div",
+                                { staticClass: "flex justify-center" },
+                                [
+                                  _c(
+                                    "h1",
+                                    { staticClass: "font-bold text-xl px-2" },
+                                    [_vm._v("محتويات الطلب رقم")]
+                                  ),
+                                  _vm._v(" "),
+                                  _c(
+                                    "h1",
+                                    { staticClass: "font-bold text-xl px-2" },
+                                    [_vm._v("#" + _vm._s(order.id))]
+                                  )
+                                ]
+                              ),
+                              _vm._v(" "),
+                              _c(
+                                "div",
+                                { staticClass: "flex justify-center" },
+                                [
+                                  _c(
+                                    "h1",
+                                    {
+                                      staticClass:
+                                        "text-gray-800 text-sm mt-1 px-2"
+                                    },
+                                    [_vm._v("بتاريخ")]
+                                  ),
+                                  _vm._v(" "),
+                                  _c(
+                                    "h1",
+                                    {
+                                      staticClass:
+                                        "text-gray-800 text-sm mt-1 px-2"
+                                    },
+                                    [
+                                      _vm._v(
+                                        " " +
+                                          _vm._s(
+                                            new Date(
+                                              order.completed_at
+                                            ).getDate()
+                                          ) +
+                                          " - " +
+                                          _vm._s(
+                                            new Date(
+                                              order.completed_at
+                                            ).getMonth() + 1
+                                          ) +
+                                          " - " +
+                                          _vm._s(
+                                            new Date(
+                                              order.completed_at
+                                            ).getFullYear()
+                                          )
+                                      )
+                                    ]
+                                  )
+                                ]
+                              )
+                            ]
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "div",
+                            {
+                              staticClass:
+                                "grid lg:grid-cols-4 md:grid-cols-3 grid-cols-1 gap-10 lg:px-24 px-4"
+                            },
+                            _vm._l(order.items, function(item) {
+                              return _c(
+                                "div",
+                                {
+                                  staticClass:
+                                    "w-full bg-white rounded shadow-md hover:shadow-xl"
+                                },
+                                [
                                   item.product
-                                    ? _c(
-                                        "div",
+                                    ? _c("div", [
+                                        _c(
+                                          "a",
+                                          {
+                                            attrs: {
+                                              href:
+                                                "/product/" + item.product.id
+                                            }
+                                          },
+                                          [
+                                            _c("img", {
+                                              staticClass:
+                                                "object-fit object-center w-full h-64",
+                                              attrs: {
+                                                src:
+                                                  "storage/" +
+                                                  item.product.preview_img,
+                                                alt: ""
+                                              }
+                                            })
+                                          ]
+                                        )
+                                      ])
+                                    : _vm._e()
+                                ]
+                              )
+                            }),
+                            0
+                          )
+                        ])
+                      : _vm._e()
+                  }),
+                  _vm._v(" "),
+                  _vm._l(_vm.notCompleted, function(order) {
+                    return _vm.showCompleted
+                      ? _c("div", { staticClass: "w-full" }, [
+                          _c(
+                            "div",
+                            { staticClass: "my-10 bg-gray-200 text-center" },
+                            [
+                              _c(
+                                "div",
+                                {
+                                  staticClass:
+                                    "my-10 py-3 bg-gray-200 text-center"
+                                },
+                                [
+                                  _c(
+                                    "div",
+                                    { staticClass: "flex justify-center" },
+                                    [
+                                      _c(
+                                        "h1",
+                                        {
+                                          staticClass: "font-bold text-xl px-2"
+                                        },
+                                        [_vm._v("محتويات الطلب رقم")]
+                                      ),
+                                      _vm._v(" "),
+                                      _c(
+                                        "h1",
+                                        {
+                                          staticClass: "font-bold text-xl px-2"
+                                        },
+                                        [_vm._v("#" + _vm._s(order.id))]
+                                      )
+                                    ]
+                                  ),
+                                  _vm._v(" "),
+                                  _c(
+                                    "div",
+                                    { staticClass: "flex justify-center" },
+                                    [
+                                      _c(
+                                        "h1",
                                         {
                                           staticClass:
-                                            "shadow-lg bg-white rounded flex flex-col"
+                                            "text-gray-800 text-sm mt-1 px-2"
+                                        },
+                                        [_vm._v("بتاريخ")]
+                                      ),
+                                      _vm._v(" "),
+                                      _c(
+                                        "h1",
+                                        {
+                                          staticClass:
+                                            "text-gray-800 text-sm mt-1 px-2"
                                         },
                                         [
-                                          _c("img", {
-                                            staticClass:
-                                              "rounded-t border-t-2 border-orange-100 h-96 w-full object-cover",
-                                            attrs: {
-                                              src:
-                                                "storage/" +
-                                                item.product.preview_img,
-                                              alt: ""
-                                            }
-                                          }),
-                                          _vm._v(" "),
-                                          _c(
-                                            "div",
-                                            { staticClass: "px-3 py-4" },
-                                            [
-                                              _c(
-                                                "h3",
-                                                {
-                                                  staticClass:
-                                                    "font-bold text-lg "
-                                                },
-                                                [
-                                                  _vm._v(
-                                                    _vm._s(item.product.name)
-                                                  )
-                                                ]
-                                              ),
-                                              _vm._v(" "),
-                                              _c(
-                                                "h3",
-                                                {
-                                                  staticClass:
-                                                    "font-mono text-md "
-                                                },
-                                                [
-                                                  _vm._v(
-                                                    _vm._s(item.product.price)
-                                                  )
-                                                ]
+                                          _vm._v(
+                                            " " +
+                                              _vm._s(
+                                                new Date(
+                                                  order.created_at
+                                                ).getDate()
+                                              ) +
+                                              " - " +
+                                              _vm._s(
+                                                new Date(
+                                                  order.created_at
+                                                ).getMonth() + 1
+                                              ) +
+                                              " - " +
+                                              _vm._s(
+                                                new Date(
+                                                  order.created_at
+                                                ).getFullYear()
                                               )
-                                            ]
                                           )
                                         ]
                                       )
+                                    ]
+                                  )
+                                ]
+                              )
+                            ]
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "div",
+                            {
+                              staticClass:
+                                "grid lg:grid-cols-4 md:grid-cols-3 grid-cols-1 gap-10 lg:px-24 px-4"
+                            },
+                            _vm._l(order.items, function(item) {
+                              return _c(
+                                "div",
+                                {
+                                  staticClass:
+                                    "w-full bg-white rounded shadow-md hover:shadow-xl "
+                                },
+                                [
+                                  item.product
+                                    ? _c("div", [
+                                        _c(
+                                          "a",
+                                          {
+                                            attrs: {
+                                              href:
+                                                "/product/" + item.product.id
+                                            }
+                                          },
+                                          [
+                                            _c("img", {
+                                              staticClass:
+                                                "object-fit object-center w-full h-64",
+                                              attrs: {
+                                                src:
+                                                  "storage/" +
+                                                  item.product.preview_img,
+                                                alt: ""
+                                              }
+                                            })
+                                          ]
+                                        )
+                                      ])
                                     : _vm._e()
-                                ])
-                              }),
-                              0
-                            )
-                          ])
-                        : _vm._e()
-                    })
-                  ],
-                  2
-                )
-              ])
-            ]
-          )
+                                ]
+                              )
+                            }),
+                            0
+                          )
+                        ])
+                      : _vm._e()
+                  })
+                ],
+                2
+              )
+            ])
+          ])
         : _vm._e()
     ],
     1
@@ -6376,12 +6841,16 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "flex justify-center mt-32" }, [
-      _c("img", {
-        staticClass: "lg:w-2/12 w-4/12",
-        attrs: { src: "/images/emptyOrders.png", alt: "" }
-      })
-    ])
+    return _c(
+      "div",
+      { staticClass: "flex justify-center mt-32 lg:px-24 px-4" },
+      [
+        _c("img", {
+          staticClass: "lg:w-2/12 w-4/12",
+          attrs: { src: "/images/emptyOrders.png", alt: "" }
+        })
+      ]
+    )
   }
 ]
 render._withStripped = true

@@ -64,12 +64,13 @@
         </div>
 
         <!--orders -->
-        <div v-if="submittedEmail && !this.orders.length  == 0" class="w-full flex flex-col lg:px-24 px-4 mt-10">
+        <div v-if="submittedEmail && !this.orders.length  == 0" class="w-full flex flex-col mt-10">
             <!--    <router-link :to="{path:'/products'}">Click Me</router-link>-->
             <!--    <router-link :to="{path:'/checkout'}">Checkout</router-link>-->
 
             <div id="store">
-                <div class="flex justify-between items-center w-full lg:mb-10 mb-6">
+                <!--header-->
+                <div class="flex justify-between items-center w-full lg:mb-10 mb-6 lg:px-24 px-4">
                     <div class="lg:w-4/12 w-0">
 
                     </div>
@@ -86,14 +87,14 @@
 
                 </div>
 
-
-                <div class="flex flex-wrap rounded justify-center">
-                    <!--                    where completed is true-->
+                <div class="flex flex-wrap rounded justify-center lg:px-24 px-4">
+                    <!--where completed is true-->
                     <h1 :class="!showCompleted ? 'bg-dark-100 text-white' :  'text-dark-100'"
                         @click="showCompleted = false;"
                         class="lg:text-xl items-center px-5 py-3 rounded font-bold ml-2 cursor-pointer lg:mt-0 mt-2">
                         الطلبات السابقة
                     </h1>
+
                     <!--where completed is null-->
                     <!--and is dispatched then write it's on it's way-->
                     <h1 :class="showCompleted ? 'bg-dark-100 text-white' :  'text-dark-100'"
@@ -102,65 +103,83 @@
                         الطلبات الحالية
                     </h1>
                 </div>
-                <!--products-->
 
+                <!--no current products-->
                 <div v-if="showCompleted && notCompleted.length === 0">
-                    <div class="flex justify-center mt-32">
+                    <div class="flex justify-center mt-32 lg:px-24 px-4">
                         <img class="lg:w-2/12 w-4/12" src="/images/emptyOrders.png" alt="">
                     </div>
                     <h1 class="lg:text-3xl text-xl mt-10 text-center">لا توجد طلبات قيد التنفيذ</h1>
-
                 </div>
-
 
                 <div class="flex flex-wrap gap-10">
 
-
                     <!--past orders data-->
-                    <div class="w-full" v-if="!showCompleted" v-for="order in completed">
-                        <h1 class="font-bold text-2xl my-10 text-center ">محتويات الطلب رقم {{ order.id }}</h1>
-                        <div class="grid lg:grid-cols-4 md:grid-cols-3 grid-cols-1 gap-10">
-                            <div v-for="item in order.items">
-                                <div v-if="item.product"
-                                     class="shadow-lg bg-white rounded flex flex-col">
+                    <div class="w-full " v-if="!showCompleted" v-for="order in completed">
 
-                                    <img class="rounded-t border-t-2 border-orange-100 h-96 w-full object-cover"
-                                         :src="'storage/'+item.product.preview_img"
-                                         alt="">
-                                    <div class="px-3 py-4">
-                                        <h3 class="font-bold text-lg ">{{ item.product.name }}</h3>
-                                        <h3 class="font-mono text-md ">{{ item.product.price }}</h3>
+                        <div class="my-10 py-3 bg-gray-200 text-center">
+                            <div class="flex justify-center">
+                                <h1 class="font-bold text-xl px-2">محتويات الطلب رقم</h1>
+                                <h1 class="font-bold text-xl px-2">#{{ order.id }}</h1>
+                            </div>
 
-                                    </div>
-                                </div>
+                            <div class="flex justify-center">
+                                <h1 class="text-gray-800 text-sm mt-1 px-2">بتاريخ</h1>
+                                <h1 class="text-gray-800 text-sm mt-1 px-2"> {{ new Date(order.completed_at).getDate() }} - {{ new Date(order.completed_at).getMonth() + 1}} - {{ new Date(order.completed_at).getFullYear() }}</h1>
+
                             </div>
                         </div>
 
-                    </div>
+                        <div class="grid lg:grid-cols-4 md:grid-cols-3 grid-cols-1 gap-10 lg:px-24 px-4">
 
+                            <div class="w-full bg-white rounded shadow-md hover:shadow-xl" v-for="item in order.items">
+                                <div v-if="item.product">
+                                    <a :href="'/product/'+ item.product.id">
+                                        <img
+                                            class="object-fit object-center w-full h-64"
+                                            :src="'storage/'+item.product.preview_img" alt=""
+                                        />
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
 
                     <!--new orders data-->
                     <div class="w-full" v-if="showCompleted" v-for="order in notCompleted">
-                        <h1 class="font-bold text-2xl my-10 text-center ">محتويات الطلب رقم {{ order.id }}</h1>
-                        <div class="grid lg:grid-cols-4 md:grid-cols-3 grid-cols-1 gap-10">
-                            <div v-for="item in order.items">
-                                <div v-if="item.product"
-                                     class="shadow-lg bg-white rounded flex flex-col">
+                        <div class="my-10 bg-gray-200 text-center">
+                            <div class="my-10 py-3 bg-gray-200 text-center">
+                                <div class="flex justify-center">
+                                    <h1 class="font-bold text-xl px-2">محتويات الطلب رقم</h1>
+                                    <h1 class="font-bold text-xl px-2">#{{ order.id }}</h1>
+                                </div>
 
-                                    <img class="rounded-t border-t-2 border-orange-100 h-96 w-full object-cover"
-                                         :src="'storage/'+item.product.preview_img"
-                                         alt="">
-                                    <div class="px-3 py-4">
-                                        <h3 class="font-bold text-lg ">{{ item.product.name }}</h3>
-                                        <h3 class="font-mono text-md ">{{ item.product.price }}</h3>
+                                <div class="flex justify-center">
+                                    <h1 class="text-gray-800 text-sm mt-1 px-2">بتاريخ</h1>
+                                    <h1 class="text-gray-800 text-sm mt-1 px-2"> {{ new Date(order.created_at).getDate() }} - {{ new Date(order.created_at).getMonth() + 1}} - {{ new Date(order.created_at).getFullYear() }}</h1>
 
-                                    </div>
                                 </div>
                             </div>
                         </div>
 
-                    </div>
+                        <div class="grid lg:grid-cols-4 md:grid-cols-3 grid-cols-1 gap-10 lg:px-24 px-4">
 
+                            <div class="w-full bg-white rounded shadow-md hover:shadow-xl " v-for="item in order.items">
+                                <div v-if="item.product">
+                                    <a :href="'/product/'+ item.product.id">
+                                        <img
+                                            class="object-fit object-center w-full h-64"
+                                            :src="'storage/'+item.product.preview_img" alt=""
+                                        />
+
+                                    </a>
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </div>
 
                 </div>
             </div>
@@ -206,6 +225,7 @@ export default {
                 // hehe
             }).then(response => {
                 this.orders = response.data.orders;
+                console.log(this.orders)
 
             })
         },

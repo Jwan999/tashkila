@@ -121,8 +121,130 @@
             </div>
 
         </div>
-    </div>
+        <!--        pagination-->
+        <div class="flex justify-end items-center">
+            <div class="flex justify-between items-center px-6 mt-6 w-full lg:w-10/12">
+                <div :class="currentPage < totalPages ? '' : 'cursor-not-allowed'"
+                     @click="paginate('next')" class="flex items-center">
+                    <div>
+                        <svg :class="currentPage < totalPages ? 'fill-orange-100' : ''"
+                             class="w-7 h-7 fill-gray-600" version="1.1" id="Capa_1"
+                             xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px"
+                             y="0px"
+                             viewBox="0 0 512.009 512.009" style="enable-background:new 0 0 512.009 512.009;"
+                             xml:space="preserve">
+<g>
+	<g>
+		<path d="M508.625,247.801L508.625,247.801L392.262,131.437c-4.18-4.881-11.526-5.45-16.407-1.269
+			c-4.881,4.18-5.45,11.526-1.269,16.407c0.39,0.455,0.814,0.88,1.269,1.269l96.465,96.582H11.636C5.21,244.426,0,249.636,0,256.063
+			s5.21,11.636,11.636,11.636H472.32l-96.465,96.465c-4.881,4.18-5.45,11.526-1.269,16.407s11.526,5.45,16.407,1.269
+			c0.455-0.39,0.88-0.814,1.269-1.269l116.364-116.364C513.137,259.67,513.137,252.34,508.625,247.801z"/>
+	</g>
+</g>
+                            <g>
+</g>
+                            <g>
+</g>
+                            <g>
+</g>
+                            <g>
+</g>
+                            <g>
+</g>
+                            <g>
+</g>
+                            <g>
+</g>
+                            <g>
+</g>
+                            <g>
+</g>
+                            <g>
+</g>
+                            <g>
+</g>
+                            <g>
+</g>
+                            <g>
+</g>
+                            <g>
+</g>
+                            <g>
+</g>
+</svg>
+                    </div>
 
+                    <button :class="currentPage < totalPages ? 'text-orange-100' : 'cursor-not-allowed'"
+                            class="text-gray-600 mr-2 lg:text-lg text-sm">Next
+                    </button>
+
+                </div>
+                <div>
+                    <h1 class="text-gray-800">Page {{ currentPage }} of {{ totalPages }} pages</h1>
+
+                </div>
+                <div :class="currentPage > totalPages ? '' : 'cursor-not-allowed'"
+                     @click="paginate('next')" class="flex items-center">
+
+                    <button :class="currentPage > totalPages ? 'text-orange-100' : 'cursor-not-allowed'"
+                            class=" text-gray-600 ml-2 lg:text-lg text-sm">Previous
+                    </button>
+                    <div>
+                        <svg :class="currentPage > totalPages ? 'fill-orange-100' : ''" class="w-7 h-7 fill-gray-600"
+                             version="1.1" id="Capa_1"
+                             xmlns="http://www.w3.org/2000/svg"
+                             xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                             viewBox="0 0 512.009 512.009" style="enable-background:new 0 0 512.009 512.009;"
+                             xml:space="preserve">
+<g>
+	<g>
+		<path d="M500.373,244.083H39.689l96.465-96.465c4.563-4.531,4.589-11.903,0.058-16.465c-4.531-4.563-11.903-4.589-16.465-0.058
+			L3.384,247.458c-4.512,4.539-4.512,11.869,0,16.407l116.364,116.364c4.18,4.881,11.526,5.45,16.407,1.269
+			c4.881-4.18,5.45-11.526,1.269-16.407c-0.39-0.455-0.814-0.88-1.269-1.269l-96.465-96.465h460.684
+			c6.427,0,11.636-5.21,11.636-11.636S506.799,244.083,500.373,244.083z"/>
+	</g>
+</g>
+                            <g>
+</g>
+                            <g>
+</g>
+                            <g>
+</g>
+                            <g>
+</g>
+                            <g>
+</g>
+                            <g>
+</g>
+                            <g>
+</g>
+                            <g>
+</g>
+                            <g>
+</g>
+                            <g>
+</g>
+                            <g>
+</g>
+                            <g>
+</g>
+                            <g>
+</g>
+                            <g>
+</g>
+                            <g>
+</g>
+</svg>
+                    </div>
+
+                </div>
+
+
+            </div>
+
+        </div>
+
+    </div>
 
 
 </template>
@@ -144,7 +266,10 @@ export default {
             products: [],
             shops: [],
             picks: [],
-            activeShops: null
+            activeShops: null,
+            currentPage: 1,
+            totalPages: 0,
+
         }
     },
     computed: {
@@ -158,25 +283,38 @@ export default {
         // ...mapGetters(["total"])
     },
     methods: {
+        paginate(action) {
+            if (action == 'next' && this.currentPage < this.totalPages) {
+                this.currentPage++
+                this.getProducts()
+            } else if (action == 'previous' && this.currentPage > 1) {
+                this.currentPage--
+                this.getProducts()
+            }
+        },
         getProducts(shop) {
             axios.get('/api/products', {
                 params: {
                     shop: shop,
+                    page: this.currentPage
                 }
             }).then(response => {
+                this.products = response.data.products.data;
+                this.currentPage = response.data.products.current_page
+                this.totalPages = response.data.products.last_page
 
-                this.products = response.data.products;
 
                 if (shop !== undefined) {
                     this.activeShops = shop
+
                 }
-                // console.log(this.products.final_price)
             })
+
         },
         getTopPicks() {
             axios.get('/api/toppicks').then(response => {
                 this.picks = response.data.picks;
-                // console.log(this.picks)
+
 
             })
         }

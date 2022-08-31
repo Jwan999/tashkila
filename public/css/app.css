@@ -594,6 +594,9 @@ Ensure the default browser behavior of the `hidden` attribute.
 .ml-6 {
   margin-left: 1.5rem;
 }
+.mt-1 {
+  margin-top: 0.25rem;
+}
 .block {
   display: block;
 }
@@ -714,6 +717,9 @@ Ensure the default browser behavior of the `hidden` attribute.
 .cursor-pointer {
   cursor: pointer;
 }
+.cursor-not-allowed {
+  cursor: not-allowed;
+}
 .grid-cols-1 {
   grid-template-columns: repeat(1, minmax(0, 1fr));
 }
@@ -828,11 +834,11 @@ Ensure the default browser behavior of the `hidden` attribute.
 .rounded-bl {
   border-bottom-left-radius: 0.25rem;
 }
-.rounded-tl {
-  border-top-left-radius: 0.25rem;
-}
 .rounded-br {
   border-bottom-right-radius: 0.25rem;
+}
+.rounded-tl {
+  border-top-left-radius: 0.25rem;
 }
 .border {
   border-width: 1px;
@@ -848,9 +854,6 @@ Ensure the default browser behavior of the `hidden` attribute.
 }
 .border-b-\[0\.5px\] {
   border-bottom-width: 0.5px;
-}
-.border-t-2 {
-  border-top-width: 2px;
 }
 .border-gray-200 {
   --tw-border-opacity: 1;
@@ -875,10 +878,6 @@ Ensure the default browser behavior of the `hidden` attribute.
 .border-blue-100 {
   --tw-border-opacity: 1;
   border-color: rgb(219 234 254 / var(--tw-border-opacity));
-}
-.border-orange-100 {
-  --tw-border-opacity: 1;
-  border-color: rgb(234 75 27 / var(--tw-border-opacity));
 }
 .bg-white {
   --tw-bg-opacity: 1;
@@ -920,8 +919,18 @@ Ensure the default browser behavior of the `hidden` attribute.
   --tw-bg-opacity: 1;
   background-color: rgb(31 41 55 / var(--tw-bg-opacity));
 }
+.bg-gray-200 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(229 231 235 / var(--tw-bg-opacity));
+}
 .fill-current {
   fill: currentColor;
+}
+.fill-orange-100 {
+  fill: #EA4B1B;
+}
+.fill-gray-600 {
+  fill: #4b5563;
 }
 .object-cover {
   -o-object-fit: cover;
@@ -1111,6 +1120,10 @@ Ensure the default browser behavior of the `hidden` attribute.
   --tw-text-opacity: 1;
   color: rgb(52 52 64 / var(--tw-text-opacity));
 }
+.text-red-500 {
+  --tw-text-opacity: 1;
+  color: rgb(239 68 68 / var(--tw-text-opacity));
+}
 .text-orange-100 {
   --tw-text-opacity: 1;
   color: rgb(234 75 27 / var(--tw-text-opacity));
@@ -1118,6 +1131,10 @@ Ensure the default browser behavior of the `hidden` attribute.
 .text-orange-200 {
   --tw-text-opacity: 1;
   color: rgb(236 93 50 / var(--tw-text-opacity));
+}
+.text-gray-800 {
+  --tw-text-opacity: 1;
+  color: rgb(31 41 55 / var(--tw-text-opacity));
 }
 .text-dark-200 {
   --tw-text-opacity: 1;
@@ -1494,6 +1511,11 @@ Ensure the default browser behavior of the `hidden` attribute.
 
   .lg\:text-xl {
     font-size: 1.25rem;
+    line-height: 1.75rem;
+  }
+
+  .lg\:text-lg {
+    font-size: 1.125rem;
     line-height: 1.75rem;
   }
 

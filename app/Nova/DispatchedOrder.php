@@ -49,7 +49,6 @@ class DispatchedOrder extends Resource
 //        return $query->whereNotNull('dispatched_at')->get();
     }
 
-//    todo add fields and approprote stuff
     public static $model = \App\Models\Order::class;
 
     public static $priority = 2;

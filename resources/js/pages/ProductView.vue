@@ -67,7 +67,7 @@
                     </p>
                 </div>
                 <div class="lg:w-5/12 w-full self-end">
-                    <img :src="'/storage/'+product.preview_img" alt="">
+                    <img class="rounded" :src="'/storage/'+product.preview_img" alt="">
                 </div>
             </div>
 
