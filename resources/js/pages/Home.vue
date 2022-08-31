@@ -95,7 +95,7 @@
                         class="hide-scroller flex lg:flex-col flex-row lg:items-start items-center lg:overflow-x-hidden overflow-x-scroll scrolling-touch flex-no-wrap mt-10">
                         <h1 :class="activeShops == null ? 'bg-dark-100 text-white' :  'text-dark-100'"
                             @click="getProducts(null)"
-                            class="lg:text-xl lg:text-start text-center whitespace-nowrap items-center px-5 py-3 rounded font-bold ml-2 cursor-pointer lg:mt-0 mt-2 w-full">
+                            class="lg:text-xl lg:text-start text-center whitespace-nowrap items-center px-5 py-3 rounded font-bold ml-2 cursor-pointer lg:mt-0 mt-2 lg:w-full w-auto">
                             كل المنتجات
                         </h1>
                         <div class="hide-scroller lg:w-full w-auto" v-for="shop in shops">
@@ -111,7 +111,7 @@
 
                 <div class="lg:w-10/12 w-full px-6">
                     <!--                        <h1 class="text-orange-100 text-3xl pt-4">اسم المحل</h1>-->
-                    <div class="grid xl:grid-cols-4 lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-14">
+                    <div class="grid xl:grid-cols-3 lg:grid-cols-2 grid-cols-1 gap-14">
                         <product v-for="product in products" :hide-price="true" :key="`product-${product.id}`"
                                  :product="product"></product>
 

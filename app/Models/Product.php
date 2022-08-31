@@ -18,7 +18,7 @@ class Product extends Model
     {
         $percentage = $this->shop->percentage;
         $addedPrice = $percentage * $this->price / 100;
-        return ceil($addedPrice + $this->price);
+        return $addedPrice + $this->price;
     }
 
     protected $appends = ['final_price'];

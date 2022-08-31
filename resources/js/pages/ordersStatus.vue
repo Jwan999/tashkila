@@ -16,7 +16,7 @@
                 <div class="flex justify-end lg:w-4/12 w-6/12">
                     <button @click="goBack"
                             class="lg:py-3 py-3 px-4 lg:px-6 bg-dark-100 hover:bg-dark-200 text-white rounded shadow-lg">
-                        الرجوع
+                        رجوع
                     </button>
                 </div>
 

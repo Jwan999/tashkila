@@ -1,13 +1,16 @@
 <template>
-    <div class="sticky top-0">
+    <div class="sticky top-0 z-20">
         <div class="flex lg:flex-row flex-col justify-between py-3 lg:px-10 px-4 bg-dark-100 text-white">
 
             <div class="flex items-center justify-between">
-                <div class="flex items-center">
+                <a href="/">
+                    <div class="flex items-center">
 
-                    <img class="w-24" src="/images/tashkilaLogo.png" alt="">
-                    <!--                    <h1 class="text-2xl mr-3">تشكيلة</h1>-->
-                </div>
+                        <img class="w-24" src="/images/tashkilaLogo.png" alt="">
+                        <!--                    <h1 class="text-2xl mr-3">تشكيلة</h1>-->
+                    </div>
+                </a>
+
 
                 <div class="lg:hidden flex cursor-pointer" @click="openMenu()">
                     <svg class="fill-current text-white h-6 w-6" viewBox="0 0 24 24"

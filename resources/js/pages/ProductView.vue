@@ -6,7 +6,7 @@
             <div class="flex justify-end">
                 <button @click="goBack"
                         class="lg:py-3 py-3 px-4 lg:px-6 bg-dark-100 hover:bg-dark-200 text-white rounded shadow-lg">
-                    الرجوع
+                    رجوع
                 </button>
             </div>
             <div class="flex lg:flex-row flex-col-reverse items-center justify-between mt-10 bg-white rounded p-4">
@@ -18,7 +18,7 @@
                     </p>
                     <h1 class="text-orange-100 text-xl mt-4">
                         <span class="text-dark-100 text-sm">  تكلفة المنتج:</span>
-                        {{ product.final_price }}$
+                        {{ product.final_price }} IQD
                     </h1>
 
 

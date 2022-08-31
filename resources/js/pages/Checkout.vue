@@ -23,7 +23,7 @@
                     </h1>
                     <button @click="goBack"
                             class="lg:py-3 py-3 px-4 lg:px-6 bg-dark-100 hover:bg-dark-200 text-white rounded shadow-lg">
-                        الرجوع
+                        رجوع
                     </button>
                 </div>
                 <!--                grid lg:grid-cols-4 md:grid-cols-3 gap-6 grid-cols-1 lg:justify-items-start justify-items-center mt-10-->
