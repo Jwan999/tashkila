@@ -2734,8 +2734,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
  // import shop from "../components/shop";
 
 
@@ -2880,6 +2878,11 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
+//
+//
+//
+//
+//
 //
 //
 //
@@ -5428,25 +5431,7 @@ var render = function() {
                               ]
                             ),
                             _vm._v(" "),
-                            _c("div", { staticClass: "px-4 py-2" }, [
-                              _c(
-                                "div",
-                                {
-                                  staticClass:
-                                    "text-lg leading-6 font-medium space-y-1"
-                                },
-                                [
-                                  _c(
-                                    "h3",
-                                    {
-                                      staticClass:
-                                        "font-bold text-xl text-orange-200 text-center"
-                                    },
-                                    [_vm._v(_vm._s(product.name))]
-                                  )
-                                ]
-                              )
-                            ])
+                            _vm._m(1, true)
                           ]
                         )
                       ]
@@ -5843,6 +5828,14 @@ var staticRenderFns = [
         ]
       )
     ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "px-4 py-2" }, [
+      _c("div", { staticClass: "text-lg leading-6 font-medium space-y-1" })
+    ])
   }
 ]
 render._withStripped = true
@@ -5950,7 +5943,7 @@ var render = function() {
                 "lg:py-3 py-3 px-4 lg:px-6 bg-dark-100 hover:bg-dark-200 text-white rounded shadow-lg",
               on: { click: _vm.goBack }
             },
-            [_vm._v("\n                    رجوع\n                ")]
+            [_vm._v("\n                رجوع\n            ")]
           )
         ]),
         _vm._v(" "),
@@ -5968,9 +5961,9 @@ var render = function() {
               _vm._v(" "),
               _c("p", { staticClass: "text-base mt-6 text-dark-200" }, [
                 _vm._v(
-                  "\n                        " +
+                  "\n                    " +
                     _vm._s(_vm.product.description) +
-                    "\n                    "
+                    "\n                "
                 )
               ]),
               _vm._v(" "),
@@ -5979,9 +5972,9 @@ var render = function() {
                   _vm._v("  تكلفة المنتج:")
                 ]),
                 _vm._v(
-                  "\n                        " +
+                  "\n                    " +
                     _vm._s(_vm.product.final_price) +
-                    " IQD\n                    "
+                    " IQD\n                "
                 )
               ]),
               _vm._v(" "),
@@ -6074,25 +6067,37 @@ var render = function() {
                       },
                       [
                         _vm._v(
-                          "\n                            اضافة الى السلة\n                        "
+                          "\n                        اضافة الى السلة\n                    "
                         )
                       ]
                     )
                   ]),
               _vm._v(" "),
-              _c("h1", { staticClass: "text-xl text-dark-200 mt-10" }, [
-                _vm._v(
-                  "\n                        هذا المنتج من متجر: " +
-                    _vm._s(_vm.product.shop.name) +
-                    "\n                    "
-                )
+              _c("h1", { staticClass: "text-lg text-dark-200 mt-10" }, [
+                _vm._v("هذا المنتج من متجر:")
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "flex items-center mt-6" }, [
+                _c("img", {
+                  staticClass:
+                    "rounded-full border border-dark-100 w-16 h-16 object-center object-cover ml-4",
+                  attrs: { src: "/storage/" + _vm.product.shop.logo, alt: "" }
+                }),
+                _vm._v(" "),
+                _c("h1", { staticClass: "text-xl text-dark-200" }, [
+                  _vm._v(
+                    "\n                        " +
+                      _vm._s(_vm.product.shop.name) +
+                      "\n                    "
+                  )
+                ])
               ]),
               _vm._v(" "),
               _c("p", { staticClass: "text-dark-200 mt-3" }, [
                 _vm._v(
-                  "\n                        " +
+                  "\n                    " +
                     _vm._s(_vm.product.shop.overview) +
-                    "\n                    "
+                    "\n                "
                 )
               ])
             ]),
@@ -6102,11 +6107,7 @@ var render = function() {
                 staticClass: "rounded",
                 attrs: { src: "/storage/" + _vm.product.preview_img, alt: "" }
               })
-            ]),
-            _vm._v(" "),
-            _vm._v(
-              "\n\n                add array of hex code colors and use them as background color for\n            "
-            )
+            ])
           ]
         )
       ])

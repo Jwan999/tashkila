@@ -54,21 +54,19 @@
 
                         <div id="scrollContainer"
                              class="flex flex-no-wrap overflow-x-scroll overflow-y-hidden scrolling-touch items-start mb-8 hide-scroller">
-                            <!--                        bg-blue-500 shadow-lg rounded-->
-                            <!--                        customized card-->
+                            <!--bg-blue-500 shadow-lg rounded-->
+                            <!--customized card-->
                             <div v-for="product in picks" class="flex-none w-2/4 md:w-1/4 mr-8 md:pb-4">
                                 <a :href="'/product/'+ product.id" class="space-y-4">
                                     <div class="aspect-w-16 aspect-h-9">
-                                        <img
-                                            class="object-fit bg-gray-100 object-center shadow-md hover:shadow-xl rounded-lg w-full h-64"
-                                            :src="'storage/'+product.preview_img" alt=""
-                                        />
+                                        <img class="object-fit bg-gray-100 object-center shadow-md hover:shadow-xl rounded-lg w-full h-64"
+                                            :src="'storage/'+product.preview_img" alt=""/>
                                     </div>
                                     <div class="px-4 py-2">
                                         <div class="text-lg leading-6 font-medium space-y-1">
-                                            <h3 class="font-bold text-xl text-orange-200 text-center">{{
-                                                    product.name
-                                                }}</h3>
+                                            <!--                                            <h3 class="font-bold text-xl text-orange-200 text-center">{{-->
+                                            <!--                                                    product.name-->
+                                            <!--                                                }}</h3>-->
                                         </div>
                                     </div>
                                 </a>

@@ -58,10 +58,15 @@
                         </button>
                     </div>
 
+                    <h1 class="text-lg text-dark-200 mt-10">هذا المنتج من متجر:</h1>
+                    <div class="flex items-center mt-6">
+                        <img class="rounded-full border border-dark-100 w-16 h-16 object-center object-cover ml-4"
+                             :src="'/storage/'+product.shop.logo" alt="">
+                        <h1 class="text-xl text-dark-200">
+                            {{ product.shop.name }}
+                        </h1>
+                    </div>
 
-                    <h1 class="text-xl text-dark-200 mt-10">
-                        هذا المنتج من متجر: {{ product.shop.name }}
-                    </h1>
                     <p class="text-dark-200 mt-3">
                         {{ product.shop.overview }}
                     </p>
@@ -72,11 +77,11 @@
                 <!--                todo-->
                 <!--                add a main image property and change it when other images are clicked, -->
                 <!--                by default it takes the first image in the main image through vue js and adds all the images to an array of all the products images and when each image is clicked the main image link changes-->
-<!--                <div class="grid">-->
+                <!--                <div class="grid">-->
 
-<!--                </div>-->
+                <!--                </div>-->
 
-                add array of hex code colors and use them as background color for
+                <!--                add array of hex code colors and use them as background color for-->
             </div>
 
         </div>
