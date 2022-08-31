@@ -121,9 +121,11 @@
             </div>
 
         </div>
-        <!--        pagination-->
-        <div class="flex justify-end items-center">
-            <div class="flex justify-between items-center px-6 mt-6 w-full lg:w-10/12">
+
+        <!--pagination-->
+        <div class="flex flex-wrap justify-end items-center">
+
+            <div class="flex justify-between items-center px-6 mt-8 w-full lg:w-10/12">
                 <div :class="currentPage < totalPages ? '' : 'cursor-not-allowed'"
                      @click="paginate('next')" class="flex items-center">
                     <div>

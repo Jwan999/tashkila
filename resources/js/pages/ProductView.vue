@@ -69,6 +69,14 @@
                 <div class="lg:w-5/12 w-full self-end">
                     <img class="rounded" :src="'/storage/'+product.preview_img" alt="">
                 </div>
+                <!--                todo-->
+                <!--                add a main image property and change it when other images are clicked, -->
+                <!--                by default it takes the first image in the main image through vue js and adds all the images to an array of all the products images and when each image is clicked the main image link changes-->
+<!--                <div class="grid">-->
+
+<!--                </div>-->
+
+                add array of hex code colors and use them as background color for
             </div>
 
         </div>

@@ -18,7 +18,7 @@ class Shop extends Resource
     public static function indexQuery(NovaRequest $request, $query)
     {
 //        todo make it email not name
-        if ($request->user()->name == 'jwan') {
+        if ($request->user()->admin) {
             return true;
         } else {
             return $query->where('dashboard_email', $request->user()->email);
@@ -29,9 +29,9 @@ class Shop extends Resource
     public static function label()
     {
 //        todo make it email not name
-        if (Auth::user()->name == 'jwan') {
+        if (Auth::user()->admin) {
             return 'Shops';
-        } else if (strpos(Auth::user()->email, 'shop') !== false) {
+        } else if (!Auth::user()->admin) {
             return 'My Shop';
         } else {
             return 'Shops';
@@ -97,7 +97,7 @@ class Shop extends Resource
             Text::make(__('IoT Maker Percentage'), 'percentage')
                 ->canSee(function ($request) {
 //                    todo email instead of name
-                    if ($request->user()->name == 'jwan') {
+                    if ($request->user()->admin) {
                         return $value = true;
                     } else if ($request->user()->can('percentage', $this)) {
                         return $value = false;

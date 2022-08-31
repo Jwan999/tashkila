@@ -47,7 +47,7 @@ class APIController extends Controller
 
     public function getTopPicks()
     {
-
+//        dd();
         $picks = Product::where('top_picks', 'true')->get();
 
         return Response::json([

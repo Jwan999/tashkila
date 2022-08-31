@@ -25,7 +25,7 @@ class Product extends Resource
     public static function indexQuery(NovaRequest $request, $query)
     {
 //        todo add email not name
-        if ($request->user()->name == 'jwan') {
+        if ($request->user()->admin) {
             return true;
         } else {
             return $query->where('user_id', $request->user()->id);
@@ -98,7 +98,7 @@ class Product extends Resource
                 ->trueValue('true')
                 ->falseValue('false')
                 ->showLabels()->canSee(function ($request) {
-                    if ($request->user()->name == 'jwan') {
+                    if ($request->user()->admin) {
                         return $value = true;
                     } else if ($request->user()->can('add_top_picks', $this)) {
                         return $value = false;
@@ -145,7 +145,7 @@ class Product extends Resource
                     1 => ['max_skips', 'skip_sponsored'] // will hide max_skips and skip_sponsored when the value is 1
                 ])->hideFromDetail()->required(),
 
-            BelongsTo::make(__("Shop"), "shop", Shop::Class)->showCreateRelationButton(),
+            BelongsTo::make(__("Shop"), "shop", Shop::Class),
 
             Number::make('user_id')->canSee(function ($request) {
                 return false;
