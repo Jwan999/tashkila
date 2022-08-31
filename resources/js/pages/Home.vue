@@ -59,7 +59,8 @@
                             <div v-for="product in picks" class="flex-none w-2/4 md:w-1/4 mr-8 md:pb-4">
                                 <a :href="'/product/'+ product.id" class="space-y-4">
                                     <div class="aspect-w-16 aspect-h-9">
-                                        <img class="object-fit bg-gray-100 object-center shadow-md hover:shadow-xl rounded-lg w-full h-64"
+                                        <img
+                                            class="object-fit bg-gray-100 object-center shadow-md hover:shadow-xl rounded-lg w-full h-64"
                                             :src="'storage/'+product.preview_img" alt=""/>
                                     </div>
                                     <div class="px-4 py-2">
@@ -123,11 +124,12 @@
         <div class="flex flex-wrap justify-end items-center">
 
             <div class="flex justify-between items-center px-6 mt-8 w-full lg:w-10/12">
-                <div :class="totalPages == 1 ? '' : 'cursor-not-allowed'"
+                <!--next -->
+                <div :class="currentPage == totalPages == 1 ? 'cursor-not-allowed' : ''"
                      @click="paginate('next')" class="flex items-center">
                     <div>
-                        <svg :class="totalPages != 1 ? 'fill-orange-100' : ''"
-                             class="w-7 h-7 fill-gray-600" version="1.1" id="Capa_1"
+                        <svg :class="currentPage != totalPages ? 'fill-orange-100' : 'fill-gray-600'"
+                             class="w-7 h-7 " version="1.1" id="Capa_1"
                              xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px"
                              y="0px"
                              viewBox="0 0 512.009 512.009" style="enable-background:new 0 0 512.009 512.009;"
@@ -172,25 +174,24 @@
 </g>
 </svg>
                     </div>
-
-                    <button :class="totalPages != 1 ? 'text-orange-100' : 'cursor-not-allowed'"
+                    <button :class="currentPage != totalPages ? 'text-orange-100' : ''"
                             class="text-gray-600 mr-2 lg:text-lg text-sm">Next
                     </button>
-
                 </div>
-
+                <!--page number-->
                 <div>
                     <h1 class="text-gray-800">Page {{ currentPage }} of {{ totalPages }} pages</h1>
                 </div>
 
-                <div :class="currentPage == 1 ? '' : 'cursor-not-allowed'"
+                <!--previous-->
+                <div :class="currentPage == 1 ? 'cursor-not-allowed' : ''"
                      @click="paginate('previous')" class="flex items-center">
 
-                    <button :class="currentPage == 1 ? 'text-orange-100' : 'cursor-not-allowed'"
+                    <button :class="currentPage == 1 ? '' : 'text-orange-100'"
                             class="text-gray-600 ml-2 lg:text-lg text-sm">Previous
                     </button>
                     <div>
-                        <svg :class="currentPage > totalPages ? 'fill-orange-100' : ''" class="w-7 h-7 fill-gray-600"
+                        <svg :class="currentPage == 1 ? 'fill-gray-600' : 'fill-orange-100'" class="w-7 h-7"
                              version="1.1" id="Capa_1"
                              xmlns="http://www.w3.org/2000/svg"
                              xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
