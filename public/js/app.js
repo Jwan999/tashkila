@@ -2972,13 +2972,40 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
     return {
-      product: {}
+      product: {},
+      mainImage: '',
+      productsImages: []
     };
   },
   components: {
@@ -2988,6 +3015,10 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     goBack: function goBack() {
       this.$router.back();
     },
+    pickImage: function pickImage(index) {
+      // this.productsImages.push(this.mainImage)
+      this.mainImage = this.productsImages[index];
+    },
     getProduct: function getProduct() {
       var _this = this;
 
@@ -2996,8 +3027,24 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
           id: this.$route.params.id
         }
       }).then(function (response) {
-        _this.product = response.data.product;
-        console.log(_this.product);
+        _this.product = response.data.product; // console.log(this.product.images)
+
+        if (_this.product.images) {
+          console.log('test');
+          _this.productsImages = JSON.parse(_this.product.images);
+
+          _this.productsImages.push({
+            url: "/storage/".concat(_this.product.preview_img)
+          });
+
+          _this.mainImage = _this.productsImages[_this.productsImages.length - 1];
+        } else {
+          _this.mainImage = {
+            url: "/storage/".concat(_this.product.preview_img)
+          };
+        }
+
+        console.log(_this.productsImages);
       });
     },
     addToCart: function addToCart() {
@@ -5951,7 +5998,7 @@ var render = function() {
               "flex lg:flex-row flex-col-reverse items-center justify-between mt-10 bg-white rounded p-4"
           },
           [
-            _c("div", { staticClass: "lg:w-4/12 w-full" }, [
+            _c("div", { staticClass: "lg:w-5/12 w-full mt-10 lg:mt-0" }, [
               _c("h1", { staticClass: "text-2xl text-dark-100" }, [
                 _vm._v(_vm._s(_vm.product.name))
               ]),
@@ -5972,6 +6019,34 @@ var render = function() {
                   "\n                    " +
                     _vm._s(_vm.product.final_price) +
                     " IQD\n                "
+                )
+              ]),
+              _vm._v(" "),
+              _c("h1", { staticClass: "text-lg text-dark-200 mt-10" }, [
+                _vm._v("هذا المنتج من متجر:")
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "flex items-center mt-6" }, [
+                _c("img", {
+                  staticClass:
+                    "rounded-full border border-dark-100 w-16 h-16 object-center object-cover ml-4",
+                  attrs: { src: "/storage/" + _vm.product.shop.logo, alt: "" }
+                }),
+                _vm._v(" "),
+                _c("h1", { staticClass: "text-xl text-dark-200" }, [
+                  _vm._v(
+                    "\n                        " +
+                      _vm._s(_vm.product.shop.name) +
+                      "\n                    "
+                  )
+                ])
+              ]),
+              _vm._v(" "),
+              _c("p", { staticClass: "text-dark-200 mt-3" }, [
+                _vm._v(
+                  "\n                    " +
+                    _vm._s(_vm.product.shop.overview) +
+                    "\n                "
                 )
               ]),
               _vm._v(" "),
@@ -6012,7 +6087,7 @@ var render = function() {
                       "span",
                       {
                         staticClass:
-                          "col-span-2 flex items-center justify-center font-mono text-lg"
+                          "col-span-2 flex items-center justify-center font-mono text-lg bg-gray-100 my-1"
                       },
                       [_vm._v(_vm._s(_vm.cartItem.quantity))]
                     ),
@@ -6068,43 +6143,46 @@ var render = function() {
                         )
                       ]
                     )
-                  ]),
-              _vm._v(" "),
-              _c("h1", { staticClass: "text-lg text-dark-200 mt-10" }, [
-                _vm._v("هذا المنتج من متجر:")
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "flex items-center mt-6" }, [
-                _c("img", {
-                  staticClass:
-                    "rounded-full border border-dark-100 w-16 h-16 object-center object-cover ml-4",
-                  attrs: { src: "/storage/" + _vm.product.shop.logo, alt: "" }
-                }),
-                _vm._v(" "),
-                _c("h1", { staticClass: "text-xl text-dark-200" }, [
-                  _vm._v(
-                    "\n                        " +
-                      _vm._s(_vm.product.shop.name) +
-                      "\n                    "
-                  )
-                ])
-              ]),
-              _vm._v(" "),
-              _c("p", { staticClass: "text-dark-200 mt-3" }, [
-                _vm._v(
-                  "\n                    " +
-                    _vm._s(_vm.product.shop.overview) +
-                    "\n                "
-                )
-              ])
+                  ])
             ]),
             _vm._v(" "),
-            _c("div", { staticClass: "lg:w-5/12 w-full self-end" }, [
-              _c("img", {
-                staticClass: "rounded",
-                attrs: { src: "/storage/" + _vm.product.preview_img, alt: "" }
-              })
-            ])
+            _c(
+              "div",
+              {
+                staticClass: "lg:w-6/12 lg:flex flex-none justify-center w-full"
+              },
+              [
+                _c("div", { staticClass: "w-full flex justify-center" }, [
+                  _c("img", {
+                    staticClass: "rounded w-full aspect-square object-cover",
+                    attrs: { src: _vm.mainImage.url, alt: "" }
+                  })
+                ]),
+                _vm._v(" "),
+                _vm.productsImages.length != 0
+                  ? _c(
+                      "div",
+                      {
+                        staticClass:
+                          "grid lg:grid-cols-1 grid-cols-4 lg:justify-items-start justify-items-center bg-gray-100 p-4 lg:w-auto w-full lg:gap-0 gap-4"
+                      },
+                      _vm._l(_vm.productsImages, function(img, index) {
+                        return _c("img", {
+                          staticClass:
+                            "rounded lg:h-24 lg:w-32 h-20 w-full object-cover object-center hover:opacity-70 cursor-pointer",
+                          attrs: { src: img.url, alt: "" },
+                          on: {
+                            click: function($event) {
+                              return _vm.pickImage(index)
+                            }
+                          }
+                        })
+                      }),
+                      0
+                    )
+                  : _vm._e()
+              ]
+            )
           ]
         )
       ])

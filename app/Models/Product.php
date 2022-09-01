@@ -9,6 +9,11 @@ class Product extends Model
 {
     use HasFactory;
 
+    protected $casts = [
+        'images' => 'array',
+    ];
+
+
     public function shop()
     {
         return $this->belongsTo(Shop::Class)->select(['id', 'name', 'overview', 'logo', 'percentage']);

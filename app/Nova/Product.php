@@ -18,6 +18,7 @@ use Laravel\Nova\Fields\Number;
 use Laravel\Nova\Fields\Text;
 use Laravel\Nova\Fields\Textarea;
 use Laravel\Nova\Http\Requests\NovaRequest;
+use Halimtuhu\ArrayImages\ArrayImages;
 
 class Product extends Resource
 {
@@ -84,11 +85,14 @@ class Product extends Resource
     public function fields(Request $request)
     {
         return [
+            Image::make(__("Main product image"), "preview_img")->creationRules("required", "image")->disk('public'),
+            ArrayImages::make('Multiple product images', 'images')->disk('public'),
 //            ID::make(__('ID'), 'id')->sortable(),
             Text::make(__("Name"), 'name')->rules("required", "max:255")->sortable(),
 
             Textarea::make(__("Description"), 'description'),
-            Image::make(__("Image"), "preview_img")->creationRules("required", "image")->disk('public'),
+
+
             Number::make(__("Price in IQD"), 'price'),
 //            Currency::make('Price')->currency('IQD'),
 

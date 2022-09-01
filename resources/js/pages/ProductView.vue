@@ -11,7 +11,7 @@
             </div>
             <div class="flex lg:flex-row flex-col-reverse items-center justify-between mt-10 bg-white rounded p-4">
 
-                <div class="lg:w-4/12 w-full">
+                <div class="lg:w-5/12 w-full mt-10 lg:mt-0">
                     <h1 class="text-2xl text-dark-100">{{ product.name }}</h1>
                     <p class="text-base mt-6 text-dark-200">
                         {{ product.description }}
@@ -21,6 +21,20 @@
                         {{ product.final_price }} IQD
                     </h1>
 
+
+                    <h1 class="text-lg text-dark-200 mt-10">هذا المنتج من متجر:</h1>
+                    <div class="flex items-center mt-6">
+                        <img class="rounded-full border border-dark-100 w-16 h-16 object-center object-cover ml-4"
+                             :src="'/storage/'+product.shop.logo" alt="">
+
+                        <h1 class="text-xl text-dark-200">
+                            {{ product.shop.name }}
+                        </h1>
+                    </div>
+
+                    <p class="text-dark-200 mt-3">
+                        {{ product.shop.overview }}
+                    </p>
 
                     <div v-if="cartItem" class="grid grid-cols-4 mt-10">
                         <button
@@ -34,7 +48,7 @@
             </span>
                         </button>
                         <span
-                            class="col-span-2 flex items-center justify-center font-mono text-lg">{{
+                            class="col-span-2 flex items-center justify-center font-mono text-lg bg-gray-100 my-1">{{
                                 cartItem.quantity
                             }}</span>
                         <button
@@ -58,22 +72,33 @@
                         </button>
                     </div>
 
-                    <h1 class="text-lg text-dark-200 mt-10">هذا المنتج من متجر:</h1>
-                    <div class="flex items-center mt-6">
-                        <img class="rounded-full border border-dark-100 w-16 h-16 object-center object-cover ml-4"
-                             :src="'/storage/'+product.shop.logo" alt="">
-                        <h1 class="text-xl text-dark-200">
-                            {{ product.shop.name }}
-                        </h1>
-                    </div>
+                </div>
 
-                    <p class="text-dark-200 mt-3">
-                        {{ product.shop.overview }}
-                    </p>
+
+                <div class="lg:w-6/12 lg:flex flex-none justify-center w-full">
+                    <div class="w-full flex justify-center">
+                        <img class="rounded w-full aspect-square object-cover" :src="mainImage.url" alt="">
+                    </div>
+                    <div v-if="productsImages.length !=0"
+                         class="grid lg:grid-cols-1 grid-cols-4 lg:justify-items-start justify-items-center bg-gray-100 p-4 lg:w-auto w-full lg:gap-0 gap-4">
+
+                        <img v-for="(img,index) in productsImages" @click="pickImage(index)"
+                             class="rounded lg:h-24 lg:w-32 h-20 w-full object-cover object-center hover:opacity-70 cursor-pointer"
+                             :src="img.url" alt="">
+
+                    </div>
                 </div>
-                <div class="lg:w-5/12 w-full self-end">
-                    <img class="rounded" :src="'/storage/'+product.preview_img" alt="">
-                </div>
+                <!--testing better code for multiple images-->
+                <!--                <div>-->
+                <!--                    <div class="grid grid-cols-4 justify-items-center w-full gap-6">-->
+                <!--                        <div class="bg-gray-100 p-8 col-span-4 text-center">test</div>-->
+                <!--                        <div class="bg-gray-100 p-8">test</div>-->
+                <!--                        <div class="bg-gray-100 p-8">test</div>-->
+                <!--                        <div class="bg-gray-100 p-8">test</div>-->
+
+                <!--                    </div>-->
+                <!--                </div>-->
+
                 <!--                todo-->
                 <!--                add a main image property and change it when other images are clicked, -->
                 <!--                by default it takes the first image in the main image through vue js and adds all the images to an array of all the products images and when each image is clicked the main image link changes-->
@@ -82,11 +107,11 @@
                 <!--                </div>-->
 
                 <!--                add array of hex code colors and use them as background color for-->
+
             </div>
 
         </div>
 
-        <!--        <h1>hello product {{ $route.params.id }}</h1>-->
     </div>
 </template>
 
@@ -100,6 +125,8 @@ export default {
     data() {
         return {
             product: {},
+            mainImage: '',
+            productsImages: []
         }
     },
     components: {
@@ -109,6 +136,10 @@ export default {
         goBack() {
             this.$router.back();
         },
+        pickImage(index) {
+            // this.productsImages.push(this.mainImage)
+            this.mainImage = this.productsImages[index]
+        },
         getProduct() {
             axios.get('/api/product', {
                 params: {
@@ -116,7 +147,23 @@ export default {
                 }
             }).then(response => {
                 this.product = response.data.product
-                console.log(this.product)
+                // console.log(this.product.images)
+
+                if (this.product.images) {
+                    console.log('test')
+                    this.productsImages = JSON.parse(this.product.images)
+                    this.productsImages.push({
+                        url: `/storage/${this.product.preview_img}`
+                    })
+                    this.mainImage = this.productsImages[this.productsImages.length - 1]
+
+                } else {
+                    this.mainImage = {
+                        url: `/storage/${this.product.preview_img}`
+                    }
+                }
+
+                console.log(this.productsImages)
             })
         },
         addToCart() {
