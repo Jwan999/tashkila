@@ -86,7 +86,7 @@ class Product extends Resource
     {
         return [
             Image::make(__("Main product image"), "preview_img")->creationRules("required", "image")->disk('public'),
-            ArrayImages::make('Multiple product images', 'images')->disk('public'),
+            ArrayImages::make('Four product images', 'images')->disk('public'),
 //            ID::make(__('ID'), 'id')->sortable(),
             Text::make(__("Name"), 'name')->rules("required", "max:255")->sortable(),
 
@@ -113,7 +113,7 @@ class Product extends Resource
 //                ->falseColor('#343440')
 //                ->editableIndex()->canSee(function ($request) {
 //                    $value = false;
-////                    todo change name to email
+//                    todo change name to email
 //                }),
 
 //            RadioButton::make()
@@ -128,7 +128,7 @@ class Product extends Resource
 //                    1 => ['max_skips', 'skip_sponsored'] // will hide max_skips and skip_sponsored when the value is 1
 //                ])->hideFromDetail()->required()->canSee(function ($request) {
 //                    $value = true;
-////                    todo change name to email
+//                    todo change name to email
 //                    if ($request->user()->name == 'jwan') {
 //                        return $value = true;
 //                    } else if ($request->user()->can('add_top_picks', $this)) {
