@@ -85,7 +85,7 @@ class Product extends Resource
     public function fields(Request $request)
     {
         return [
-            Image::make(__("Main product image"), "preview_img")->creationRules("required", "image")->disk('public'),
+            Image::make(__("Main product image"), "preview_img")->creationRules("required", "image")->disk('public')->deletable(false),
             ArrayImages::make('Four product images', 'images')->disk('public'),
 //            ID::make(__('ID'), 'id')->sortable(),
             Text::make(__("Name"), 'name')->rules("required", "max:255")->sortable(),
